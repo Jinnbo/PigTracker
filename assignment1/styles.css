@@ -1,0 +1,67 @@
+.body{
+    background-color: rgb(236,239,241);
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+
+    padding-left: 30px;
+    margin-top: 5px;
+    font-size: 40px;
+
+    color: rgb(254,110,63);
+    background-color: rgb(54,71,79);
+    
+    height: 100px;
+
+}
+
+.inventory{
+    color: white;
+    padding-left: 10px;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+
+    gap: 600px;
+    margin-left: 50px;
+    margin-top: 0px;
+    font-size: 30px;
+
+    white-space: nowrap;
+}
+
+
+.textbookInfo{
+    padding-left: 30px;
+    font-size: 20px;
+    color: rgb(30,30,30);
+
+    word-wrap: break-word;
+    white-space: 'normal';
+    width: 300px;
+
+
+    border: 1px red solid;
+}
+
+
+.mainMenu{
+    border: 1px red solid;
+}
+
+.business,
+.computing{
+
+    font-size: 20px;
+    color: darkred;
+    text-decoration: none;
+}
+
+.facultyList{
+    margin-top: 20px;
+}
