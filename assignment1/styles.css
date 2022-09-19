@@ -6,16 +6,13 @@
 .header{
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
     padding-left: 30px;
     margin-top: 5px;
-    font-size: 40px;
-
+    font-size: 30px;
+    height: 140px;
     color: rgb(254,110,63);
     background-color: rgb(54,71,79);
-    
-    height: 100px;
-
 }
 
 .inventory{
@@ -23,45 +20,119 @@
     padding-left: 10px;
 }
 
+.bar1,
+.bar2,
+.bar3{
+    width: 35px;
+    height: 5px;
+    margin: 6px;
+    border: blue 1px solid;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.navbar{
+    margin-right: 25px;
+}
+
 .main{
     display: flex;
-    flex-direction: row;
-
-    gap: 600px;
-    margin-left: 50px;
-    margin-top: 0px;
-    font-size: 30px;
-
-    white-space: nowrap;
+    gap: 100px;
+    padding-left: 50px;
 }
 
-
-.textbookInfo{
+.textbookInfo1,
+.textbookInfo2,
+.textbookInfo3{
+    max-width: 600px;
     padding-left: 30px;
-    font-size: 20px;
-    color: rgb(30,30,30);
-
-    word-wrap: break-word;
-    white-space: 'normal';
-    width: 300px;
-
-
-    border: 1px red solid;
+    font-size: 25px;
+    
 }
 
-
+.textbook,
 .mainMenu{
-    border: 1px red solid;
+    font-size: 40px;
 }
+
 
 .business,
-.computing{
-
-    font-size: 20px;
+.computingScience{
+    text-decoration: none;
+    font-size: 25px;
     color: darkred;
+}
+ 
+.menuLinks a{
     text-decoration: none;
 }
 
-.facultyList{
-    margin-top: 20px;
+.menuLinks{
+    border: 1px red solid;
+    min-width: 300px;
+}
+
+.businessInfo{
+    display: none;
+    
+}
+
+.business:hover + .businessInfo{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    font-size: 25px;
+    color: black;
+}
+
+.businessContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.beedie{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.beedieInfo{
+    padding-left: 20px;
+}
+
+
+.computingScienceInfo{
+    display: none;
+}
+
+.computingScience:hover + .computingScienceInfo{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    font-size: 25px;
+    color:black
+}
+
+.cs{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.csInfo{
+    padding-left: 20px;
+}
+
+
+@media only screen and (max-width: 700px){
+
+    .header{
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 550px){
+
+    .main{
+        flex-direction: column;
+    }
 }
