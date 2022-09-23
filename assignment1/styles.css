@@ -166,7 +166,6 @@
     text-decoration: none;
     color: darkred;
     font-size: 30px;
-    
 }
 
 .csMain{
@@ -230,6 +229,9 @@ img{
 
 /*Less than or equal to 770px only 2 pictures per row*/
 
+/* TODO: Make csPage responsive
+*/
+
 @media only screen and (max-width: 770px){
 
     .csHeader{
@@ -270,7 +272,101 @@ img{
 }
 
 /*  CSS for Business Faculty Page */
+.busBody{
+    background: hsl(204,15%,94%);
+    color: rgb(236,239,241);   
+}
 
+.busHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    margin-top: 5px;
+    font-size: 25px;
+    height: 140px;
+    color: rgb(254,110,63);
+    background-color: rgb(54,71,79);
+}
 
+.busInventory{
+    color: white;
+}
 
+.busMain{   
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
 
+.busleftPics{
+    display: flex;
+    gap: 20px;
+}
+.busrightPics{
+    display: flex;
+    gap: 20px;
+}
+
+.busBook{
+    max-width: 520px;
+}
+
+.busDesc {
+    padding-top: 20px;
+    padding-left: 20px;
+    margin: 0px;
+    font-size: 20px;
+    color: black;
+}
+
+.busDescContainer{
+    background-color: white;
+    height: 120px;
+    margin-top: 0px;
+}
+
+.busBook:hover{
+    box-shadow: 0 0 11px rgb(50, 50, 50); 
+}
+
+.busBook .seeMoreBTN{
+    visibility: hidden;
+}
+
+.busBook:hover .seeMoreBTN{
+    visibility: visible;
+    animation: fadeIn 2s;
+}
+
+/* When screen width less than or equal to 770*/
+@media only screen and (max-width: 770px){
+
+    .header{
+        font-size: 15px;
+    }
+
+    .busMain{
+        flex-direction: column;
+    }
+}
+
+/* When screen width less than or equal to 480*/
+@media only screen and (max-width: 480px){
+
+    .busheader{
+        font-size: 10px;
+    }
+
+    .busMain{
+        flex-direction: column;
+    }
+
+    .busleftPics{
+        flex-direction: column;
+    }
+
+    .busrightPics{
+        flex-direction: column;
+    }
+}
