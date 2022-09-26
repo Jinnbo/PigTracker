@@ -105,7 +105,8 @@
     flex-direction: column;
     max-width: 500px;
     font-size: 25px;
-    color:black
+    color:black;
+
 }
 
 .cs{
@@ -117,7 +118,44 @@
     padding-left: 20px;
 }
 
+.footer{
+    padding-top: 50px;
+    padding-left: 20px;
+}
 
+.returnBtn{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: darkred;
+    font-size: 30px;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.seeMoreBTN{
+    color: white;
+    text-transform: capitalize;
+    background-color: rgb(254,110,63);
+    border-radius: 5px;
+    width: 100px;
+    padding: 10px;
+    margin-left: 40px;
+}
+
+.seeMoreBTN:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+@keyframes fadeIn{
+    0% { opacity: 0;}
+    100% {opacity: 1;}
+}
+
+/* Main Page media queries */
 @media only screen and (max-width: 700px){
 
     .header{
@@ -156,34 +194,16 @@
     color: white;
 }
 
-.footer{
-    padding-top: 50px;
-    padding-left: 20px;
-}
-
-.returnBtn{
-    text-transform: uppercase;
-    text-decoration: none;
-    color: darkred;
-    font-size: 30px;
-}
-
 .csMain{
-    display: flex;    
-    justify-content: center;
-    padding: 20px;
+    display: flex;
     gap: 20px;
+    margin-top: 20px;
 }
 
-img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.csDescContainer{
-    background-color: white;
-    height: 120px;
-    margin-top: 0px;
+.csleftPics,
+.csrightPics{
+    display: flex;
+    gap: 20px;
 }
 
 .csDesc {
@@ -194,82 +214,25 @@ img{
     color: black;
 }
 
-.seeMoreBTN{
-    color: white;
-    text-transform: capitalize;
-    background-color: rgb(254,110,63);
-    border-radius: 5px;
-    width: 100px;
-    padding: 10px;
-    margin-left: 40px;
+.csDescContainer{
+    background-color: white;
+    height: 120px;
+    margin-top: 0px;
 }
 
-.seeMoreBTN:hover{
-    transform: scale(1.05);
-    cursor: pointer;
+.csBook:hover{
+    box-shadow: 0 0 11px rgb(50, 50, 50); 
 }
 
-
-.csPic .seeMoreBTN{
+.csBook .seeMoreBTN{
     visibility: hidden;
 }
 
-.csPic:hover{
-    box-shadow: 0 0 11px rgb(50, 50, 50); 
-}
-.csPic:hover .seeMoreBTN{
+.csBook:hover .seeMoreBTN{
     visibility: visible;
     animation: fadeIn 2s;
 }
 
-@keyframes fadeIn{
-    0% { opacity: 0;}
-    100% {opacity: 1;}
-}
-
-/*Less than or equal to 770px only 2 pictures per row*/
-
-/* TODO: Make csPage responsive
-*/
-
-@media only screen and (max-width: 770px){
-
-    .csHeader{
-        font-size: 15px;
-        color: red;
-    }
-    
-    .csMain{
-        border: 1px blue solid;
-        flex-direction: column;
-    }
-
-    .csPic{
-        max-width: 300px;
-    }
-}
-
-
-/*Less than or equal to 480px only 1 picture per row*/
-
-@media only screen and (max-width: 480px){
-
-
-
-    .csHeader{
-        font-size: 10px;
-        color: gray;
-    }
-    
-    .csMain{
-        border: 1px blue solid;
-        flex-direction: column;
-    }
-
-    .csPic{
-        max-width: 300px;
-    }
-}
 
 /*  CSS for Business Faculty Page */
 .busBody{
@@ -299,17 +262,10 @@ img{
     margin-top: 20px;
 }
 
-.busleftPics{
-    display: flex;
-    gap: 20px;
-}
+.busleftPics,
 .busrightPics{
     display: flex;
     gap: 20px;
-}
-
-.busBook{
-    max-width: 520px;
 }
 
 .busDesc {
@@ -339,14 +295,18 @@ img{
     animation: fadeIn 2s;
 }
 
+
+/*********** MEDIA QUERIES **********/
 /* When screen width less than or equal to 770*/
 @media only screen and (max-width: 770px){
 
-    .header{
+    .busheader,
+    .csHeader{
         font-size: 15px;
     }
 
-    .busMain{
+    .busMain,
+    .csMain{
         flex-direction: column;
     }
 }
@@ -354,19 +314,20 @@ img{
 /* When screen width less than or equal to 480*/
 @media only screen and (max-width: 480px){
 
-    .busheader{
+    .busheader,
+    .csHeader{
         font-size: 10px;
     }
 
-    .busMain{
+    .busMain,
+    .csMain{
         flex-direction: column;
     }
 
-    .busleftPics{
-        flex-direction: column;
-    }
-
-    .busrightPics{
+    .busleftPics,
+    .busrightPics,
+    .csleftPics,
+    .csrightPics{
         flex-direction: column;
     }
 }
