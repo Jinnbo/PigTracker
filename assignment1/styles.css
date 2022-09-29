@@ -1,3 +1,4 @@
+/* CSS for index.html */
 body{
     background-color: rgb(237,239,241);
 }
@@ -26,7 +27,6 @@ body{
     margin-right: 30px;
     min-width: 40px;
     min-height: 40px;
-
 }
 
 .menu:hover{
@@ -54,7 +54,6 @@ body{
     font-size: 40px;
 }
 
-
 .business,
 .computingScience{
     font-size: 25px;
@@ -65,7 +64,6 @@ body{
 .csLink{
     color: darkred;
 }
-
 
 ul{
     list-style: none;
@@ -111,7 +109,6 @@ ul li::before {
     max-width: 500px;
     font-size: 25px;
     color:black;
-
 }
 
 /* CSS for Computing Science Faculty and Business Faculty Page */
@@ -224,7 +221,6 @@ img{
     100% {opacity: 1;}
 }
 
-
 /*********** MEDIA QUERIES **********/
 
 /* Main Page media queries */
@@ -265,7 +261,7 @@ img{
 
 @media only screen and (max-width: 770px){
 
-    .busheader,
+    .busHeader,
     .csHeader{
         font-size: 15px;
     }
@@ -276,11 +272,9 @@ img{
     }
 }
 
-
 @media only screen and (max-width: 480px){
 
-
-    .busheader,
+    .busHeader,
     .csHeader{
         font-size: 10px;
     }
