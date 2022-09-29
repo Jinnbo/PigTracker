@@ -1,6 +1,5 @@
-.body{
-    background: hsl(204,15%,94%);
-    color: rgb(236,239,241);
+body{
+    background-color: rgb(237,239,241);
 }
 
 * {
@@ -236,14 +235,18 @@ img{
         width: 100%;
     }
 
-    .leftContainer,
-    .rightContainer{
-        border: 1px red solid;
+    .textbookInfo1,
+    .textbookInfo2,
+    .textbookInfo3,
+    .business,
+    .computingScience{
+        font-size: 20px;
     }
 
     .main{
         gap: 20px;
         padding: 0px;
+
     }
 }
 
