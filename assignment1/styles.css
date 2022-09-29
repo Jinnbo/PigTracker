@@ -17,10 +17,7 @@
     height: 140px;
     color: rgb(254,110,63);
     background-color: rgb(54,71,79);
-
-    border: 1px red solid;
 }
-
 
 .inventory{
     color: white;
@@ -41,9 +38,7 @@
     display: flex;
     gap: 100px;
     padding-left: 50px;
-
-
-    border: 1px green solid;
+    padding-right: 50px;
 }
 
 .textbookInfo1,
@@ -52,21 +47,40 @@
     max-width: 600px;
     padding-left: 30px;
     font-size: 25px;
-    
 }
+
 
 .textbook,
 .mainMenu{
     font-size: 40px;
 }
 
+
 .business,
 .computingScience{
-    text-decoration: none;
     font-size: 25px;
+    margin-left: 20px;    
+}
+
+.businessLink,
+.csLink{
     color: darkred;
 }
- 
+
+
+ul{
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
 .menuLinks a{
     text-decoration: none;
 }
@@ -91,8 +105,8 @@
     padding-left: 20px;
 }
 
-.computingScience:hover + .computingScienceInfo,
-.business:hover + .businessInfo{
+.csLink:hover + .computingScienceInfo,
+.businessLink:hover + .businessInfo{
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -220,6 +234,16 @@ img{
     .header{
         font-size: 20px;
         width: 100%;
+    }
+
+    .leftContainer,
+    .rightContainer{
+        border: 1px red solid;
+    }
+
+    .main{
+        gap: 20px;
+        padding: 0px;
     }
 }
 
