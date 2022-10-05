@@ -1,0 +1,93 @@
+body{
+    margin: 0px;
+    background-color: rgb(153,30,46);
+    font-family: sans-serif;
+}
+
+.main{
+    min-height: 100vh;
+    background-color: white;
+    border-left: 100px solid rgb(153,30,46);
+    border-right: 100px solid rgb(153,30,46);
+    margin: 0px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    font-size: 25px;   
+}
+
+
+.container{
+    display: flex;
+    justify-content:space-evenly;
+    color: rgb(153,30,46);
+}
+
+.rightContainer{
+    display: flex;
+    flex-direction: column;
+    border: 1px red solid;
+    gap: 50px;
+    min-width: 40%;
+}
+
+.lowerBounds{
+
+    background-color: rgb(233,239,241);
+    padding-left: 2%;
+    padding-right: 20%;
+    padding-bottom: 5%;
+    font-size: large;
+}
+
+
+
+.histogram{
+
+    background-color: rgb(233,239,241);
+}
+
+.stats{
+    background-color: rgb(233,239,241);
+    font-size: large;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.input{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+input[type=number]{
+    
+    padding: 10px;
+    max-width: 50px;
+}
+
+label{
+    color: black;
+}
+
+.statInfo{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    padding-left: 20px;
+}
+
+p{
+    margin: 10px;
+}

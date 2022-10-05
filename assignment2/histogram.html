@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="histogram.css">
+    <title>Histogram Generator</title>
+</head>
+<body>
+
+    <main class="main">
+        
+        <!--Header-->
+        <section class="header">
+            <h1 class>Histogram Generator</h1>
+            <input id="fileInput" type="file" name="file" />
+            <pre id="fileContent"></pre>
+        </section>
+
+        <section class="container">
+
+            <!--LEFT-->
+            <aside class="lowerBounds">
+
+                <h2>Lower Bounds</h2>
+
+                <form class="form">
+
+                    <section class="input">
+                        <label for="max">Max: </label><br>
+                        <input type="number" name="max" maxlength="2"  size="2">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">A+ </label><br>
+                        <input type="number" name="a+">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">A </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">A- </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">B+ </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">B </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">B- </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">C+ </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">C </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">C- </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">D </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    <section class="input">
+                        <label for="max">F </label><br>
+                        <input type="number" name="a">
+                    </section>
+
+                    
+                </form>
+            
+            </aside>
+            
+            <!--RIGHT-->
+            <section class="rightContainer">
+                <!--Histogram-->
+                <aside class="histogram">
+                    <h2>Histogram</h2>
+                </aside>
+            
+                <!--Stats -->
+                <aside class="stats">
+                    <h2>Stats</h2>
+
+                    <section class="statInfo">
+                        <p>Highest </p>
+                        <p>Lowest </p>
+                        <p>Mean </p>
+                        <p>Median </p>
+                    </section>
+
+
+
+                </aside>
+            </section>
+
+        </section>
+
+    </main>
+
+
+</body>
+</html>
