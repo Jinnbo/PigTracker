@@ -7,16 +7,16 @@ body{
 .main{
     min-height: 100vh;
     background-color: white;
-    border-left: 100px solid rgb(153,30,46);
-    border-right: 100px solid rgb(153,30,46);
+    border-left: 5vw solid rgb(153,30,46);
+    border-right: 5vw solid rgb(153,30,46);
     margin: 0px;
 }
 
 .header{
     display: flex;
     flex-direction: column;
-    padding-left: 50px;
-    font-size: 25px;   
+    padding-left: 5vw;
+    font-size: 2vw;   
 }
 
 
@@ -24,37 +24,42 @@ body{
     display: flex;
     justify-content:space-evenly;
     color: rgb(153,30,46);
+
 }
 
+/* Left container */
+.lowerBounds{
+    background-color: rgb(233,239,241);
+    font-size: large;
+
+    padding: 0 2vw 0 2vw;
+    margin-bottom: 5vh;
+    min-width: 30vw;
+}
+
+/* Right container */
 .rightContainer{
     display: flex;
     flex-direction: column;
-    border: 1px red solid;
     gap: 50px;
-    min-width: 40%;
+    min-width: 40vw;
 }
-
-.lowerBounds{
-
-    background-color: rgb(233,239,241);
-    padding-left: 2%;
-    padding-right: 20%;
-    padding-bottom: 5%;
-    font-size: large;
-}
-
 
 
 .histogram{
-
     background-color: rgb(233,239,241);
+    padding-left: 2vw;
+    padding-right: 20vw;
+    padding-bottom: 50vh;
 }
 
 .stats{
     background-color: rgb(233,239,241);
     font-size: large;
-    padding-left: 20px;
-    padding-bottom: 20px;
+    padding-left: 2vw;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+
 }
 
 .form{
@@ -68,11 +73,9 @@ body{
 .input{
     display: flex;
     justify-content: space-between;
-    gap: 20px;
 }
 
 input[type=number]{
-    
     padding: 10px;
     max-width: 50px;
 }
