@@ -9,28 +9,27 @@
 </head>
 <body>
     
-    
     <main class="main">
+        <!--Header-->
         <section class="header">
             <h1 class="title">Histogram Generator</h1>
-                
             <section class="inputFile">
                 <input id="fileInput" type="file" name="file" />
                 <pre id="fileContent"></pre>
             </section>
-
         </section>
         
+        <!--Container-->
         <article class="gridContainer">
-            
-     
+
+            <!--LowerBounds-->
             <aside class="lowerBounds">
                 <h3>Lower Bounds</h3>
                 
+                <!--Input Forms-->
                 <form class="form">
-
                     <section class="leftInput">
-                        
+                    
                         <section class="input">
                             <label for="max">Max </label><br>
                             <input type="number" name="max" maxlength="2"  size="2">
@@ -62,9 +61,7 @@
                         </section>
                     </section>
 
-
                     <section class="rightInput">
-
                         <section class="input">
                             <label for="max">B- </label><br>
                             <input type="number" name="a">
@@ -95,31 +92,23 @@
                             <input type="number" name="a">
                         </section>
                     </section>
-
                 </form>
             </aside>
             
+            <!--Histogram-->
             <aside class="histogram"> 
-                
                 <h3>Histogram</h3>
-
             </aside>
             
+            <!--Stats-->
             <aside class="stats">
-                
                 <h3>Stats</h3>    
                 <h5>Highest</h5> 
                 <h5>Lowest</h5> 
                 <h5>Mean</h5> 
                 <h5>Median</h5> 
-
             </aside>
-
-          
-        
         </section>
-
     </main>
-
 </body>
 </html>
