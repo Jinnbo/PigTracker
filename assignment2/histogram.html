@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Histogram Generator</title>
     <link rel="stylesheet" href="histogram.css">
+    <script src="./calculate.js"></script>
 </head>
-<body>
+<body onload="init()">
     
     <main class="main">
         <!--Header-->
@@ -31,65 +32,65 @@
                     <section class="leftInput">
                     
                         <section class="input">
-                            <label for="max">Max </label><br>
-                            <input type="number" name="max" maxlength="2"  size="2">
+                            <label for="max">Max</label><br>
+                            <input type="number" id="max" name="max">
                         </section>
     
                         <section class="input">
                             <label for="max">A+ </label><br>
-                            <input type="number" name="a+">
+                            <input type="number" id="a+" name="a+">
                         </section>
     
                         <section class="input">
                             <label for="max">A </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="a" name="a">
                         </section>
     
                         <section class="input">
                             <label for="max">A- </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="a-" name="a-">
                         </section>
     
                         <section class="input">
                             <label for="max">B+ </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="b+" name="b+">
                         </section>
     
                         <section class="input">
                             <label for="max">B </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="b" name="b">
                         </section>
                     </section>
 
                     <section class="rightInput">
                         <section class="input">
                             <label for="max">B- </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="b-" name="b-">
                         </section>
     
                         <section class="input">
                             <label for="max">C+ </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="c+" name="c+">
                         </section>
     
                         <section class="input">
                             <label for="max">C </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="c" name="c">
                         </section>
     
                         <section class="input">
                             <label for="max">C- </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="c-" name="c-">
                         </section>
     
                         <section class="input">
                             <label for="max">D </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="d" name="d">
                         </section>
     
                         <section class="input">
                             <label for="max">F </label><br>
-                            <input type="number" name="a">
+                            <input type="number" id="f" name="f">
                         </section>
                     </section>
                 </form>

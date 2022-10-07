@@ -80,6 +80,8 @@ body{
 input:not(#fileInput){
     max-width: 4vw;
     min-height: 2vw;
+
+    font-size: 1.5vw;
 }
 
 h5{
