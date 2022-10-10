@@ -14,10 +14,12 @@
         <!--Header-->
         <section class="header">
             <h1 class="title">Histogram Generator</h1>
+            
             <section class="inputFile">
                 <input id="fileInput" type="file" name="file" />
                 <pre id="fileContent"></pre>
             </section>
+
         </section>
         
         <!--Container-->
@@ -104,10 +106,27 @@
             <!--Stats-->
             <aside class="stats">
                 <h3>Stats</h3>    
-                <h5>Highest</h5> 
-                <h5>Lowest</h5> 
-                <h5>Mean</h5> 
-                <h5>Median</h5> 
+
+                <section class="statContainer">
+                    <h5>Highest</h5> 
+                    <h5 id="highestStat"></h5>
+                </section>
+
+                <section class="statContainer">
+                    <h5>Lowest</h5> 
+                    <h5 id="lowestStat"></h5>
+                </section>
+
+                <section class="statContainer">
+                    <h5>Mean</h5> 
+                    <h5 id="meanStat"></h5>
+                </section>
+
+                <section class="statContainer">
+                    <h5>Median</h5> 
+                    <h5 id="medianStat"></h5>
+                </section>
+            
             </aside>
         </section>
     </main>

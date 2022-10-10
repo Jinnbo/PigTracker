@@ -32,7 +32,7 @@ body{
 
 .gridContainer{
     display: grid;
-    grid-template-columns: 42vw 42vw;
+    grid-template-columns: 36vw 45vw;
     justify-content: center;
     grid-gap: 2vw;
     color: rgb(153,30,46);
@@ -61,6 +61,7 @@ body{
     grid-area: stats;
     min-height: 20vh;
     padding-left: 2vw;
+    padding-bottom: 1vh;
 }
 
 .form{
@@ -84,11 +85,15 @@ input:not(#fileInput){
     font-size: 1.5vw;
 }
 
-h5{
+.statContainer{
+    display: flex;
     color: black;
-    padding-left: 2vw;
-}
+    max-width: 20vw;
+    padding-left: 5vw;
+    justify-content: space-between;
+    
 
+}
 
 
 /*MEDIA QUERIES*/
