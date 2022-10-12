@@ -14,7 +14,7 @@ body{
 .header{
     display: flex;
     flex-direction: column;
-    padding-left: 2vw;
+    padding-left: 4vw;
     margin: 0;
     font-size: 30px;
     gap: 1vh;
@@ -49,11 +49,12 @@ body{
     padding-left: 2vw;
 }
 
+
 .histogram{
     background-color: rgb(233,239,241);
     grid-area: histogram;
     min-height: 45vh;
-    padding-left: 2vw;
+    padding-left: 3vw;
 }
 
 .stats{
@@ -145,5 +146,10 @@ input:not(#fileInput){
         flex-direction: column;
         align-items: center;
         padding-bottom: 3vh;
+    }
+
+    #histogramContainer{
+        margin-left: 10vw;
+
     }
 }

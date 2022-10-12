@@ -70,6 +70,8 @@ function displayStats(str, delimiter = ","){
     lowestStat.innerHTML = lowestStudent;
     meanStat.innerHTML = meanGrade;
     medianStat.innerHTML = medianGrade;
+
+    makeGraph("histogramContainer", "labels");
 }   
 
 // Function for finding highest Stat
@@ -143,6 +145,12 @@ function findMedianGrade(dataArray,length){
     }
 }
 
+function lowerBoundCheck(){
+    console.log(aPlus);
+}
+
+lowerBoundCheck();
+
 function makeGraph(container, labels)
 {
     container = document.getElementById(container);
@@ -170,5 +178,3 @@ function makeGraph(container, labels)
         labels.innerHTML = labels.innerHTML + "<span style='margin:12px '>" + content[1] + "</span>";
     }	
 }
-
-window.onload=function () { makeGraph("histogramContainer", "labels") }
