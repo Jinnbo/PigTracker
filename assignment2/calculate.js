@@ -1,8 +1,8 @@
 // TODO:
 /* 
 
-    1. Work on LowerBounds
-    2. Work on Histogram
+    1. Make exceptions for lowerbounds- overlapping bounds
+    2. Make histogram dynamic with lowerbounds
     3. Check median stat for when n = even # 
 
 */
@@ -167,7 +167,7 @@ function makeGraph(container, labels)
         }
         item.style.visibility="visible";	
 
-        labels.innerHTML = labels.innerHTML + "<span style='margin:8px;background:"+ color+"'>" + content[1] + "</span>";
+        labels.innerHTML = labels.innerHTML + "<span style='margin:12px '>" + content[1] + "</span>";
     }	
 }
 

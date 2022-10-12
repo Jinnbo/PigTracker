@@ -120,8 +120,8 @@ input:not(#fileInput){
 }
 
 #labels{
-    border: 1px red solid;
     margin-top: 2vh;
+    padding-left: 20px;
 }
 
 /*MEDIA QUERIES*/
