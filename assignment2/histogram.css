@@ -95,6 +95,28 @@ input:not(#fileInput){
 
 }
 
+.histogramContainer{
+    display: flex;
+    min-height: 15vw;
+    max-width: 40vw;
+
+    border-right: 5px black solid;
+    border-top: 5px black solid;
+    
+    transform: rotate(180deg);
+}
+
+.box:nth-child(odd){
+    background-color: #5bbdfa;
+    min-width: 3.3vw;
+    max-height: 7vw;
+}
+.box:nth-child(even){
+    background-color: #379AD6;
+    min-width: 3.3vw;
+    max-height: 8vw;
+}
+
 
 /*MEDIA QUERIES*/
 

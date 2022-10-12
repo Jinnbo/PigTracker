@@ -1,20 +1,27 @@
 // TODO:
-/* Check median stat for when n = even # 
+/* 
+
+    1. Work on LowerBounds
+    2. Work on Histogram
+    3. Check median stat for when n = even # 
+
 */
 
 // Selectors for Input Boxes
-var max = document.getElementById('max');
-var aPlus = document.getElementById('a+');
-var a  = document.getElementById('a');
-var aMinus = document.getElementById('a-');
-var bPlus = document.getElementById('b+');
-var b = document.getElementById('b');
-var bMinus = document.getElementById('b-');
-var cPlus = document.getElementById('c+');
-var c = document.getElementById('c');
-var cMinus = document.getElementById('c-');
-var d = document.getElementById('d');
-var f = document.getElementById('f');
+var max = document.getElementById('max').value = 100;
+var aPlus = document.getElementById('a+').value = 95;
+var a  = document.getElementById('a').value = 90;
+var aMinus = document.getElementById('a-').value = 85;
+var bPlus = document.getElementById('b+').value = 80;
+var b = document.getElementById('b').value = 75;
+var bMinus = document.getElementById('b-').value = 70;
+var cPlus = document.getElementById('c+').value = 65;
+var c = document.getElementById('c').value = 60;
+var cMinus = document.getElementById('c-').value = 55;
+var d = document.getElementById('d').value = 50;
+var f = document.getElementById('f').value = 0;
+
+
 
 // Selector for Stats
 var highestStat = document.getElementById('highestStat');
@@ -123,13 +130,16 @@ function findMedianGrade(dataArray,length){
 
     gradeList.sort(function(a,b) { return a-b;});
 
+
     // If length is even
     if (length%2==0){
         return ((gradeList[(parseInt(length)/2)] + gradeList[ (parseInt(length)/2)+1])/2) + "%";
     }
     // If length is odd
     else{
-        return (gradeList[(parseInt(length)+1)/2]) + "%";
+        console.log((parseInt(length)+1)/2);
+        console.log(gradeList);
+        return (gradeList[((parseInt(length)+1)/2)-1]) + "%";
     }
 }
 
