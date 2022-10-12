@@ -143,3 +143,32 @@ function findMedianGrade(dataArray,length){
     }
 }
 
+function makeGraph(container, labels)
+{
+    container = document.getElementById(container);
+    labels = document.getElementById(labels)
+    var dnl = container.getElementsByTagName("li");
+    for(var i = 0; i < dnl.length; i++)
+    {
+        var item = dnl.item(i);
+        var value = item.innerHTML;
+        var color = item.style.background=color;
+        var content = value.split(":");
+        value = content[0];
+        item.style.top=(245 - value) + "px";
+        item.style.left = (i * 3) + "vw";
+        item.style.height = value + "px";
+        
+        if (value > 5){
+            item.innerHTML = value;
+        }
+        else{
+            item.innerHTML = ""
+        }
+        item.style.visibility="visible";	
+
+        labels.innerHTML = labels.innerHTML + "<span style='margin:8px;background:"+ color+"'>" + content[1] + "</span>";
+    }	
+}
+
+window.onload=function () { makeGraph("histogramContainer", "labels") }

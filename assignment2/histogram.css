@@ -32,7 +32,7 @@ body{
 
 .gridContainer{
     display: grid;
-    grid-template-columns: 36vw 45vw;
+    grid-template-columns: 30vw 50vw;
     justify-content: center;
     grid-gap: 2vw;
     color: rgb(153,30,46);
@@ -91,35 +91,40 @@ input:not(#fileInput){
     max-width: 20vw;
     padding-left: 5vw;
     justify-content: space-between;
-    
-
 }
 
-.histogramContainer{
-    display: flex;
-    min-height: 15vw;
-    max-width: 40vw;
-
-    border-right: 5px black solid;
-    border-top: 5px black solid;
-    
-    transform: rotate(180deg);
+#histogramContainer{
+    position:relative;
+    width: 50vw;
+    height: 30vh;
 }
 
-.box:nth-child(odd){
-    background-color: #5bbdfa;
-    min-width: 3.3vw;
-    max-height: 7vw;
-}
-.box:nth-child(even){
-    background-color: #379AD6;
-    min-width: 3.3vw;
-    max-height: 8vw;
+#histogramContainer ul{
+    position: absolute;
+    top: -2vh;
+    left: 1vw;
+    width: 40vw;
+    height: 30vh;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
 }
 
+#histogramContainer li{
+    position: absolute;
+    list-style: none;
+    background-color: lightblue;
+    width: 2.9vw;
+    text-align: center;
+    border: 1px solid black;
+    visibility: hidden;
+}
+
+#labels{
+    border: 1px red solid;
+    margin-top: 2vh;
+}
 
 /*MEDIA QUERIES*/
-
 @media only screen and (max-width:600px){
 
     .gridContainer{    
