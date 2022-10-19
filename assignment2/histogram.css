@@ -94,6 +94,33 @@ input:not(#fileInput){
     justify-content: space-between;
 }
 
+
+/* Histogram CSS */
+
+
+.histogramContainer{
+    display: flex;
+    gap: 0.0vw;
+    border: 5px black solid;
+    width: 42vw;
+    height: 30vh;
+    transform: rotate(180deg);
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.box{
+    min-width: 2.5vw;
+    max-height: 100px;
+    background-color: rgb(153,30,46);
+    border: 5px black solid;
+}
+
+.box.one{
+    max-height: 200px;
+}
+
+/*
 #histogramContainer{
     position:relative;
     width: 50vw;
@@ -124,6 +151,7 @@ input:not(#fileInput){
     margin-top: 2vh;
     padding-left: 20px;
 }
+*.
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width:600px){
@@ -148,8 +176,8 @@ input:not(#fileInput){
         padding-bottom: 3vh;
     }
 
-    #histogramContainer{
-        margin-left: 10vw;
-
+    .histogramContainer{
+        margin-left: 2vw;
+        min-width: 75vw;
     }
 }

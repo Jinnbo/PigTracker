@@ -37,6 +37,8 @@ function init(){
 function handFileSelect(event){
     const reader = new FileReader();
     reader.onload = handFileLoad;
+
+    // event.target selects whatever envoked the event 
     reader.readAsText(event.target.files[0]);
 }
 
@@ -145,12 +147,9 @@ function findMedianGrade(dataArray,length){
     }
 }
 
-function lowerBoundCheck(){
-    console.log(aPlus);
-}
 
-lowerBoundCheck();
 
+/*
 function makeGraph(container, labels)
 {
     container = document.getElementById(container);
@@ -178,3 +177,4 @@ function makeGraph(container, labels)
         labels.innerHTML = labels.innerHTML + "<span style='margin:12px '>" + content[1] + "</span>";
     }	
 }
+*/
