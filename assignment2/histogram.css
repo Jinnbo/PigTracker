@@ -100,7 +100,7 @@ input:not(#fileInput){
 
 .histogramContainer{
     display: flex;
-    gap: 0.0vw;
+    gap: 0.5vw;
     border: 5px black solid;
     width: 42vw;
     height: 30vh;
@@ -109,15 +109,21 @@ input:not(#fileInput){
     padding-right: 1vw;
 }
 
-.box{
+.boxContainer{
     min-width: 2.5vw;
     max-height: 100px;
-    background-color: rgb(153,30,46);
-    border: 5px black solid;
+    background-color:rgb(153,30,46);
 }
 
-.box.one{
-    max-height: 200px;
+.number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+}
+
+.boxContainer.one{
+    max-height: 300px;
 }
 
 /*
