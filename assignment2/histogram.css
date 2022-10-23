@@ -114,22 +114,12 @@ input:not(#fileInput){
     padding-right: 1vw;
 }
 
-.boxContainer{
-
-    /*
-    min-width: 2.8vw;
-    max-height: 100px;
-    background-color:rgb(153,30,46);
-    */
-}
-
-.number{
+#labelContainer{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(180deg);
+    font-weight: bold;
+    gap: 3.3vw;
+    margin-left: 1vw;
 }
-
 
 
 /*MEDIA QUERIES*/

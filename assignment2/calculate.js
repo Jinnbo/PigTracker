@@ -61,7 +61,6 @@ function checkBounds(){
     // If grades are not overlapping then call makeHistogram function
     if (!overlapFlag){
         generateHistogram(); 
-    
     }
 }
 
@@ -201,12 +200,38 @@ var boxNine = document.getElementById("boxContainerNine");
 var boxTen = document.getElementById("boxContainerTen");
 var boxEleven = document.getElementById("boxContainerEleven");
 
+var MAX_BOX_HEIGHT = "230px";
+
+boxOne.style.width = "10px";
+boxOne.style.maxHeight = "225px";
+boxOne.style.backgroundColor = "green";
+
 // Generate Histogram
 function generateHistogram(){
-
-    var numInBounds = [];
+    
+    // Init list where numInBounds[0] = # of a+, numInBounds[1] = # of a, ...
+    var numInBounds = new Array(11).fill(0);
 
     // Get list of key:pair values for grade : number of students in that grade range
     console.log(gradeList);
+    console.log(lowerBound_List);
+
+    for (let i = 0;i<gradeList.length;i++){
+        if (gradeList[i] >= lowerBound_List[1]) numInBounds[0]++;
+        if (gradeList[i] >= lowerBound_List[2] && gradeList[i] < lowerBound_List[1]) numInBounds[1]++;
+        if (gradeList[i] >= lowerBound_List[3] && gradeList[i] < lowerBound_List[2]) numInBounds[2]++;
+        if (gradeList[i] >= lowerBound_List[4] && gradeList[i] < lowerBound_List[3]) numInBounds[3]++;
+        if (gradeList[i] >= lowerBound_List[5] && gradeList[i] < lowerBound_List[4]) numInBounds[4]++;
+        if (gradeList[i] >= lowerBound_List[6] && gradeList[i] < lowerBound_List[5]) numInBounds[5]++;
+        if (gradeList[i] >= lowerBound_List[7] && gradeList[i] < lowerBound_List[6]) numInBounds[6]++;
+        if (gradeList[i] >= lowerBound_List[8] && gradeList[i] < lowerBound_List[7]) numInBounds[7]++;
+        if (gradeList[i] >= lowerBound_List[9] && gradeList[i] < lowerBound_List[8]) numInBounds[8]++;
+        if (gradeList[i] >= lowerBound_List[10] && gradeList[i] < lowerBound_List[9]) numInBounds[9]++;
+        if (gradeList[i] >= lowerBound_List[11] && gradeList[i] < lowerBound_List[10]) numInBounds[10]++;
+    }
+    
+
+
+    console.log(numInBounds);
 }
 
