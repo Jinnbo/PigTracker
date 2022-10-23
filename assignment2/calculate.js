@@ -23,6 +23,8 @@ var f = document.getElementById('f');
 var errorMessage = document.getElementById('errorMessage')
 
 
+
+
 // Event listeners for Input Boxes
 var lowerBound_List = [100,95,90,85,80,75,70,65,60,55,50,0];
 
@@ -40,9 +42,11 @@ cMinus.oninput = () => { lowerBound_List[9] = parseFloat(cMinus.value); checkBou
 d.oninput = () => { lowerBound_List[10] = parseFloat(d.value); checkBounds();} 
 f.oninput = () => { lowerBound_List[11] = parseFloat(f.value); checkBounds();} 
 
+overlapFlag = false;
+fileFlag = false;
+
 function checkBounds(){
 
-    var overlapFlag = false;
 
     // Check for overlap
     // If lowerBound_List[i] <= lowerBound_List[i+1]  
@@ -59,7 +63,7 @@ function checkBounds(){
     }
 
     // If grades are not overlapping then call makeHistogram function
-    if (!overlapFlag) generateHistogram(); 
+    if (!overlapFlag && fileFlag) generateHistogram(); 
     
     // If grades are overlapping, clear histogram
     if (overlapFlag) clearHistogram();
@@ -92,6 +96,7 @@ function handFileSelect(event){
 function handFileLoad(event){
     console.log(event.target.result.split(", ")[0])
     displayStats(event.target.result,',');
+    fileFlag = true;
 }
 
 function displayStats(str, delimiter = ","){
@@ -257,13 +262,16 @@ function generateHistogram(){
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.width = "3.2vw";
         window[`box${i}`].style.backgroundColor = "rgb(153,30,46)";
-        window[`num${i}`].innerHTML = `${numInBounds[i-1]}`;
+
+        if (numInBounds[i-1] != 0){
+            window[`num${i}`].innerHTML = `${numInBounds[i-1]}`;
+        }
+        else{
+            window[`num${i}`].innerHTML = '';
+        }
     }
 
-    console.log(numInBounds);
-
     var scaleFactor = MAX_BOX_HEIGHT/maxFreq;
-    
     
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.height = `${numInBounds[i-1]*scaleFactor}vh`;
@@ -277,5 +285,6 @@ function clearHistogram(){
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.height = "0vh";
         window[`box${i}`].style.width = "0vw";
+        window[`num${i}`].innerHTML = '';
     }
 }

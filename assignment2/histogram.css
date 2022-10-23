@@ -115,6 +115,8 @@ input:not(#fileInput){
 }
 
 .boxContainer{
+    display: flex;
+    justify-content: center;
     background-color: rgb(153,30,46);
     /*width: 3.2vw;*/
     color: white;
@@ -126,9 +128,10 @@ p[id='number Five'],p[id='number Six'],
 p[id='number Seven'],p[id='number Eight'],
 p[id='number Nine'],p[id='number Ten'],
 p[id='number Eleven']{
+    display: flex;
     transform: rotate(180deg);
     display: flex;
-    justify-content: center;
+    align-items: center;
     font-weight: bold;
 }
 
@@ -166,11 +169,15 @@ p[id='number Eleven']{
     }
 
     .histogramContainer{
-        margin-left: 2vw;
         min-width: 75vw;
     }
 
     .boxContainer{
         min-width: 5.3vw;
+    }
+
+    #labelContainer{
+        display: flex;
+        gap: 4vw;
     }
 }
