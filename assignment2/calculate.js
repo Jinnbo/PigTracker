@@ -203,7 +203,7 @@ var boxEleven = document.getElementById("boxContainerEleven");
 var MAX_BOX_HEIGHT = "230px";
 
 boxOne.style.width = "10px";
-boxOne.style.maxHeight = "225px";
+boxOne.style.maxHeight = "200px";
 boxOne.style.backgroundColor = "green";
 
 // Generate Histogram
@@ -231,7 +231,5 @@ function generateHistogram(){
     }
     
 
-
-    console.log(numInBounds);
 }
 
