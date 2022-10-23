@@ -1,11 +1,3 @@
-// TODO:
-/* 
-
-    1. Make exceptions for lowerbounds- overlapping bounds
-    2. Make histogram dynamic with lowerbounds
-    3. Check median stat for when n = even # 
-
-*/
 
 // Selectors for Input Boxes
 var max = document.getElementById('max');
@@ -23,12 +15,9 @@ var f = document.getElementById('f');
 var errorMessage = document.getElementById('errorMessage')
 
 
-
-
-// Event listeners for Input Boxes
 var lowerBound_List = [100,95,90,85,80,75,70,65,60,55,50,0];
 
-//max.addEventListener("blur", () => { lowerBound_List[0] = parseFloat(max.value); checkBounds() });
+// Event listeners for Input Boxes
 max.oninput = () => { lowerBound_List[0] = parseFloat(max.value); checkBounds();} 
 aPlus.oninput = () => { lowerBound_List[1] = parseFloat(aPlus.value); checkBounds();} 
 a.oninput = () => { lowerBound_List[2] = parseFloat(a.value); checkBounds();} 
@@ -42,14 +31,17 @@ cMinus.oninput = () => { lowerBound_List[9] = parseFloat(cMinus.value); checkBou
 d.oninput = () => { lowerBound_List[10] = parseFloat(d.value); checkBounds();} 
 f.oninput = () => { lowerBound_List[11] = parseFloat(f.value); checkBounds();} 
 
+// Flags
 overlapFlag = false;
 fileFlag = false;
 
 function checkBounds(){
 
+    // Check for valid Input
+    for (let i = 0;i<lowerBound_List.length;i++){
+    }
 
     // Check for overlap
-    // If lowerBound_List[i] <= lowerBound_List[i+1]  
     for (let i =0;i<lowerBound_List.length-1; i++){
         if (lowerBound_List[i] <= lowerBound_List[i+1]){
             errorMessage.innerHTML = "ERROR: Bounds are overlapping. Please change to continue";
@@ -62,12 +54,13 @@ function checkBounds(){
         }
     }
 
+    console.log(lowerBound_List[0] === NaN);
+
     // If grades are not overlapping then call makeHistogram function
     if (!overlapFlag && fileFlag) generateHistogram(); 
     
     // If grades are overlapping, clear histogram
     if (overlapFlag) clearHistogram();
-
 }
 
 // Selector for Stats
@@ -75,7 +68,6 @@ var highestStat = document.getElementById('highestStat');
 var lowestStat = document.getElementById('lowestStat');
 var meanStat = document.getElementById('meanStat');
 var medianStat = document.getElementById('medianStat');
-
 
 // Store student name and percent in dataArray where index 0 is name and index 1 is percent
 dataArray = [];
@@ -184,7 +176,6 @@ function findMedianGrade(dataArray,length){
 
     gradeList.sort(function(a,b) { return a-b;});
 
-
     // If length is even
     if (length%2==0){
         return ((gradeList[(parseInt(length)/2)] + gradeList[ (parseInt(length)/2)+1])/2) + "%";
@@ -199,17 +190,18 @@ function findMedianGrade(dataArray,length){
 
 // Selectors for Histogram
 var box1 = document.getElementById("boxContainerEleven");      // F
-var box2 = document.getElementById("boxContainerTen");      // D
-var box3 = document.getElementById("boxContainerNine");  // C-
-var box4 = document.getElementById("boxContainerEight");    // C
-var box5 = document.getElementById("boxContainerSeven");    // C+
-var box6 = document.getElementById("boxContainerSix");      // B-
-var box7 = document.getElementById("boxContainerFive");  // B
-var box8= document.getElementById("boxContainerFour");  // B+
-var box9 = document.getElementById("boxContainerThree");    // A-
-var box10 = document.getElementById("boxContainerTwo");      // A
-var box11 = document.getElementById("boxContainerOne");// A+
+var box2 = document.getElementById("boxContainerTen");         // D
+var box3 = document.getElementById("boxContainerNine");        // C-
+var box4 = document.getElementById("boxContainerEight");       // C
+var box5 = document.getElementById("boxContainerSeven");       // C+
+var box6 = document.getElementById("boxContainerSix");         // B-
+var box7 = document.getElementById("boxContainerFive");        // B
+var box8= document.getElementById("boxContainerFour");         // B+
+var box9 = document.getElementById("boxContainerThree");       // A-
+var box10 = document.getElementById("boxContainerTwo");        // A
+var box11 = document.getElementById("boxContainerOne");        // A+
 
+// Selectors for number Label
 var num1 = document.getElementById("number Eleven");
 var num2 = document.getElementById("number Ten");
 var num3 = document.getElementById("number Nine");
@@ -279,7 +271,6 @@ function generateHistogram(){
 
 
 }
-
 
 function clearHistogram(){
     for (let i = 1;i<=11;i++){
