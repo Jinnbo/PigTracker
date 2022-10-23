@@ -59,9 +59,11 @@ function checkBounds(){
     }
 
     // If grades are not overlapping then call makeHistogram function
-    if (!overlapFlag){
-        generateHistogram(); 
-    }
+    if (!overlapFlag) generateHistogram(); 
+    
+    // If grades are overlapping, clear histogram
+    if (overlapFlag) clearHistogram();
+
 }
 
 // Selector for Stats
@@ -115,6 +117,9 @@ function displayStats(str, delimiter = ","){
     lowestStat.innerHTML = lowestStudent;
     meanStat.innerHTML = meanGrade;
     medianStat.innerHTML = medianGrade;
+
+    //Call Generate Histogram
+    generateHistogram();
 }   
 
 // Function for finding highest Stat
@@ -188,23 +193,33 @@ function findMedianGrade(dataArray,length){
 }
 
 // Selectors for Histogram
-var boxOne = document.getElementById("boxContainerOne");
-var boxTwo = document.getElementById("boxContainerTwo");
-var boxThree = document.getElementById("boxContainerThree");
-var boxFour = document.getElementById("boxContainerFour");
-var boxFive = document.getElementById("boxContainerFive");
-var boxSix = document.getElementById("boxContainerSix");
-var boxSeven = document.getElementById("boxContainerSeven");
-var boxEight = document.getElementById("boxContainerEight");
-var boxNine = document.getElementById("boxContainerNine");
-var boxTen = document.getElementById("boxContainerTen");
-var boxEleven = document.getElementById("boxContainerEleven");
+var box1 = document.getElementById("boxContainerEleven");      // F
+var box2 = document.getElementById("boxContainerTen");      // D
+var box3 = document.getElementById("boxContainerNine");  // C-
+var box4 = document.getElementById("boxContainerEight");    // C
+var box5 = document.getElementById("boxContainerSeven");    // C+
+var box6 = document.getElementById("boxContainerSix");      // B-
+var box7 = document.getElementById("boxContainerFive");  // B
+var box8= document.getElementById("boxContainerFour");  // B+
+var box9 = document.getElementById("boxContainerThree");    // A-
+var box10 = document.getElementById("boxContainerTwo");      // A
+var box11 = document.getElementById("boxContainerOne");// A+
 
-var MAX_BOX_HEIGHT = "230px";
+var num1 = document.getElementById("number Eleven");
+var num2 = document.getElementById("number Ten");
+var num3 = document.getElementById("number Nine");
+var num4 = document.getElementById("number Eight");
+var num5 = document.getElementById("number Seven");
+var num6 = document.getElementById("number Six");
+var num7 = document.getElementById("number Five");
+var num8 = document.getElementById("number Four");
+var num9 = document.getElementById("number Three");
+var num10 = document.getElementById("number Two");
+var num11 = document.getElementById("number One");
 
-boxOne.style.width = "10px";
-boxOne.style.maxHeight = "200px";
-boxOne.style.backgroundColor = "green";
+
+// Set max box_height = 25vh
+var MAX_BOX_HEIGHT = 25;
 
 // Generate Histogram
 function generateHistogram(){
@@ -213,9 +228,6 @@ function generateHistogram(){
     var numInBounds = new Array(11).fill(0);
 
     // Get list of key:pair values for grade : number of students in that grade range
-    console.log(gradeList);
-    console.log(lowerBound_List);
-
     for (let i = 0;i<gradeList.length;i++){
         if (gradeList[i] >= lowerBound_List[1]) numInBounds[0]++;
         if (gradeList[i] >= lowerBound_List[2] && gradeList[i] < lowerBound_List[1]) numInBounds[1]++;
@@ -230,6 +242,40 @@ function generateHistogram(){
         if (gradeList[i] >= lowerBound_List[11] && gradeList[i] < lowerBound_List[10]) numInBounds[10]++;
     }
     
+    // Dynamically display Histogram
+    /*
+        1. Get the letter grade with the highest frequency
+        2. 25/ (highest freq grade) = scale ratio
+        3. freq * scale ratio = view height for that letter grade
+    */
+    var maxFreq = 0;
+
+    for (let i = 0;i<numInBounds.length;i++){
+        if (numInBounds[i] > maxFreq) maxFreq = numInBounds[i];
+    }
+
+    for (let i = 1;i<=11;i++){
+        window[`box${i}`].style.width = "3.2vw";
+        window[`box${i}`].style.backgroundColor = "rgb(153,30,46)";
+        window[`num${i}`].innerHTML = `${numInBounds[i-1]}`;
+    }
+
+    console.log(numInBounds);
+
+    var scaleFactor = MAX_BOX_HEIGHT/maxFreq;
+    
+    
+    for (let i = 1;i<=11;i++){
+        window[`box${i}`].style.height = `${numInBounds[i-1]*scaleFactor}vh`;
+    }
+
 
 }
 
+
+function clearHistogram(){
+    for (let i = 1;i<=11;i++){
+        window[`box${i}`].style.height = "0vh";
+        window[`box${i}`].style.width = "0vw";
+    }
+}

@@ -105,7 +105,7 @@ input:not(#fileInput){
 
 .histogramContainer{
     display: flex;
-    gap: 0.5vw;
+    gap: 1vw;
     border: 5px black solid;
     width: 42vw;
     height: 30vh;
@@ -114,11 +114,31 @@ input:not(#fileInput){
     padding-right: 1vw;
 }
 
+.boxContainer{
+    background-color: rgb(153,30,46);
+    /*width: 3.2vw;*/
+    color: white;
+}
+
+p[id='number One'],p[id='number Two'],
+p[id='number Three'],p[id='number Four'],
+p[id='number Five'],p[id='number Six'],
+p[id='number Seven'],p[id='number Eight'],
+p[id='number Nine'],p[id='number Ten'],
+p[id='number Eleven']{
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
 #labelContainer{
     display: flex;
+    justify-content:space-between;
     font-weight: bold;
-    gap: 3.3vw;
-    margin-left: 1vw;
+    max-width: 40vw;
+    margin-left: 2vw;
+    color: black;
 }
 
 
