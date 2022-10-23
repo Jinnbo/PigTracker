@@ -35,67 +35,69 @@
                     
                         <section class="input">
                             <label for="max">Max</label><br>
-                            <input type="number" id="max" name="max" placeholder="100.00">
+                            <input type="number" id="max" name="max" value="100">
                         </section>
     
                         <section class="input">
                             <label for="max">A+ </label><br>
-                            <input type="number" id="a+" name="a+">
+                            <input type="number" id="a+" name="a+" value="95">
                         </section>
     
                         <section class="input">
                             <label for="max">A </label><br>
-                            <input type="number" id="a" name="a">
+                            <input type="number" id="a" name="a" value="90">
                         </section>
     
                         <section class="input">
                             <label for="max">A- </label><br>
-                            <input type="number" id="a-" name="a-">
+                            <input type="number" id="a-" name="a-" value="85">
                         </section>
     
                         <section class="input">
                             <label for="max">B+ </label><br>
-                            <input type="number" id="b+" name="b+">
+                            <input type="number" id="b+" name="b+" value="80">
                         </section>
     
                         <section class="input">
                             <label for="max">B </label><br>
-                            <input type="number" id="b" name="b">
+                            <input type="number" id="b" name="b" value="75">
                         </section>
                     </section>
 
                     <section class="rightInput">
                         <section class="input">
                             <label for="max">B- </label><br>
-                            <input type="number" id="b-" name="b-">
+                            <input type="number" id="b-" name="b-" value="70">
                         </section>
     
                         <section class="input">
                             <label for="max">C+ </label><br>
-                            <input type="number" id="c+" name="c+">
+                            <input type="number" id="c+" name="c+" value="65">
                         </section>
     
                         <section class="input">
                             <label for="max">C </label><br>
-                            <input type="number" id="c" name="c">
+                            <input type="number" id="c" name="c" value="60">
                         </section>
     
                         <section class="input">
                             <label for="max">C- </label><br>
-                            <input type="number" id="c-" name="c-">
+                            <input type="number" id="c-" name="c-" value="55">
                         </section>
     
                         <section class="input">
                             <label for="max">D </label><br>
-                            <input type="number" id="d" name="d">
+                            <input type="number" id="d" name="d" value="50">
                         </section>
     
                         <section class="input">
                             <label for="max">F </label><br>
-                            <input type="number" id="f" name="f">
+                            <input type="number" id="f" name="f" value="0">
                         </section>
                     </section>
                 </form>
+
+                <section id="errorMessage"></section>
 
             </aside>
             
@@ -104,76 +106,39 @@
                 <h3>Histogram</h3>
 
                 <section class="histogramContainer">
-
-                    <div class="boxContainer one">
-                        <p class="number">9</p>
+                    <div class="boxContainer one" id="boxContainerOne">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer two">
-                        <p class="number">9</p>
+                    <div class="boxContainer two" id="boxContainerTwo">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer three">
-                        <p class="number">9</p>
+                    <div class="boxContainer three" id="boxContainerThree">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer four">
-                        <p class="number">9</p>
+                    <div class="boxContainer four" id="boxContainerFour">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerFive">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerSix">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerSeven">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerEight">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerNine">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerTen">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
+                    <div class="boxContainer" id="boxContainerEleven">
+                        <p class="number"></p>
                     </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
-                    </div>
-                    <div class="boxContainer">
-                        
-                        <p class="number">9</p>
-                    </div>
-
-
-
-
-
-                    <!--
-                    <ul>
-                        <li>43:A+</li>
-                        <li>21:A</li>
-                        <li>50:A-</li>
-                        <li>50:B+</li>
-                        <li>50:B</li>
-                        <li>50:B-</li>
-                        <li>50:B-</li>
-                        <li>50:C+</li>
-                        <li>50:C</li>
-                        <li>50:C-</li>
-                        <li>50:D</li>
-                        <li>50:F</li>
-                    </ul>
-                -->
-
-
-
                 </section>
                 
                 <div id="labels"></div>

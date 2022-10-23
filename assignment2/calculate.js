@@ -8,26 +8,72 @@
 */
 
 // Selectors for Input Boxes
-var max = document.getElementById('max').value = 100;
-var aPlus = document.getElementById('a+').value = 95;
-var a  = document.getElementById('a').value = 90;
-var aMinus = document.getElementById('a-').value = 85;
-var bPlus = document.getElementById('b+').value = 80;
-var b = document.getElementById('b').value = 75;
-var bMinus = document.getElementById('b-').value = 70;
-var cPlus = document.getElementById('c+').value = 65;
-var c = document.getElementById('c').value = 60;
-var cMinus = document.getElementById('c-').value = 55;
-var d = document.getElementById('d').value = 50;
-var f = document.getElementById('f').value = 0;
+var max = document.getElementById('max');
+var aPlus = document.getElementById('a+');
+var a  = document.getElementById('a');
+var aMinus = document.getElementById('a-');
+var bPlus = document.getElementById('b+');
+var b = document.getElementById('b');
+var bMinus = document.getElementById('b-');
+var cPlus = document.getElementById('c+');
+var c = document.getElementById('c');
+var cMinus = document.getElementById('c-');
+var d = document.getElementById('d');
+var f = document.getElementById('f');
+var errorMessage = document.getElementById('errorMessage')
 
 
+// Event listeners for Input Boxes
+var lowerBound_List = [100,95,90,85,80,75,70,65,60,55,50,0];
+
+//max.addEventListener("blur", () => { lowerBound_List[0] = parseFloat(max.value); checkBounds() });
+max.oninput = () => { lowerBound_List[0] = parseFloat(max.value); checkBounds();} 
+aPlus.oninput = () => { lowerBound_List[1] = parseFloat(aPlus.value); checkBounds();} 
+a.oninput = () => { lowerBound_List[2] = parseFloat(a.value); checkBounds();} 
+aMinus.oninput = () => { lowerBound_List[3] = parseFloat(aMinus.value); checkBounds();} 
+bPlus.oninput = () => { lowerBound_List[4] = parseFloat(bPlus.value); checkBounds();} 
+b.oninput = () => { lowerBound_List[5] = parseFloat(b.value); checkBounds();} 
+bMinus.oninput = () => { lowerBound_List[6] = parseFloat(bMinus.value); checkBounds();} 
+cPlus.oninput = () => { lowerBound_List[7] = parseFloat(cPlus.value); checkBounds();} 
+c.oninput = () => { lowerBound_List[8] = parseFloat(c.value); checkBounds();} 
+cMinus.oninput = () => { lowerBound_List[9] = parseFloat(cMinus.value); checkBounds();} 
+d.oninput = () => { lowerBound_List[10] = parseFloat(d.value); checkBounds();} 
+f.oninput = () => { lowerBound_List[11] = parseFloat(f.value); checkBounds();} 
+
+function checkBounds(){
+
+    var overlapFlag = false;
+
+    // Check for overlap
+    // If lowerBound_List[i] <= lowerBound_List[i+1]  
+    for (let i =0;i<lowerBound_List.length-1; i++){
+        if (lowerBound_List[i] <= lowerBound_List[i+1]){
+            errorMessage.innerHTML = "ERROR: Bounds are overlapping. Please change to continue";
+            overlapFlag = true;
+            break;
+        }
+        else if (i == lowerBound_List.length-2 && lowerBound_List[i] > lowerBound_List[i+1]){
+            errorMessage.innerHTML = "";
+            overlapFlag = false;
+        }
+    }
+
+    // If grades are not overlapping then call makeHistogram function
+    if (!overlapFlag){
+        generateHistogram(); 
+    
+    }
+}
 
 // Selector for Stats
 var highestStat = document.getElementById('highestStat');
 var lowestStat = document.getElementById('lowestStat');
 var meanStat = document.getElementById('meanStat');
 var medianStat = document.getElementById('medianStat');
+
+
+// Store student name and percent in dataArray where index 0 is name and index 1 is percent
+dataArray = [];
 
 // Functions for reading file input
 function init(){
@@ -53,8 +99,6 @@ function displayStats(str, delimiter = ","){
     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");   
 
-    // Store student name and percent in dataArray where index 0 is name and index 1 is percent
-    let dataArray = [];
     let arraySize = rows.length;
     
     for (let i = 0;i<rows.length;i++){
@@ -72,8 +116,6 @@ function displayStats(str, delimiter = ","){
     lowestStat.innerHTML = lowestStudent;
     meanStat.innerHTML = meanGrade;
     medianStat.innerHTML = medianGrade;
-
-    makeGraph("histogramContainer", "labels");
 }   
 
 // Function for finding highest Stat
@@ -124,9 +166,8 @@ function findMeanGrade(dataArray, length){
 
 
 // Function for finding median Stat
+gradeList = [];
 function findMedianGrade(dataArray,length){
-
-    let gradeList = [];
 
     for (let i = 0;i<length;i++){
         gradeList.push(parseFloat(dataArray[i][1]));
@@ -141,40 +182,31 @@ function findMedianGrade(dataArray,length){
     }
     // If length is odd
     else{
-        console.log((parseInt(length)+1)/2);
+        //console.log((parseInt(length)+1)/2);
         console.log(gradeList);
         return (gradeList[((parseInt(length)+1)/2)-1]) + "%";
     }
 }
 
+// Selectors for Histogram
+var boxOne = document.getElementById("boxContainerOne");
+var boxTwo = document.getElementById("boxContainerTwo");
+var boxThree = document.getElementById("boxContainerThree");
+var boxFour = document.getElementById("boxContainerFour");
+var boxFive = document.getElementById("boxContainerFive");
+var boxSix = document.getElementById("boxContainerSix");
+var boxSeven = document.getElementById("boxContainerSeven");
+var boxEight = document.getElementById("boxContainerEight");
+var boxNine = document.getElementById("boxContainerNine");
+var boxTen = document.getElementById("boxContainerTen");
+var boxEleven = document.getElementById("boxContainerEleven");
 
+// Generate Histogram
+function generateHistogram(){
 
-/*
-function makeGraph(container, labels)
-{
-    container = document.getElementById(container);
-    labels = document.getElementById(labels)
-    var dnl = container.getElementsByTagName("li");
-    for(var i = 0; i < dnl.length; i++)
-    {
-        var item = dnl.item(i);
-        var value = item.innerHTML;
-        var color = item.style.background=color;
-        var content = value.split(":");
-        value = content[0];
-        item.style.top=(245 - value) + "px";
-        item.style.left = (i * 3) + "vw";
-        item.style.height = value + "px";
-        
-        if (value > 5){
-            item.innerHTML = value;
-        }
-        else{
-            item.innerHTML = ""
-        }
-        item.style.visibility="visible";	
+    var numInBounds = [];
 
-        labels.innerHTML = labels.innerHTML + "<span style='margin:12px '>" + content[1] + "</span>";
-    }	
+    // Get list of key:pair values for grade : number of students in that grade range
+    console.log(gradeList);
 }
-*/
+

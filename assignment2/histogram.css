@@ -49,6 +49,11 @@ body{
     padding-left: 2vw;
 }
 
+#errorMessage{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5vh;
+}
 
 .histogram{
     background-color: rgb(233,239,241);
@@ -110,9 +115,12 @@ input:not(#fileInput){
 }
 
 .boxContainer{
-    min-width: 2.5vw;
+
+    /*
+    min-width: 2.8vw;
     max-height: 100px;
     background-color:rgb(153,30,46);
+    */
 }
 
 .number{
@@ -122,42 +130,7 @@ input:not(#fileInput){
     transform: rotate(180deg);
 }
 
-.boxContainer.one{
-    max-height: 300px;
-}
 
-/*
-#histogramContainer{
-    position:relative;
-    width: 50vw;
-    height: 30vh;
-}
-
-#histogramContainer ul{
-    position: absolute;
-    top: -2vh;
-    left: 1vw;
-    width: 40vw;
-    height: 30vh;
-    border-left: 5px solid black;
-    border-bottom: 5px solid black;
-}
-
-#histogramContainer li{
-    position: absolute;
-    list-style: none;
-    background-color: lightblue;
-    width: 2.9vw;
-    text-align: center;
-    border: 1px solid black;
-    visibility: hidden;
-}
-
-#labels{
-    margin-top: 2vh;
-    padding-left: 20px;
-}
-*.
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width:600px){
@@ -185,5 +158,9 @@ input:not(#fileInput){
     .histogramContainer{
         margin-left: 2vw;
         min-width: 75vw;
+    }
+
+    .boxContainer{
+        min-width: 5.3vw;
     }
 }
