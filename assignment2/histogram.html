@@ -14,97 +14,80 @@
         <!--Header-->
         <section class="header">
             <h1 class="title">Histogram Generator</h1>
-            
             <section class="inputFile">
                 <input id="fileInput" type="file" name="file" />
                 <pre id="fileContent"></pre>
             </section>
-
         </section>
         
         <!--Container-->
         <article class="gridContainer">
-
             <!--LowerBounds-->
             <aside class="lowerBounds">
                 <h3>Lower Bounds</h3>
-                
                 <!--Input Forms-->
                 <form class="form">
                     <section class="leftInput">
-                    
                         <section class="input">
                             <label for="max">Max</label><br>
                             <input type="number" id="max" name="max" value="100">
                         </section>
-    
                         <section class="input">
                             <label for="max">A+ </label><br>
                             <input type="number" id="a+" name="a+" value="95">
-                        </section>
-    
+                        </section>   
                         <section class="input">
                             <label for="max">A </label><br>
                             <input type="number" id="a" name="a" value="90">
-                        </section>
-    
+                        </section>   
                         <section class="input">
                             <label for="max">A- </label><br>
                             <input type="number" id="a-" name="a-" value="85">
-                        </section>
-    
+                        </section> 
                         <section class="input">
                             <label for="max">B+ </label><br>
                             <input type="number" id="b+" name="b+" value="80">
                         </section>
-    
                         <section class="input">
                             <label for="max">B </label><br>
                             <input type="number" id="b" name="b" value="75">
                         </section>
                     </section>
-
                     <section class="rightInput">
                         <section class="input">
                             <label for="max">B- </label><br>
                             <input type="number" id="b-" name="b-" value="70">
                         </section>
-    
                         <section class="input">
                             <label for="max">C+ </label><br>
                             <input type="number" id="c+" name="c+" value="65">
                         </section>
-    
                         <section class="input">
                             <label for="max">C </label><br>
                             <input type="number" id="c" name="c" value="60">
                         </section>
-    
                         <section class="input">
                             <label for="max">C- </label><br>
                             <input type="number" id="c-" name="c-" value="55">
                         </section>
-    
                         <section class="input">
                             <label for="max">D </label><br>
                             <input type="number" id="d" name="d" value="50">
                         </section>
-    
                         <section class="input">
                             <label for="max">F </label><br>
                             <input type="number" id="f" name="f" value="0">
                         </section>
                     </section>
                 </form>
-
+                <!--Error message Box-->
                 <section id="errorMessage"></section>
-
             </aside>
             
             <!--Histogram-->
             <aside class="histogram"> 
                 <h3>Histogram</h3>
-
+                <!-- Div boxes for histogram bars-->
                 <section class="histogramContainer">
                     <div class="boxContainer" id="boxContainerOne"><p id="number One"></p></div>
                     <div class="boxContainer" id="boxContainerTwo"><p id="number Two"></p></div>
@@ -119,6 +102,7 @@
                     <div class="boxContainer" id="boxContainerEleven"><p id="number Eleven"></p></div>
                 </section>
                 
+                <!-- Grade labels-->
                 <section id="labelContainer">
                     <p>A+</p>
                     <p>A</p>
@@ -132,33 +116,27 @@
                     <p>D</p>
                     <p>F</p>
                 </section>
-
             </aside>
             
             <!--Stats-->
             <aside class="stats">
                 <h3>Stats</h3>    
-
                 <section class="statContainer">
                     <h5>Highest</h5> 
                     <h5 id="highestStat"></h5>
                 </section>
-
                 <section class="statContainer">
                     <h5>Lowest</h5> 
                     <h5 id="lowestStat"></h5>
                 </section>
-
                 <section class="statContainer">
                     <h5>Mean</h5> 
                     <h5 id="meanStat"></h5>
                 </section>
-
                 <section class="statContainer">
                     <h5>Median</h5> 
                     <h5 id="medianStat"></h5>
                 </section>
-            
             </aside>
         </section>
     </main>

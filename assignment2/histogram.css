@@ -29,7 +29,6 @@ body{
 }
 
 /*Main Grid*/
-
 .gridContainer{
     display: grid;
     grid-template-columns: 30vw 50vw;
@@ -43,31 +42,23 @@ body{
     'lowerBounds stats'
 }
 
+/*LowerBounds*/
 .lowerBounds{
     background-color: rgb(233,239,241);
     grid-area: lowerBounds;
     padding-left: 2vw;
 }
 
+input:not(#fileInput){
+    max-width: 6vw;
+    min-height: 2vw;
+    font-size: 1.5vw;
+}
+
 #errorMessage{
     text-align: center;
     font-weight: bold;
     margin-top: 5vh;
-}
-
-.histogram{
-    background-color: rgb(233,239,241);
-    grid-area: histogram;
-    min-height: 45vh;
-    padding-left: 3vw;
-}
-
-.stats{
-    background-color: rgb(233,239,241);
-    grid-area: stats;
-    min-height: 20vh;
-    padding-left: 2vw;
-    padding-bottom: 1vh;
 }
 
 .form{
@@ -84,24 +75,13 @@ body{
     padding-left: 2vw;
 }
 
-input:not(#fileInput){
-    max-width: 6vw;
-    min-height: 2vw;
-
-    font-size: 1.5vw;
+/* Histogram*/
+.histogram{
+    background-color: rgb(233,239,241);
+    grid-area: histogram;
+    min-height: 45vh;
+    padding-left: 3vw;
 }
-
-.statContainer{
-    display: flex;
-    color: black;
-    max-width: 20vw;
-    padding-left: 5vw;
-    justify-content: space-between;
-}
-
-
-/* Histogram CSS */
-
 
 .histogramContainer{
     display: flex;
@@ -118,7 +98,6 @@ input:not(#fileInput){
     display: flex;
     justify-content: center;
     background-color: rgb(153,30,46);
-    /*width: 3.2vw;*/
     color: white;
 }
 
@@ -144,6 +123,22 @@ p[id='number Eleven']{
     color: black;
 }
 
+/*Stats*/
+.stats{
+    background-color: rgb(233,239,241);
+    grid-area: stats;
+    min-height: 20vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
+}
+
+.statContainer{
+    display: flex;
+    color: black;
+    max-width: 20vw;
+    padding-left: 5vw;
+    justify-content: space-between;
+}
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width:600px){

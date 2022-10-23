@@ -14,7 +14,7 @@ var d = document.getElementById('d');
 var f = document.getElementById('f');
 var errorMessage = document.getElementById('errorMessage')
 
-
+// Initialize Initial lowerBounds
 var lowerBound_List = [100,95,90,85,80,75,70,65,60,55,50,0];
 
 // Event listeners for Input Boxes
@@ -35,11 +35,8 @@ f.oninput = () => { lowerBound_List[11] = parseFloat(f.value); checkBounds();}
 overlapFlag = false;
 fileFlag = false;
 
+// Check for valid lower bounds
 function checkBounds(){
-
-    // Check for valid Input
-    for (let i = 0;i<lowerBound_List.length;i++){
-    }
 
     // Check for overlap
     for (let i =0;i<lowerBound_List.length-1; i++){
@@ -53,8 +50,6 @@ function checkBounds(){
             overlapFlag = false;
         }
     }
-
-    console.log(lowerBound_List[0] === NaN);
 
     // If grades are not overlapping then call makeHistogram function
     if (!overlapFlag && fileFlag) generateHistogram(); 
@@ -80,8 +75,6 @@ function init(){
 function handFileSelect(event){
     const reader = new FileReader();
     reader.onload = handFileLoad;
-
-    // event.target selects whatever envoked the event 
     reader.readAsText(event.target.files[0]);
 }
 
@@ -94,15 +87,16 @@ function handFileLoad(event){
 function displayStats(str, delimiter = ","){
 
     // Split string into headers and rows
-    const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-    const rows = str.slice(str.indexOf("\n") + 1).split("\n");   
+    var headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+    var rows = str.slice(str.indexOf("\n") + 1).split("\n");   
 
     let arraySize = rows.length;
     
+    // Split rows in dataArray with name and grade
     for (let i = 0;i<rows.length;i++){
         dataArray.push(rows[i].slice(0,rows[i].indexOf("\r")).split(delimiter));
     }
-    
+
     // Call functions to get highest, lowest, mean, median stats
     let highestStudent = findHighest(dataArray,arraySize);
     let lowestStudent = findLowest(dataArray,arraySize);
@@ -121,8 +115,8 @@ function displayStats(str, delimiter = ","){
 
 // Function for finding highest Stat
 function findHighest(dataArray, length){
-    let maxGrade = parseFloat(dataArray[0][1]);
-    let maxStudent;
+    var maxGrade = parseFloat(dataArray[0][1]);
+    var maxStudent = dataArray[0][0];
 
     for (let i = 1; i < length;i++ ){
         if (parseFloat(dataArray[i][1]) > parseFloat(maxGrade)){
@@ -139,7 +133,7 @@ function findHighest(dataArray, length){
 // Function for finding lowest Stat
 function findLowest(dataArray, length){
     let minGrade = parseFloat(dataArray[0][1]);
-    let minStudent;
+    let minStudent = dataArray[0][0];
 
     for (let i = 1;i < length;i++){
         if (parseFloat(dataArray[i][1]) < parseFloat(minGrade)){
@@ -178,12 +172,10 @@ function findMedianGrade(dataArray,length){
 
     // If length is even
     if (length%2==0){
-        return ((gradeList[(parseInt(length)/2)] + gradeList[ (parseInt(length)/2)+1])/2) + "%";
+        return ((gradeList[(parseInt(length)/2)-1] + gradeList[ (parseInt(length)/2)])/2) + "%";
     }
     // If length is odd
     else{
-        //console.log((parseInt(length)+1)/2);
-        console.log(gradeList);
         return (gradeList[((parseInt(length)+1)/2)-1]) + "%";
     }
 }
@@ -214,7 +206,6 @@ var num9 = document.getElementById("number Three");
 var num10 = document.getElementById("number Two");
 var num11 = document.getElementById("number One");
 
-
 // Set max box_height = 25vh
 var MAX_BOX_HEIGHT = 25;
 
@@ -238,19 +229,21 @@ function generateHistogram(){
         if (gradeList[i] >= lowerBound_List[10] && gradeList[i] < lowerBound_List[9]) numInBounds[9]++;
         if (gradeList[i] >= lowerBound_List[11] && gradeList[i] < lowerBound_List[10]) numInBounds[10]++;
     }
-    
-    // Dynamically display Histogram
+
     /*
+    Dynamically display Histogram
         1. Get the letter grade with the highest frequency
         2. 25/ (highest freq grade) = scale ratio
         3. freq * scale ratio = view height for that letter grade
     */
     var maxFreq = 0;
 
+    // Find max frequency
     for (let i = 0;i<numInBounds.length;i++){
         if (numInBounds[i] > maxFreq) maxFreq = numInBounds[i];
     }
 
+    // Set div box width, backgroundcolor, and value
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.width = "3.2vw";
         window[`box${i}`].style.backgroundColor = "rgb(153,30,46)";
@@ -264,14 +257,14 @@ function generateHistogram(){
     }
 
     var scaleFactor = MAX_BOX_HEIGHT/maxFreq;
-    
+
+    // Set div box height
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.height = `${numInBounds[i-1]*scaleFactor}vh`;
     }
-
-
 }
 
+// Clear Histogram function
 function clearHistogram(){
     for (let i = 1;i<=11;i++){
         window[`box${i}`].style.height = "0vh";
