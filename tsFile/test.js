@@ -1,9 +1,10 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.hello = void 0;
-const world = 'world';
-function hello(who = world) {
-    return `Hello ${who}! `;
+var world = 'world';
+function hello(who) {
+    if (who === void 0) { who = world; }
+    return "Hello ".concat(who, "! ");
 }
 exports.hello = hello;
 console.log("hi");
