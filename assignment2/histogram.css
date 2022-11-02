@@ -29,7 +29,6 @@ body{
 }
 
 /*Main Grid*/
-
 .gridContainer{
     display: grid;
     grid-template-columns: 30vw 50vw;
@@ -43,26 +42,23 @@ body{
     'lowerBounds stats'
 }
 
+/*LowerBounds*/
 .lowerBounds{
     background-color: rgb(233,239,241);
     grid-area: lowerBounds;
     padding-left: 2vw;
 }
 
-
-.histogram{
-    background-color: rgb(233,239,241);
-    grid-area: histogram;
-    min-height: 45vh;
-    padding-left: 3vw;
+input:not(#fileInput){
+    max-width: 6vw;
+    min-height: 2vw;
+    font-size: 1.5vw;
 }
 
-.stats{
-    background-color: rgb(233,239,241);
-    grid-area: stats;
-    min-height: 20vh;
-    padding-left: 2vw;
-    padding-bottom: 1vh;
+#errorMessage{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5vh;
 }
 
 .form{
@@ -79,28 +75,17 @@ body{
     padding-left: 2vw;
 }
 
-input:not(#fileInput){
-    max-width: 6vw;
-    min-height: 2vw;
-
-    font-size: 1.5vw;
+/* Histogram*/
+.histogram{
+    background-color: rgb(233,239,241);
+    grid-area: histogram;
+    min-height: 45vh;
+    padding-left: 3vw;
 }
-
-.statContainer{
-    display: flex;
-    color: black;
-    max-width: 20vw;
-    padding-left: 5vw;
-    justify-content: space-between;
-}
-
-
-/* Histogram CSS */
-
 
 .histogramContainer{
     display: flex;
-    gap: 0.5vw;
+    gap: 1vw;
     border: 5px black solid;
     width: 42vw;
     height: 30vh;
@@ -110,54 +95,50 @@ input:not(#fileInput){
 }
 
 .boxContainer{
-    min-width: 2.5vw;
-    max-height: 100px;
-    background-color:rgb(153,30,46);
+    display: flex;
+    justify-content: center;
+    background-color: rgb(153,30,46);
+    color: white;
 }
 
-.number{
+p[id='number One'],p[id='number Two'],
+p[id='number Three'],p[id='number Four'],
+p[id='number Five'],p[id='number Six'],
+p[id='number Seven'],p[id='number Eight'],
+p[id='number Nine'],p[id='number Ten'],
+p[id='number Eleven']{
+    display: flex;
+    transform: rotate(180deg);
     display: flex;
     align-items: center;
-    justify-content: center;
-    transform: rotate(180deg);
+    font-weight: bold;
 }
 
-.boxContainer.one{
-    max-height: 300px;
+#labelContainer{
+    display: flex;
+    justify-content:space-between;
+    font-weight: bold;
+    max-width: 40vw;
+    margin-left: 2vw;
+    color: black;
 }
 
-/*
-#histogramContainer{
-    position:relative;
-    width: 50vw;
-    height: 30vh;
+/*Stats*/
+.stats{
+    background-color: rgb(233,239,241);
+    grid-area: stats;
+    min-height: 20vh;
+    padding-left: 2vw;
+    padding-bottom: 1vh;
 }
 
-#histogramContainer ul{
-    position: absolute;
-    top: -2vh;
-    left: 1vw;
-    width: 40vw;
-    height: 30vh;
-    border-left: 5px solid black;
-    border-bottom: 5px solid black;
+.statContainer{
+    display: flex;
+    color: black;
+    max-width: 20vw;
+    padding-left: 5vw;
+    justify-content: space-between;
 }
-
-#histogramContainer li{
-    position: absolute;
-    list-style: none;
-    background-color: lightblue;
-    width: 2.9vw;
-    text-align: center;
-    border: 1px solid black;
-    visibility: hidden;
-}
-
-#labels{
-    margin-top: 2vh;
-    padding-left: 20px;
-}
-*.
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width:600px){
@@ -183,7 +164,16 @@ input:not(#fileInput){
     }
 
     .histogramContainer{
-        margin-left: 2vw;
         min-width: 75vw;
+    }
+
+    .boxContainer{
+        min-width: 5.3vw;
+
+    }
+
+    #labelContainer{
+        display: flex;
+        gap: 4vw;
     }
 }
