@@ -1,0 +1,67 @@
+body{
+    margin: 0px;
+    font-size: 25px;
+}
+
+.header{
+    display: flex;
+    margin-left: 15vw;
+    margin-top: 1vh;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.container{
+    display: flex;
+    margin-left: 3vw;
+    margin-top: 5vw;
+}
+
+.leftContainer{
+    width: 60%;
+}
+
+.rightContainer{
+    margin-left: 5vw;
+}
+
+#addBTN{
+    width: 50%;
+    margin-top: 2vh;
+    font-size: 30px;
+}
+
+#submitBTN{
+    font-size: 20px;
+    margin: 1vh 0 1vh 0;
+    width: 40%;
+}
+
+table, th, td{
+    border: 1px black solid;
+}
+
+td{
+    min-width: 10vw;
+}
+
+table{
+    width: 100%;
+}
+
+input{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#addTable{
+    visibility: hidden;
+}
+
+#personality{
+    width: 100%;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
