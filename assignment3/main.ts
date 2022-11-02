@@ -4,7 +4,7 @@ import {Pig} from './Pigmodel'
 var addTable = document.getElementById("addTable")!
 var name = document.getElementById("name")!
 
-name.oninput = ()=> { console.log(name.textContent)}
+name.oninput = () => {console.log(name.value)}
 
 document.getElementById("addBTN")!.addEventListener('click', function(){
 
