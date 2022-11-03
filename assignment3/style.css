@@ -1,6 +1,7 @@
 body{
     margin: 0px;
     font-size: 25px;
+    font-family:monospace;
 }
 
 .header{
@@ -59,9 +60,10 @@ input{
     visibility: hidden;
 }
 
-#personality{
+#category{
     width: 100%;
     font-size: 25px;
     font-weight: bolder;
+    font-family:monospace;
 }
 

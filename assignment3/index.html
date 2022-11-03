@@ -38,27 +38,29 @@
         <section class="rightContainer">
             
 
-            <form class="form">
+            <form id="form" onsubmit="return(login())">
                 <table id="addTable">
                     <tr><th colspan="2">Add New Pig</th></tr>
                     <tr>
-                        <td>Name</td>
+                        <td><label for="name">Name</label></td>
+                        <td><input type="text" id="name" name="name" required/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="height">Height</label></td>
+                        <td><input type="text" id="height" name="height" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="weight">Weight</label></td>
+                        <td><input type="text" id="weight" name="weight" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="personality">Personality</label></td>
+                        <td><input type="text" id="personality" name="personality" required></td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
                         <td>
-                            <input type="text" id="namejh" name="name" form="name">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Height</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Weight</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td>Personality</td>
-                        <td>
-                            <select id="personality" name="personality">
+                            <select id="category" name="category">
                                 <option>Grey</option>
                                 <option>Chestnut</option>
                                 <option>White</option>
@@ -68,20 +70,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Category</td>
-                        <td><input type="text"></td>
+                        <td><label for="dynamic1">Dynamic</label></td>
+                        <td><input type="text" id="dynamic1" name="dynamic1"></td>
                     </tr>
                     <tr>
-                        <td>Dynamic</td>
-                        <td><input type="text"></td>
+                        <td><label for="dynamic2">Dynamic</label></td>
+                        <td><input type="text" id="dynamic2" name="dynamic2"></td>
                     </tr>
                     <tr>
-                        <td>Dynamic</td>
-                        <td><input type="text"></td>
+                        <th colspan="2">
+                            <input type="submit" name="submit" value="Submit" id="submitBTN"/>
+                        </th>
                     </tr>
-                    <tr><th colspan="2">
-                        <button id="submitBTN">Submit</button>
-                    </th></tr>
                 </table>
             </form>
                 
@@ -89,7 +89,6 @@
 
     </section>
 
-    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.47/system.js" integrity="sha512-mkBpeD76fJnxFHGZstCL0mPCW6E3RFtUzfp5Ye8oQg2rxQNHy4BgHsbmvSizsq3fgF4PGozPI1BzGCB/h1Yq5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
