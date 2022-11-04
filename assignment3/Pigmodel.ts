@@ -1,5 +1,13 @@
-export class Pig {
-    constructor(public name: string, public height: number, public weight: number, public personality: String,public category: string){
 
+export abstract class Pig {
+    static num = 0;
+
+    constructor(public name: string, public height: string, public weight: string, public personality: String,public category: string, public breed:string){
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.personality = personality;
+        this. category = category;
+        this.breed = breed;
     }
 }
