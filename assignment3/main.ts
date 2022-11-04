@@ -1,8 +1,8 @@
-import {Pig} from './Pigmodel'
-import { GreyPig } from './GreyPig'
-import { ChestnutPig } from './ChestnutPig'
-import { WhitePig } from './WhitePig'
-import { BlackPig } from './BlackPig'
+import {Pig} from './Pigs/Pigmodel'
+import { GreyPig } from './Pigs/GreyPig'
+import { ChestnutPig } from './Pigs/ChestnutPig'
+import { WhitePig } from './Pigs/WhitePig'
+import { BlackPig } from './Pigs/BlackPig'
 import { PigController } from './PigController'
 
 // Variables from HTML elements
@@ -128,10 +128,10 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
         console.log("No input");
         return;
     } 
-
+    
+    // Create new pig with pig constructor  and add pig to pigController
     switch(category){
         case "Grey":
-            // Create new pig with pig constructor with all the info above
             if (swimming >= 0 && swimming <= 100){
                 var greyPig = new GreyPig(name,height,weight,personality,category,breed,swimming);
                 pigController.add(greyPig);
@@ -158,7 +158,7 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
             break;
     }
 
-    // hide the add pig table from user
+    // Hide the add pig table from user
     addTable.style.visibility = "hidden";
 
     // add the pig to the table

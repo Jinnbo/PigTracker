@@ -1,4 +1,4 @@
-System.register(["./GreyPig", "./ChestnutPig", "./WhitePig", "./BlackPig", "./PigController"], function (exports_1, context_1) {
+System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./Pigs/BlackPig", "./PigController"], function (exports_1, context_1) {
     "use strict";
     var GreyPig_1, ChestnutPig_1, WhitePig_1, BlackPig_1, PigController_1, addTable, nameBox, heightBox, weightBox, personalityBox, categoryBox, dynamicBoxOne, dynamicOneLabel, dynamicBoxTwo, dynamicTwoLabel, name, height, weight, personality, category, breed, swimming, language, speed, strength, pigController;
     var __moduleName = context_1 && context_1.id;
@@ -112,9 +112,9 @@ System.register(["./GreyPig", "./ChestnutPig", "./WhitePig", "./BlackPig", "./Pi
                     console.log("No input");
                     return;
                 }
+                // Create new pig with pig constructor  and add pig to pigController
                 switch (category) {
                     case "Grey":
-                        // Create new pig with pig constructor with all the info above
                         if (swimming >= 0 && swimming <= 100) {
                             var greyPig = new GreyPig_1.GreyPig(name, height, weight, personality, category, breed, swimming);
                             pigController.add(greyPig);
@@ -139,7 +139,7 @@ System.register(["./GreyPig", "./ChestnutPig", "./WhitePig", "./BlackPig", "./Pi
                         }
                         break;
                 }
-                // hide the add pig table from user
+                // Hide the add pig table from user
                 addTable.style.visibility = "hidden";
                 // add the pig to the table
             });

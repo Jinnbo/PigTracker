@@ -1,8 +1,4 @@
-import { Pig } from "./Pigmodel";
-import { GreyPig } from "./GreyPig";
-import { ChestnutPig } from "./ChestnutPig";
-import { WhitePig } from "./WhitePig";
-import { BlackPig } from "./BlackPig";
+import { Pig } from "./Pigs/Pigmodel";
 
 interface PigControllerInterface{
     add(p:Pig): void;
