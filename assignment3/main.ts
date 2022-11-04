@@ -7,8 +7,13 @@ var heightBox = <HTMLInputElement>document.getElementById('height')!
 var weightBox = <HTMLInputElement>document.getElementById('weight')!
 var personalityBox = <HTMLInputElement>document.getElementById('personality')!
 var categoryBox = <HTMLInputElement>document.getElementById('category')!
+
+
 var dynamicBoxOne = <HTMLInputElement>document.getElementById('dynamic1')!
+var dynamicOneLabel = <HTMLInputElement>document.getElementById('dynamic1Label')!
+
 var dynamicBoxTwo = <HTMLInputElement>document.getElementById('dynamic2')!
+var dynamicTwoLabel = <HTMLInputElement>document.getElementById('dynamic2label')!
 
 
 
@@ -17,7 +22,15 @@ var name: string;
 var height: string;
 var weight: string;
 var personality: string;
-var category: string;
+var category: any;
+
+// Dynamic Pig attributes
+var breed: string;
+var swimming: number;
+var language: string;
+var speed: number;
+var strength: number;
+
 
 // Add Event Listeners to each input box
 nameBox.onchange = () =>{name = nameBox.value}
@@ -25,25 +38,80 @@ heightBox.onchange = () =>{height = heightBox.value}
 weightBox.onchange = () =>{weight = weightBox.value}
 personalityBox.onchange = () =>{personality = personalityBox.value}
 
-categoryBox.onchange = () =>{category = categoryBox.value; 
+categoryBox.onchange = () =>{
+    category = categoryBox.value; 
     // LOAD Dynamic Boxes once category is choosen 
     switch(categoryBox.value){
         case "Grey":
-            console.log("grey");
-            dynamicBoxOne.innerHTML = ""
+            dynamicOneLabel.innerHTML = "Swimming";
+            dynamicBoxOne.innerHTML = `<input type="number" step="1" min="1" max="100" id="swimming">`
+
+            var swimmingInput = <HTMLInputElement>document.getElementById('swimming')!
+            swimmingInput.onchange = () => {swimming =parseInt(swimmingInput.value)};
+
+            dynamicTwoLabel.innerHTML = "Breed";
+            dynamicBoxTwo.innerHTML = 
+            `<select id="breed">
+                <option value=""disabled selected>Select Breed</option>
+                <option>Gottingen</option>
+                <option>Tamworth</option>
+                <option>Porco</option>
+            </select>`
+
             break;
+
         case "Chestnut":
-            console.log("Chestnut");
+            dynamicOneLabel.innerHTML = "Language";
+            dynamicBoxOne.innerHTML = `<input type="string" id="language">`
+
+            dynamicTwoLabel.innerHTML = "Breed";
+            dynamicBoxTwo.innerHTML = 
+            `<select id="breed">
+                <option value=""disabled selected>Select Breed</option>
+                <option>Duroc</option>
+                <option>Kunekun</option>
+                <option>Pietrain</option>
+            </select>`
             break;
+
         case "White":
-            console.log("White");
+            dynamicOneLabel.innerHTML = "Speed"
+            dynamicBoxOne.innerHTML = `<input type="number" step="1" min="1" max="100" id="speed" >`
+
+            dynamicTwoLabel.innerHTML = "Breed";
+            dynamicBoxTwo.innerHTML = 
+            `<select id="breed">
+                <option value=""disabled selected>Select Breed</option>
+                <option>Mangalica</option>
+                <option>Tamworth</option>
+                <option>Choctaw</option>
+            </select>`
             break;
+
         case "Black":
-            console.log("Black");
+            dynamicOneLabel.innerHTML = "Strength";
+            dynamicBoxOne.innerHTML = `<input type="number" min="1" max="10" id="strength" >`
+
+            dynamicTwoLabel.innerHTML = "Breed";
+            dynamicBoxTwo.innerHTML = 
+            `<select id="breed">
+                <option value=""disabled selected>Select Breed</option>
+                <option>PotBelly</option>
+                <option>Berkshire</option>
+                <option>Mulefoot</option>
+            </select>`
             break;
     }
+    var breedInput = <HTMLInputElement>document.getElementById('breed')!
+    breedInput.onchange = () => {breed =breedInput.value};
 }
 
+
+dynamicBoxOne.onchange = () =>{}
+
+dynamicBoxTwo.onchange=()=>{
+    console.log(breed);
+}
 
 
 
@@ -64,6 +132,7 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
     console.log(weight);
     console.log(personality);
     console.log(category);
+    console.log(dynamicBoxTwo);
 })
 
 document.getElementById("addBTN")!.addEventListener('click', function(){

@@ -6,7 +6,7 @@ body{
 
 .header{
     display: flex;
-    margin-left: 15vw;
+    justify-content: center;
     margin-top: 1vh;
     font-weight: bold;
     font-size: 40px;
@@ -15,7 +15,7 @@ body{
 .container{
     display: flex;
     margin-left: 3vw;
-    margin-top: 5vw;
+    margin-top: 2vw;
 }
 
 .leftContainer{
@@ -57,13 +57,19 @@ input{
 }
 
 #addTable{
-    visibility: hidden;
 }
 
-#category{
+
+#category,#breed{
     width: 100%;
     font-size: 25px;
     font-weight: bolder;
     font-family:monospace;
 }
 
+#strength, #speed,#swimming{
+    width: 90%;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family:monospace; 
+}
