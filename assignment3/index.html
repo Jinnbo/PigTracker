@@ -38,7 +38,7 @@
         <section class="rightContainer">
             
 
-            <form id="form" onsubmit="return(login())">
+            <form id="form" onsubmit="return false">
                 <table id="addTable">
                     <tr><th colspan="2">Add New Pig</th></tr>
                     <tr>
@@ -61,6 +61,7 @@
                         <td>Category</td>
                         <td>
                             <select id="category" name="category">
+                                <option value="" disabled selected>Select Category</option>
                                 <option>Grey</option>
                                 <option>Chestnut</option>
                                 <option>White</option>
