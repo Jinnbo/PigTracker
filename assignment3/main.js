@@ -295,9 +295,7 @@ document.getElementById("addBTN").addEventListener('click', function () {
 /*
 TODO
 
-- sort pigs by category and name
-
 - tiny bug after clicking submit
+    - shows the "Please fill out this form" popup
 
-- add wallpaper
  */ 

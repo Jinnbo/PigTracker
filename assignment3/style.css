@@ -4,6 +4,10 @@ body{
     font-family:monospace;
     background-color: white;
     font-weight: bolder;
+    background-image: url(./imgs/wallpaper.png);
+    /*
+        Background-image from https://www.pinterest.ca/pin/672936369303948416/
+    */
 }
 
 .header{
@@ -129,12 +133,15 @@ input{
     display: flex;
     flex-direction: column;
     gap: 3vh;
-    background-color: black;
+    background-color: rgb(22, 21, 21);
     border-radius: 10px;
 }
 
-#confirm,#cancel{
+#confirmDelete,#cancelDelete{
     font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    font-family: monospace;
 }
 
 
