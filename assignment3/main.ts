@@ -1,9 +1,9 @@
-import {Pig} from './Pigs/Pigmodel'
-import { GreyPig } from './Pigs/GreyPig'
-import { ChestnutPig } from './Pigs/ChestnutPig'
-import { WhitePig } from './Pigs/WhitePig'
-import { BlackPig } from './Pigs/BlackPig'
-import { PigController } from './PigController'
+//import {Pig} from './Pigs/Pigmodel'
+//import { GreyPig } from './Pigs/GreyPig'
+//import { ChestnutPig } from './Pigs/ChestnutPig'
+//import { WhitePig } from './Pigs/WhitePig'
+//import { BlackPig } from './Pigs/BlackPig'
+//import { PigController } from './PigController'
 
 // Variables from HTML elements
 var addTable = document.getElementById('addTable')!
@@ -23,7 +23,7 @@ var confirmDelete = <HTMLInputElement>document.getElementById('confirmDelete')!
 var cancelDelete = <HTMLInputElement>document.getElementById('cancelDelete')!
 
 // Pig attributes
-var name: string = "null";
+var pigName: string = "null";
 var height: string = "null";
 var weight: string = "null";
 var personality: string = "null";
@@ -41,11 +41,17 @@ var pigController = new PigController();
 
 
 // Add Event Listeners to each input box
-nameBox.onchange = () =>{name = nameBox.value}
+nameBox.onchange = () =>{pigName = nameBox.value}
 heightBox.onchange = () =>{height = heightBox.value}
 weightBox.onchange = () =>{weight = weightBox.value}
 personalityBox.onchange = () =>{personality = personalityBox.value}
 
+
+function init(){
+    if (localStorage.length > 0){
+        displayPigs();
+    }
+}
 
 // When category is chosen, load dynamic boxes
 categoryBox.onchange = () =>{
@@ -131,7 +137,7 @@ categoryBox.onchange = () =>{
 document.getElementById('submitBTN')!.addEventListener('click',function(){
 
     // Check if user inputed all boxes
-    if (name == "null" || height == "null" || weight == "null" || personality == "null" || category == "null" || breed == "null"){
+    if (pigName == "null" || height == "null" || weight == "null" || personality == "null" || category == "null" || breed == "null"){
         console.log("No input");
         return;
     } 
@@ -141,7 +147,7 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
         case "Grey":
             if (swimming == -1) return;
             if (swimming >= 0 && swimming <= 100){
-                var greyPig = new GreyPig(name,height,weight,personality,category,breed,swimming);
+                var greyPig = new GreyPig(pigName,height,weight,personality,category,breed,swimming);
                 pigController.add(greyPig);
             }
 
@@ -149,67 +155,70 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
         case "Chestnut":
             if (language == "null") return;
             if (language != null){
-                var chestnutPig = new ChestnutPig(name,height,weight,personality,category,breed,language);
+                var chestnutPig = new ChestnutPig(pigName,height,weight,personality,category,breed,language);
                 pigController.add(chestnutPig);
             }
             break;
         case "White":
             if (speed == -1) return;
             if (speed >= 0 && speed <= 100){
-                var whitePig = new WhitePig(name,height,weight,personality,category,breed,speed);
+                var whitePig = new WhitePig(pigName,height,weight,personality,category,breed,speed);
                 pigController.add(whitePig);
             }
             break;
         case "Black":
             if (strength == -1) return;
             if (strength >= 0 && strength <= 10){
-                var blackpig = new BlackPig(name,height,weight,personality,category,breed,strength);
+                var blackpig = new BlackPig(pigName,height,weight,personality,category,breed,strength);
                 pigController.add(blackpig);
             }
             break;
     }
-
-    // Hide the add pig table from user
-    addTable.style.visibility = "hidden";
-
-    // add the pig to the table
-    var pigList = pigController.getAll();
-    pigTable.innerHTML = 
-    `<tr class="tableRow">
-        <th>Name</th>
-        <th>Category</th>
-        <th>More info</th>
-        <th>Delete</th>
-    </tr>`
-    
-    for (var i=0;i<pigList.length;i++){
-        pigTable.innerHTML += 
-        `<tr>
-            <td>${pigList[i].name}</td>
-            <td>${pigList[i].category}</td>
-            <td id="moreInfo${i}" class="moreInfo">More Info</td>
-            <td id="delete${i}" class="delete">Delete</td>
-        </tr>`
-    }
-    
-    // add event listeners to moreInfo and delete BTN
-    for (var i=0;i<pigList.length;i++){
-        const x = i;
-        window[`moreInfo${i}`] = <HTMLInputElement>document.getElementById(`moreInfo${i}`)!
-        window[`moreInfo${i}`].onclick = ()=>{moreInfo(x,pigList)};
-
-        window[`delete${i}`] = <HTMLInputElement>document.getElementById(`delete${i}`)!
-        window[`delete${i}`].onclick = ()=>{deletePopUp(x,pigList)};
-        
-    }
-
-    // reset input boxes
-    resetInputBox();
+    displayPigs();
 })
+
+function displayPigs(){
+     // Hide the add pig table from user
+     addTable.style.opacity = "0";
+
+     // add the pig to the table
+     var pigList = pigController.getAll();
+     pigTable.innerHTML = 
+     `<tr class="tableRow">
+         <th>Name</th>
+         <th>Category</th>
+         <th>More info</th>
+         <th>Delete</th>
+     </tr>`
+     
+     for (var i=0;i<pigList.length;i++){
+         pigTable.innerHTML += 
+         `<tr>
+             <td>${pigList[i].name}</td>
+             <td>${pigList[i].category}</td>
+             <td id="moreInfo${i}" class="moreInfo">More Info</td>
+             <td id="delete${i}" class="delete">Delete</td>
+         </tr>`
+     }
+     
+     // add event listeners to moreInfo and delete BTN
+     for (var i=0;i<pigList.length;i++){
+         const x = i;
+         window[`moreInfo${i}`] = <HTMLInputElement>document.getElementById(`moreInfo${i}`)!
+         window[`moreInfo${i}`].onclick = ()=>{moreInfo(x,pigList)};
+ 
+         window[`delete${i}`] = <HTMLInputElement>document.getElementById(`delete${i}`)!
+         window[`delete${i}`].onclick = ()=>{deletePopUp(x,pigList)};
+         
+     }
+ 
+     // reset input boxes
+     resetInputBox();
+}
 
 function resetInputBox(){
     nameBox.value = "";
-    name = "null";
+    pigName = "null";
     
     heightBox.value = "";
     height  = "null";
@@ -296,22 +305,32 @@ function moreInfo(n:number, pigList:any[]){
 }
 
 var deleteFlag: boolean = false;
-confirmDelete.onclick=()=>{deleteFlag=true; overlay.style.visibility = "hidden";}
-cancelDelete.onclick=()=>{deleteFlag=false; overlay.style.visibility = "hidden";}
 
 function deletePopUp(n:number, pigList:any[]){
-
-    deletePig(n,pigList,deleteFlag);
+    overlay.style.visibility = "visible"
+    confirmDelete.onclick=()=>{
+        overlay.style.visibility = "hidden";
+        deletePig(n,pigList,true);
+        displayPigs();
+    }
+    cancelDelete.onclick=()=>{
+        overlay.style.visibility = "hidden";
+        deletePig(n,pigList,false)
+    }
+    
 }
-
 
 
 function deletePig(n:number, pigList:any[], b:boolean){
 
 
-    if (deleteFlag){
-        console.log(pigList[n].name);
+    if (b){
+        pigController.removePig(n);
 
+        // Redraw the current pigs after deleted pig
+    }
+    else{
+        console.log("No delete")
     }
 
 }
@@ -327,8 +346,11 @@ document.getElementById("addBTN")!.addEventListener('click', function(){
 
 /*
 TODO
+
+- tiny bug after clicking submit
 - keep pig display when refresh
 - prevent refresh from overriding the local storage
 
-- delete BTN
+
+- add wallpaper
  */

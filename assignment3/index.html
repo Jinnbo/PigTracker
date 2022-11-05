@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Farmer Hoggett's Pig Collection </title>
 </head>
-<body>
+<body onload="init()">
     <header class="header">Farmer Hogget's Pig Collection</header>
 
     <section id="overlay">
@@ -89,13 +89,21 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.47/system.js" integrity="sha512-mkBpeD76fJnxFHGZstCL0mPCW6E3RFtUzfp5Ye8oQg2rxQNHy4BgHsbmvSizsq3fgF4PGozPI1BzGCB/h1Yq5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
-        System.defaultJSExtensions = true
-        System.import('main')
+    <!--
 
-        function off() {
-            document.getElementById('overlay').style.visibility = "hidden";
-        }
-    </script>
+        <script>
+            System.defaultJSExtensions = true
+            System.import('main')
+        </script>
+
+    -->
+    
+    <script src="./Pigs/Pigmodel.js"></script>
+    <script src="./PigController.js"></script>
+    <script src="./Pigs/GreyPig.js"></script>
+    <script src="./Pigs/BlackPig.js"></script>
+    <script src="./Pigs/ChestnutPig.js"></script>
+    <script src="./Pigs/WhitePig.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>

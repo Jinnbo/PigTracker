@@ -1,28 +1,65 @@
-import { Pig } from "./Pigs/Pigmodel";
+//import { Pig } from "./Pigs/Pigmodel";
 
 interface PigControllerInterface{
     add(p:Pig): void;
     getAll():Pig[];
+    removePig(index:number):void;
 }
 
-export class PigController implements PigControllerInterface{
+class PigController implements PigControllerInterface{
     pig: Pig[];
+    flag: boolean;
 
     constructor(){
         this.pig = [];
+        this.flag = false;
     }
 
-    add(p : Pig): void{
+    add(p : Pig): void{ 
 
-        // Store all the previous pigs 
-        var temp = this.pig;
+        // flag = true if refresh
+        // flag = false if no refresh
 
-        this.pig.push(p);
-        localStorage.pigArray = JSON.stringify(this.pig);
+        // 3 scenarios
+        
+        // first entry
+       if (localStorage.length == 0){
+            this.flag = true;
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
+        }
+
+        // entry after refresh
+        else if (!this.flag){
+            var temp: Pig[] = this.getAll();
+            console.log(temp);
+            
+            for (var i =0;i<temp.length;i++){
+                this.pig.push(temp[i]);
+            }
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
+            this.flag = true;
+        }
+        else if (this.flag){
+            this.flag = true;
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
+        }
+        console.log(this.flag)
     }
 
     getAll(): Pig[] {
         return JSON.parse(localStorage.pigArray)
+    }
+
+    removePig(index: number): void {
+        this.pig.splice(index,1);
+        localStorage.pigArray = JSON.stringify(this.pig);
+        Pig.num--;
+        if (Pig.num == 0){
+            localStorage.clear();
+        }
     }
 
 }

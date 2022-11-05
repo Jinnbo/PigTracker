@@ -1,5 +1,5 @@
 
-export abstract class Pig {
+abstract class Pig {
     public static num = 0;
 
     constructor(public name: string, public height: string, public weight: string, public personality: String,public category: string, public breed:string){

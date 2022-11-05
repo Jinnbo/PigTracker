@@ -1,25 +1,47 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var PigController;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [],
-        execute: function () {
-            PigController = class PigController {
-                constructor() {
-                    this.pig = [];
-                }
-                add(p) {
-                    // Store all the previous pigs 
-                    var temp = this.pig;
-                    this.pig.push(p);
-                    localStorage.pigArray = JSON.stringify(this.pig);
-                }
-                getAll() {
-                    return JSON.parse(localStorage.pigArray);
-                }
-            };
-            exports_1("PigController", PigController);
+"use strict";
+//import { Pig } from "./Pigs/Pigmodel";
+class PigController {
+    constructor() {
+        this.pig = [];
+        this.flag = false;
+    }
+    add(p) {
+        // flag = true if refresh
+        // flag = false if no refresh
+        // 3 scenarios
+        // first entry
+        if (localStorage.length == 0) {
+            this.flag = true;
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
         }
-    };
-});
+        // entry after refresh
+        else if (!this.flag) {
+            var temp = this.getAll();
+            console.log(temp);
+            for (var i = 0; i < temp.length; i++) {
+                this.pig.push(temp[i]);
+            }
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
+            this.flag = true;
+        }
+        else if (this.flag) {
+            this.flag = true;
+            this.pig.push(p);
+            localStorage.pigArray = JSON.stringify(this.pig);
+        }
+        console.log(this.flag);
+    }
+    getAll() {
+        return JSON.parse(localStorage.pigArray);
+    }
+    removePig(index) {
+        this.pig.splice(index, 1);
+        localStorage.pigArray = JSON.stringify(this.pig);
+        Pig.num--;
+        if (Pig.num == 0) {
+            localStorage.clear();
+        }
+    }
+}

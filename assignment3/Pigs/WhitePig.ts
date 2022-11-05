@@ -1,6 +1,6 @@
-import { Pig } from "./Pigmodel";
+//import { Pig } from "./Pigmodel";
 
-export class WhitePig extends Pig{
+class WhitePig extends Pig{
 
     constructor(
         public name: string, 
