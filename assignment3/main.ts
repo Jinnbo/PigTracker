@@ -21,6 +21,7 @@ var pigTable = <HTMLInputElement>document.getElementById('pigtable')!
 var overlay = <HTMLInputElement>document.getElementById('overlay')!
 var confirmDelete = <HTMLInputElement>document.getElementById('confirmDelete')!
 var cancelDelete = <HTMLInputElement>document.getElementById('cancelDelete')!
+var deleteMSG = <HTMLInputElement>document.getElementById('deleteMSG')!
 
 // Pig attributes
 var pigName: string = "null";
@@ -183,6 +184,7 @@ function displayPigs(){
 
      // add the pig to the table
      var pigList = pigController.getAll();
+
      pigTable.innerHTML = 
      `<tr class="tableRow">
          <th>Name</th>
@@ -243,6 +245,7 @@ function resetInputBox(){
     language = "null";
     speed = -1;
     strength = -1;
+    infoTable.style.opacity = "0";
 }
 
 function moreInfo(n:number, pigList:any[]){
@@ -307,6 +310,7 @@ function moreInfo(n:number, pigList:any[]){
 var deleteFlag: boolean = false;
 
 function deletePopUp(n:number, pigList:any[]){
+    deleteMSG.innerHTML = `Confirm ${pigList[n].name}'s deletion`;
     overlay.style.visibility = "visible"
     confirmDelete.onclick=()=>{
         overlay.style.visibility = "hidden";

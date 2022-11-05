@@ -4,6 +4,7 @@ interface PigControllerInterface{
     add(p:Pig): void;
     getAll():Pig[];
     removePig(index:number):void;
+    sortPigs(pList: Pig[]): Pig[];
 }
 
 class PigController implements PigControllerInterface{
@@ -16,18 +17,13 @@ class PigController implements PigControllerInterface{
     }
 
     add(p : Pig): void{ 
-
-        // flag = true if refresh
-        // flag = false if no refresh
-
-        // 3 scenarios
         
         // first entry
        if (localStorage.length == 0){
             this.flag = true;
             this.pig.push(p);
-            localStorage.pigArray = JSON.stringify(this.pig);
 
+            localStorage.pigArray = JSON.stringify(this.pig);
             localStorage.numOfPigs = JSON.stringify(Pig.num);
         }
 
@@ -49,10 +45,12 @@ class PigController implements PigControllerInterface{
             this.flag = true;
             this.pig.push(p);
             localStorage.pigArray = JSON.stringify(this.pig);
-            
-            console.log(parseInt(localStorage.numOfPigs))
+    
+
             localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)+1);
         }
+
+        localStorage.pigArray = JSON.stringify(this.sortPigs(this.getAll()));
 
         console.log(this.flag)
     }
@@ -70,6 +68,35 @@ class PigController implements PigControllerInterface{
 
         localStorage.pigArray = JSON.stringify(temp);
         localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)-1);
+    }
+
+    sortPigs(pList: Pig[]): Pig[] {
+        
+        var temp: Pig[] = this.getAll();
+
+        // Sort by name
+        temp.sort((pig1,pig2) =>{
+            if (pig1.name > pig2.name){
+                return 1;
+            }
+            if (pig1.name < pig2.name){
+                return -1;
+            }
+            return 0;
+        });
+
+        // Sort by category
+        temp.sort((pig1,pig2) =>{
+            if (pig1.category > pig2.category){
+                return 1;
+            }
+            if (pig1.category < pig2.category){
+                return -1;
+            }
+            return 0;
+        });
+
+        return temp
     }
 
 }

@@ -6,9 +6,6 @@ class PigController {
         this.flag = false;
     }
     add(p) {
-        // flag = true if refresh
-        // flag = false if no refresh
-        // 3 scenarios
         // first entry
         if (localStorage.length == 0) {
             this.flag = true;
@@ -32,9 +29,9 @@ class PigController {
             this.flag = true;
             this.pig.push(p);
             localStorage.pigArray = JSON.stringify(this.pig);
-            console.log(parseInt(localStorage.numOfPigs));
             localStorage.numOfPigs = JSON.stringify(parseInt(localStorage.numOfPigs) + 1);
         }
+        localStorage.pigArray = JSON.stringify(this.sortPigs(this.getAll()));
         console.log(this.flag);
     }
     getAll() {
@@ -46,5 +43,29 @@ class PigController {
         temp.splice(index, 1);
         localStorage.pigArray = JSON.stringify(temp);
         localStorage.numOfPigs = JSON.stringify(parseInt(localStorage.numOfPigs) - 1);
+    }
+    sortPigs(pList) {
+        var temp = this.getAll();
+        // Sort by name
+        temp.sort((pig1, pig2) => {
+            if (pig1.name > pig2.name) {
+                return 1;
+            }
+            if (pig1.name < pig2.name) {
+                return -1;
+            }
+            return 0;
+        });
+        // Sort by category
+        temp.sort((pig1, pig2) => {
+            if (pig1.category > pig2.category) {
+                return 1;
+            }
+            if (pig1.category < pig2.category) {
+                return -1;
+            }
+            return 0;
+        });
+        return temp;
     }
 }

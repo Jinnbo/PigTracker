@@ -21,6 +21,7 @@ var pigTable = document.getElementById('pigtable');
 var overlay = document.getElementById('overlay');
 var confirmDelete = document.getElementById('confirmDelete');
 var cancelDelete = document.getElementById('cancelDelete');
+var deleteMSG = document.getElementById('deleteMSG');
 // Pig attributes
 var pigName = "null";
 var height = "null";
@@ -207,6 +208,7 @@ function resetInputBox() {
     language = "null";
     speed = -1;
     strength = -1;
+    infoTable.style.opacity = "0";
 }
 function moreInfo(n, pigList) {
     infoTable.innerHTML = "";
@@ -267,6 +269,7 @@ function moreInfo(n, pigList) {
 }
 var deleteFlag = false;
 function deletePopUp(n, pigList) {
+    deleteMSG.innerHTML = `Confirm ${pigList[n].name}'s deletion`;
     overlay.style.visibility = "visible";
     confirmDelete.onclick = () => {
         overlay.style.visibility = "hidden";
