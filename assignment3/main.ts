@@ -202,7 +202,7 @@ function displayPigs(){
      }
      
      // add event listeners to moreInfo and delete BTN
-     for (var i=0;i<pigList.length;i++){
+     for (var i=0;i<parseInt(localStorage.numOfPigs);i++){
          const x = i;
          window[`moreInfo${i}`] = <HTMLInputElement>document.getElementById(`moreInfo${i}`)!
          window[`moreInfo${i}`].onclick = ()=>{moreInfo(x,pigList)};
@@ -315,7 +315,6 @@ function deletePopUp(n:number, pigList:any[]){
     }
     cancelDelete.onclick=()=>{
         overlay.style.visibility = "hidden";
-        deletePig(n,pigList,false)
     }
     
 }
@@ -323,16 +322,13 @@ function deletePopUp(n:number, pigList:any[]){
 
 function deletePig(n:number, pigList:any[], b:boolean){
 
-
     if (b){
         pigController.removePig(n);
 
-        // Redraw the current pigs after deleted pig
     }
     else{
         console.log("No delete")
     }
-
 }
 
 document.getElementById("addBTN")!.addEventListener('click', function(){
@@ -347,10 +343,9 @@ document.getElementById("addBTN")!.addEventListener('click', function(){
 /*
 TODO
 
-- tiny bug after clicking submit
-- keep pig display when refresh
-- prevent refresh from overriding the local storage
+- sort pigs by category and name
 
+- tiny bug after clicking submit
 
 - add wallpaper
  */
