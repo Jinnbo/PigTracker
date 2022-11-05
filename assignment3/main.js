@@ -25,8 +25,6 @@ System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./P
         strength = -1;
     }
     function moreInfo(n, pigList) {
-        console.log(n);
-        console.log(pigList[n]);
         infoTable.innerHTML = "";
         infoTable.innerHTML = `
     <tr><th colspan="2">${pigList[n].name} Info</th></tr>
@@ -81,12 +79,14 @@ System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./P
             </tr>`;
                 break;
         }
-        infoTable.style.visibility = "visible";
+        infoTable.style.opacity = '1';
     }
-    function deletePig(n, pigList) {
-        overlay.style.visibility = "visible";
-        if (deleteFlag == true) {
-            console.log("Deleting" + pigList[n].name);
+    function deletePopUp(n, pigList) {
+        deletePig(n, pigList, deleteFlag);
+    }
+    function deletePig(n, pigList, b) {
+        if (deleteFlag) {
+            console.log(pigList[n].name);
         }
     }
     return {
@@ -276,16 +276,17 @@ System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./P
                     window[`moreInfo${i}`] = document.getElementById(`moreInfo${i}`);
                     window[`moreInfo${i}`].onclick = () => { moreInfo(x, pigList); };
                     window[`delete${i}`] = document.getElementById(`delete${i}`);
-                    window[`delete${i}`].onclick = () => { deletePig(x, pigList); };
+                    window[`delete${i}`].onclick = () => { deletePopUp(x, pigList); };
                 }
                 // reset input boxes
                 resetInputBox();
             });
             deleteFlag = false;
-            confirmDelete.onclick = () => { deleteFlag = true; };
+            confirmDelete.onclick = () => { deleteFlag = true; overlay.style.visibility = "hidden"; };
+            cancelDelete.onclick = () => { deleteFlag = false; overlay.style.visibility = "hidden"; };
             document.getElementById("addBTN").addEventListener('click', function () {
                 // Open up the add new pig menu to the right of Pig collection table 
-                addTable.style.visibility = "visible";
+                addTable.style.opacity = "1";
             });
         }
     };

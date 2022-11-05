@@ -61,11 +61,11 @@ input{
 
 #addTable{
     margin-bottom: 3vh;
-    visibility: hidden;
+    opacity: 1;
 }
 
 #infoTable{
-    visibility: hidden;
+    opacity: 0;
 }
 
 
@@ -98,7 +98,7 @@ input{
 
 #overlay {
     position: fixed;
-    visibility: hidden;
+    opacity: 1;
     width: 100%;
     height: 100%;
     top: 0;
@@ -129,6 +129,7 @@ input{
     flex-direction: column;
     gap: 3vh;
     background-color: black;
+    border-radius: 10px;
 }
 
 #confirm,#cancel{

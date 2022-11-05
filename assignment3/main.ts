@@ -199,7 +199,7 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
         window[`moreInfo${i}`].onclick = ()=>{moreInfo(x,pigList)};
 
         window[`delete${i}`] = <HTMLInputElement>document.getElementById(`delete${i}`)!
-        window[`delete${i}`].onclick = ()=>{deletePig(x,pigList)};
+        window[`delete${i}`].onclick = ()=>{deletePopUp(x,pigList)};
         
     }
 
@@ -237,8 +237,6 @@ function resetInputBox(){
 }
 
 function moreInfo(n:number, pigList:any[]){
-    console.log(n);
-    console.log(pigList[n]);
     infoTable.innerHTML = "";
     infoTable.innerHTML = `
     <tr><th colspan="2">${pigList[n].name} Info</th></tr>
@@ -294,22 +292,33 @@ function moreInfo(n:number, pigList:any[]){
             break;
     }
     
-    infoTable.style.visibility = "visible";
+    infoTable.style.opacity = '1';
 }
 
 var deleteFlag: boolean = false;
-confirmDelete.onclick=()=>{deleteFlag=true;}
+confirmDelete.onclick=()=>{deleteFlag=true; overlay.style.visibility = "hidden";}
+cancelDelete.onclick=()=>{deleteFlag=false; overlay.style.visibility = "hidden";}
 
-function deletePig(n:number, pigList:any[]){
-    overlay.style.visibility = "visible";
-    if (deleteFlag == true){
-        console.log("Deleting"+ pigList[n].name);
+function deletePopUp(n:number, pigList:any[]){
+
+    deletePig(n,pigList,deleteFlag);
+}
+
+
+
+function deletePig(n:number, pigList:any[], b:boolean){
+
+
+    if (deleteFlag){
+        console.log(pigList[n].name);
+
     }
+
 }
 
 document.getElementById("addBTN")!.addEventListener('click', function(){
     // Open up the add new pig menu to the right of Pig collection table 
-    addTable.style.visibility = "visible";
+    addTable.style.opacity = "1";
 })
 
 
