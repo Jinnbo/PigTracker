@@ -10,6 +10,14 @@
 <body>
     <header class="header">Farmer Hogget's Pig Collection</header>
 
+    <section id="overlay" onclick="off()">
+        <section id="confirmBox">
+            <p>Confirm Deletion</p>
+            <button id="confirmDelete">Confirm</button>
+            <button id="cancelDelete">Cancel</button>
+        </section>
+    </section>
+
     <section class="container">
         <section class="leftContainer">
             <table class="pigtable" id="pigtable">
@@ -31,6 +39,7 @@
                     <tr>
                         <td><label for="name">Name</label></td>
                         <td><input type="text" id="name" name="name" required/></td>
+                        <!--<td id="name"><input type="text" name="name" id="nameInput" required/></td>-->
                     </tr>
                     <tr>
                         <td><label for="height">Height</label></td>
@@ -71,6 +80,9 @@
                     </tr>
                 </table>
             </form>
+
+            <table id="infoTable">
+            </table>
         </section>
 
     </section>
@@ -81,6 +93,10 @@
     <script>
         System.defaultJSExtensions = true
         System.import('main')
+
+        function off() {
+            document.getElementById('overlay').style.visibility = "hidden";
+        }
     </script>
 </body>
 </html>
