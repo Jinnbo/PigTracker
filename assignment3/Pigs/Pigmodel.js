@@ -19,6 +19,7 @@ System.register([], function (exports_1, context_1) {
                     this.personality = personality;
                     this.category = category;
                     this.breed = breed;
+                    Pig.num++;
                 }
             };
             exports_1("Pig", Pig);

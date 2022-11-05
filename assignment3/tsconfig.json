@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target":"ES6",
         "module": "system",
-        "strict": true
+        "strict": true,
+        "suppressImplicitAnyIndexErrors": true
     }
 }
 

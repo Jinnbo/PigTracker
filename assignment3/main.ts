@@ -16,6 +16,7 @@ var dynamicBoxOne = <HTMLInputElement>document.getElementById('dynamic1')!
 var dynamicOneLabel = <HTMLInputElement>document.getElementById('dynamic1Label')!
 var dynamicBoxTwo = <HTMLInputElement>document.getElementById('dynamic2')!
 var dynamicTwoLabel = <HTMLInputElement>document.getElementById('dynamic2label')!
+var pigTable = <HTMLInputElement>document.getElementById('pigtable')!
 
 // Pig attributes
 var name: string;
@@ -39,6 +40,10 @@ nameBox.onchange = () =>{name = nameBox.value}
 heightBox.onchange = () =>{height = heightBox.value}
 weightBox.onchange = () =>{weight = weightBox.value}
 personalityBox.onchange = () =>{personality = personalityBox.value}
+
+function init(){
+ alert("asd")
+}
 
 // When category is chosen, load dynamic boxes
 categoryBox.onchange = () =>{
@@ -162,8 +167,42 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
     addTable.style.visibility = "hidden";
 
     // add the pig to the table
+    var pigList = pigController.getAll();
+    pigTable.innerHTML = 
+    `<tr class="tableRow">
+        <th>Name</th>
+        <th>Category</th>
+        <th>More info</th>
+        <th>Delete</th>
+    </tr>`
+    
+    for (var i=0;i<pigList.length;i++){
+        pigTable.innerHTML += 
+        `<tr>
+            <td>${pigList[i].name}</td>
+            <td>${pigList[i].category}</td>
+            <td id="moreInfo${i}" class="moreInfo">More Info</td>
+            <td id="delete${i}" class="delete">Delete</td>
+        </tr>`
+
+        // Get id of each more info and delete
+        
+        
+        
+        // add event listener to moreinfo and delete
+    }
+    
+    var x = 0;
+
+    for (var i=0;i<pigList.length;i++){
+        console.log(`moreInfo${i}`)
+        window[`moreInfo${i}`] = <HTMLInputElement>document.getElementById(`moreInfo${i}`)!
+        window[`moreInfo${i}`].onclick = ()=>{console.log(x)};
+        x++;
+    }
 
 })
+
 
 document.getElementById("addBTN")!.addEventListener('click', function(){
     // Open up the add new pig menu to the right of Pig collection table 

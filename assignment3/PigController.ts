@@ -6,13 +6,17 @@ interface PigControllerInterface{
 }
 
 export class PigController implements PigControllerInterface{
-    pig: Pig[]
+    pig: Pig[];
 
     constructor(){
-        this.pig = []
+        this.pig = [];
     }
 
     add(p : Pig): void{
+
+        // Store all the previous pigs 
+        var temp = this.pig;
+
         this.pig.push(p);
         localStorage.pigArray = JSON.stringify(this.pig);
     }
@@ -20,4 +24,5 @@ export class PigController implements PigControllerInterface{
     getAll(): Pig[] {
         return JSON.parse(localStorage.pigArray)
     }
+
 }

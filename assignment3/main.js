@@ -1,7 +1,10 @@
 System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./Pigs/BlackPig", "./PigController"], function (exports_1, context_1) {
     "use strict";
-    var GreyPig_1, ChestnutPig_1, WhitePig_1, BlackPig_1, PigController_1, addTable, nameBox, heightBox, weightBox, personalityBox, categoryBox, dynamicBoxOne, dynamicOneLabel, dynamicBoxTwo, dynamicTwoLabel, name, height, weight, personality, category, breed, swimming, language, speed, strength, pigController;
+    var GreyPig_1, ChestnutPig_1, WhitePig_1, BlackPig_1, PigController_1, addTable, nameBox, heightBox, weightBox, personalityBox, categoryBox, dynamicBoxOne, dynamicOneLabel, dynamicBoxTwo, dynamicTwoLabel, pigTable, name, height, weight, personality, category, breed, swimming, language, speed, strength, pigController;
     var __moduleName = context_1 && context_1.id;
+    function init() {
+        alert("asd");
+    }
     return {
         setters: [
             function (GreyPig_1_1) {
@@ -32,6 +35,7 @@ System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./P
             dynamicOneLabel = document.getElementById('dynamic1Label');
             dynamicBoxTwo = document.getElementById('dynamic2');
             dynamicTwoLabel = document.getElementById('dynamic2label');
+            pigTable = document.getElementById('pigtable');
             // Pig Controller
             pigController = new PigController_1.PigController();
             // Add Event Listeners to each input box
@@ -142,6 +146,32 @@ System.register(["./Pigs/GreyPig", "./Pigs/ChestnutPig", "./Pigs/WhitePig", "./P
                 // Hide the add pig table from user
                 addTable.style.visibility = "hidden";
                 // add the pig to the table
+                var pigList = pigController.getAll();
+                pigTable.innerHTML =
+                    `<tr class="tableRow">
+        <th>Name</th>
+        <th>Category</th>
+        <th>More info</th>
+        <th>Delete</th>
+    </tr>`;
+                for (var i = 0; i < pigList.length; i++) {
+                    pigTable.innerHTML +=
+                        `<tr>
+            <td>${pigList[i].name}</td>
+            <td>${pigList[i].category}</td>
+            <td id="moreInfo${i}" class="moreInfo">More Info</td>
+            <td id="delete${i}" class="delete">Delete</td>
+        </tr>`;
+                    // Get id of each more info and delete
+                    // add event listener to moreinfo and delete
+                }
+                var x = 0;
+                for (var i = 0; i < pigList.length; i++) {
+                    console.log(`moreInfo${i}`);
+                    window[`moreInfo${i}`] = document.getElementById(`moreInfo${i}`);
+                    window[`moreInfo${i}`].onclick = () => { console.log(x); };
+                    x++;
+                }
             });
             document.getElementById("addBTN").addEventListener('click', function () {
                 // Open up the add new pig menu to the right of Pig collection table 

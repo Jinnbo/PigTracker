@@ -10,6 +10,8 @@ System.register([], function (exports_1, context_1) {
                     this.pig = [];
                 }
                 add(p) {
+                    // Store all the previous pigs 
+                    var temp = this.pig;
                     this.pig.push(p);
                     localStorage.pigArray = JSON.stringify(this.pig);
                 }
