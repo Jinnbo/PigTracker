@@ -1,10 +1,4 @@
 "use strict";
-//import {Pig} from './Pigs/Pigmodel'
-//import { GreyPig } from './Pigs/GreyPig'
-//import { ChestnutPig } from './Pigs/ChestnutPig'
-//import { WhitePig } from './Pigs/WhitePig'
-//import { BlackPig } from './Pigs/BlackPig'
-//import { PigController } from './PigController'
 // Variables from HTML elements
 var addTable = document.getElementById('addTable');
 var infoTable = document.getElementById('infoTable');

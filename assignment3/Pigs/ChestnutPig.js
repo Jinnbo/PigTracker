@@ -1,5 +1,4 @@
 "use strict";
-//import { Pig } from "./Pigmodel";
 class ChestnutPig extends Pig {
     constructor(name, height, weight, personality, category, breed, language) {
         super(name, height, weight, personality, category, breed);

@@ -1,9 +1,3 @@
-//import {Pig} from './Pigs/Pigmodel'
-//import { GreyPig } from './Pigs/GreyPig'
-//import { ChestnutPig } from './Pigs/ChestnutPig'
-//import { WhitePig } from './Pigs/WhitePig'
-//import { BlackPig } from './Pigs/BlackPig'
-//import { PigController } from './PigController'
 
 // Variables from HTML elements
 var addTable = document.getElementById('addTable')!
@@ -39,7 +33,6 @@ var strength: number = -1;
 
 // Pig Controller
 var pigController = new PigController();
-
 
 // Add Event Listeners to each input box
 nameBox.onchange = () =>{pigName = nameBox.value}
@@ -320,15 +313,11 @@ function deletePopUp(n:number, pigList:any[]){
     cancelDelete.onclick=()=>{
         overlay.style.visibility = "hidden";
     }
-    
 }
 
-
 function deletePig(n:number, pigList:any[], b:boolean){
-
     if (b){
         pigController.removePig(n);
-
     }
     else{
         console.log("No delete")

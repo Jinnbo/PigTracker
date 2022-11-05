@@ -1,4 +1,3 @@
-//import { Pig } from "./Pigs/Pigmodel";
 
 interface PigControllerInterface{
     add(p:Pig): void;

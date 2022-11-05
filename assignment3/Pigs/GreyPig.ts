@@ -1,4 +1,3 @@
-//import { Pig } from "./Pigmodel";
 
 class GreyPig extends Pig{
 

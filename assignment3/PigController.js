@@ -1,5 +1,4 @@
 "use strict";
-//import { Pig } from "./Pigs/Pigmodel";
 class PigController {
     constructor() {
         this.pig = [];
