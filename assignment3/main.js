@@ -35,6 +35,7 @@ nameBox.onchange = () => { pigName = nameBox.value; };
 heightBox.onchange = () => { height = heightBox.value; };
 weightBox.onchange = () => { weight = weightBox.value; };
 personalityBox.onchange = () => { personality = personalityBox.value; };
+// initialize display upon screen load
 function init() {
     if (localStorage.length > 0) {
         displayPigs();
@@ -152,7 +153,7 @@ document.getElementById('submitBTN').addEventListener('click', function () {
 function displayPigs() {
     // Hide the add pig table from user
     addTable.style.opacity = "0";
-    // add the pig to the table
+    // Add the pig to the table
     var pigList = pigController.getAll();
     pigTable.innerHTML =
         `<tr class="tableRow">
@@ -161,6 +162,7 @@ function displayPigs() {
          <th>More info</th>
          <th>Delete</th>
      </tr>`;
+    // Dynamically add pig info html
     for (var i = 0; i < pigList.length; i++) {
         pigTable.innerHTML +=
             `<tr>
@@ -181,7 +183,9 @@ function displayPigs() {
     // reset input boxes
     resetInputBox();
 }
+// Rest input box
 function resetInputBox() {
+    // Reset pig attributes
     nameBox.value = "";
     pigName = "null";
     heightBox.value = "";
@@ -192,7 +196,7 @@ function resetInputBox() {
     personality = "null";
     categoryBox.value = "";
     category = "null";
-    // reset dynamic boxes
+    // Reset dynamic pig attributes
     dynamicOneLabel.innerHTML = "Dynamic";
     dynamicTwoLabel.innerHTML = "Dynamic";
     dynamicBoxOne.innerHTML = "";
@@ -205,6 +209,7 @@ function resetInputBox() {
     infoTable.style.opacity = "0";
 }
 function moreInfo(n, pigList) {
+    // Dynamically display more info of the pig
     infoTable.innerHTML = "";
     infoTable.innerHTML = `
     <tr><th colspan="2">${pigList[n].name} Info</th></tr>
@@ -261,7 +266,7 @@ function moreInfo(n, pigList) {
     }
     infoTable.style.opacity = '1';
 }
-var deleteFlag = false;
+// Display the delete screen popup
 function deletePopUp(n, pigList) {
     deleteMSG.innerHTML = `Confirm ${pigList[n].name}'s deletion`;
     overlay.style.visibility = "visible";
@@ -274,6 +279,7 @@ function deletePopUp(n, pigList) {
         overlay.style.visibility = "hidden";
     };
 }
+// Call the delete pig in pigController 
 function deletePig(n, pigList, b) {
     if (b) {
         pigController.removePig(n);
@@ -282,14 +288,8 @@ function deletePig(n, pigList, b) {
         console.log("No delete");
     }
 }
+// Show add table upon clicking addBTN
 document.getElementById("addBTN").addEventListener('click', function () {
     // Open up the add new pig menu to the right of Pig collection table 
     addTable.style.opacity = "1";
 });
-/*
-TODO
-
-- tiny bug after clicking submit
-    - shows the "Please fill out this form" popup
-
- */ 

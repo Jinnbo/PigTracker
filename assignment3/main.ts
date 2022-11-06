@@ -1,4 +1,3 @@
-
 // Variables from HTML elements
 var addTable = document.getElementById('addTable')!
 var infoTable = document.getElementById('infoTable')!
@@ -40,7 +39,7 @@ heightBox.onchange = () =>{height = heightBox.value}
 weightBox.onchange = () =>{weight = weightBox.value}
 personalityBox.onchange = () =>{personality = personalityBox.value}
 
-
+// initialize display upon screen load
 function init(){
     if (localStorage.length > 0){
         displayPigs();
@@ -144,7 +143,6 @@ document.getElementById('submitBTN')!.addEventListener('click',function(){
                 var greyPig = new GreyPig(pigName,height,weight,personality,category,breed,swimming);
                 pigController.add(greyPig);
             }
-
             break;
         case "Chestnut":
             if (language == "null") return;
@@ -175,7 +173,7 @@ function displayPigs(){
      // Hide the add pig table from user
      addTable.style.opacity = "0";
 
-     // add the pig to the table
+     // Add the pig to the table
      var pigList = pigController.getAll();
 
      pigTable.innerHTML = 
@@ -186,6 +184,7 @@ function displayPigs(){
          <th>Delete</th>
      </tr>`
      
+     // Dynamically add pig info html
      for (var i=0;i<pigList.length;i++){
          pigTable.innerHTML += 
          `<tr>
@@ -211,7 +210,10 @@ function displayPigs(){
      resetInputBox();
 }
 
+// Rest input box
 function resetInputBox(){
+
+    // Reset pig attributes
     nameBox.value = "";
     pigName = "null";
     
@@ -227,7 +229,7 @@ function resetInputBox(){
     categoryBox.value = "";
     category  = "null";
 
-    // reset dynamic boxes
+    // Reset dynamic pig attributes
     dynamicOneLabel.innerHTML = "Dynamic";
     dynamicTwoLabel.innerHTML = "Dynamic";
     dynamicBoxOne.innerHTML = "";
@@ -242,6 +244,7 @@ function resetInputBox(){
 }
 
 function moreInfo(n:number, pigList:any[]){
+    // Dynamically display more info of the pig
     infoTable.innerHTML = "";
     infoTable.innerHTML = `
     <tr><th colspan="2">${pigList[n].name} Info</th></tr>
@@ -300,8 +303,7 @@ function moreInfo(n:number, pigList:any[]){
     infoTable.style.opacity = '1';
 }
 
-var deleteFlag: boolean = false;
-
+// Display the delete screen popup
 function deletePopUp(n:number, pigList:any[]){
     deleteMSG.innerHTML = `Confirm ${pigList[n].name}'s deletion`;
     overlay.style.visibility = "visible"
@@ -315,6 +317,7 @@ function deletePopUp(n:number, pigList:any[]){
     }
 }
 
+// Call the delete pig in pigController 
 function deletePig(n:number, pigList:any[], b:boolean){
     if (b){
         pigController.removePig(n);
@@ -324,19 +327,8 @@ function deletePig(n:number, pigList:any[], b:boolean){
     }
 }
 
+// Show add table upon clicking addBTN
 document.getElementById("addBTN")!.addEventListener('click', function(){
     // Open up the add new pig menu to the right of Pig collection table 
     addTable.style.opacity = "1";
 })
-
-
-
-
-
-/*
-TODO
-
-- tiny bug after clicking submit
-    - shows the "Please fill out this form" popup
-
- */

@@ -17,7 +17,7 @@ class PigController implements PigControllerInterface{
 
     add(p : Pig): void{ 
         
-        // first entry
+        // If first pig entry
        if (localStorage.length == 0){
             this.flag = true;
             this.pig.push(p);
@@ -25,8 +25,8 @@ class PigController implements PigControllerInterface{
             localStorage.pigArray = JSON.stringify(this.pig);
             localStorage.numOfPigs = JSON.stringify(Pig.num);
         }
-
-        // entry after refresh
+        
+        // Pig entry after refreshing window
         else if (!this.flag){
             var temp: Pig[] = this.getAll();
             console.log(temp);
@@ -40,35 +40,33 @@ class PigController implements PigControllerInterface{
 
             localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)+1);
         }
+        // Pig entry without refreshing window and not first entry
         else if (this.flag){
             this.flag = true;
             this.pig.push(p);
             localStorage.pigArray = JSON.stringify(this.pig);
     
-
             localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)+1);
         }
 
         localStorage.pigArray = JSON.stringify(this.sortPigs(this.getAll()));
-
-        console.log(this.flag)
     }
 
+    // Return pigArray
     getAll(): Pig[] {
         return JSON.parse(localStorage.pigArray)
     }
 
     removePig(index: number): void {
 
-        console.log(index);
-
+        // Splice pig from the pigArray
         var temp: Pig[] = this.getAll();
         temp.splice(index,1);
 
         localStorage.pigArray = JSON.stringify(temp);
         localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)-1);
     }
-
+    
     sortPigs(pList: Pig[]): Pig[] {
         
         var temp: Pig[] = this.getAll();
