@@ -27,6 +27,7 @@ class PigController {
         // Pig entry without refreshing window and not first entry
         else if (this.flag) {
             this.flag = true;
+            this.pig = this.getAll();
             this.pig.push(p);
             localStorage.pigArray = JSON.stringify(this.pig);
             localStorage.numOfPigs = JSON.stringify(parseInt(localStorage.numOfPigs) + 1);

@@ -122,6 +122,8 @@ document.getElementById('submitBTN').addEventListener('click', function () {
                 var greyPig = new GreyPig(pigName, height, weight, personality, category, breed, swimming);
                 pigController.add(greyPig);
             }
+            else
+                return;
             break;
         case "Chestnut":
             if (language == "null")
@@ -130,6 +132,8 @@ document.getElementById('submitBTN').addEventListener('click', function () {
                 var chestnutPig = new ChestnutPig(pigName, height, weight, personality, category, breed, language);
                 pigController.add(chestnutPig);
             }
+            else
+                return;
             break;
         case "White":
             if (speed == -1)
@@ -138,6 +142,8 @@ document.getElementById('submitBTN').addEventListener('click', function () {
                 var whitePig = new WhitePig(pigName, height, weight, personality, category, breed, speed);
                 pigController.add(whitePig);
             }
+            else
+                return;
             break;
         case "Black":
             if (strength == -1)
@@ -146,6 +152,8 @@ document.getElementById('submitBTN').addEventListener('click', function () {
                 var blackpig = new BlackPig(pigName, height, weight, personality, category, breed, strength);
                 pigController.add(blackpig);
             }
+            else
+                return;
             break;
     }
     displayPigs();

@@ -43,9 +43,12 @@ class PigController implements PigControllerInterface{
         // Pig entry without refreshing window and not first entry
         else if (this.flag){
             this.flag = true;
+            this.pig = this.getAll();
+
             this.pig.push(p);
+
+
             localStorage.pigArray = JSON.stringify(this.pig);
-    
             localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)+1);
         }
 
@@ -66,7 +69,7 @@ class PigController implements PigControllerInterface{
         localStorage.pigArray = JSON.stringify(temp);
         localStorage.numOfPigs = JSON.stringify( parseInt(localStorage.numOfPigs)-1);
     }
-    
+
     sortPigs(pList: Pig[]): Pig[] {
         
         var temp: Pig[] = this.getAll();
