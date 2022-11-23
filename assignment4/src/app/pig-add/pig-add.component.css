@@ -1,4 +1,5 @@
-button{
+.btn.btn-primary{
     font-weight: bold;
-    font-size: large;
+    width: 100%;
+    font-size: larger;
 }
