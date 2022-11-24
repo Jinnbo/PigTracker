@@ -10,12 +10,16 @@
 		<form [formGroup]="form">
 			<div class="mb-3">
 
-                <label for="name">Name</label>
+                <label for="name">Name</label>&nbsp;
+				<span *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger">REQUIRED</span>
+				</span>
+				
 				<div class="input-group">
 					<input
                         class="form-control"
 						id="name"
-						placeholder="NAME"
+						placeholder="name"
 						name="name"
                         type="text"
                         formControlName="name"
@@ -45,9 +49,8 @@
 				</div>
 
                 <label for="location" formControlName="location">Location<br>
-                    <input list="locations" name="location"/>
                 </label>
-
+				<input list="locations" name="location" class="form-control" formControlName="location"/>
 
                 <datalist id="locations">
                     <option value="SFU Burnaby">
@@ -55,7 +58,7 @@
                     <option value="Metrotown Mall">
                     <option value="Brentwood Mall">
                 </datalist>
-                  <br>
+    
 
                 <label for="extra-note">Extra Notes</label>
 				<div class="input-group">
@@ -85,6 +88,8 @@
 	<div class="modal-footer">
 		<button type="button" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!form.valid">Save</button>
 	</div>
+
+
 
 </ng-template>
 

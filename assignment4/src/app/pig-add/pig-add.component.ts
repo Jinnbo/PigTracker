@@ -20,7 +20,7 @@ export class PigAddComponent implements OnInit{
 			]),
 			phoneNumber: new FormControl('',[
 				Validators.required,
-				Validators.pattern('[- +()0-9]{10,12}')
+				//Validators.pattern('[- +()0-9]{10,12}')
 			]),
 			pigInfo: new FormControl('',[
 				Validators.required,
