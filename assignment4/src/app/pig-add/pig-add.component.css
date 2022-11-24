@@ -3,3 +3,9 @@
     width: 100%;
     font-size: larger;
 }
+
+.dropdownSelection{
+    width: 100%;
+    padding: 0.5em;
+    border: 1px red solid;
+}

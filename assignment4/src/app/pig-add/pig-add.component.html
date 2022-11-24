@@ -7,16 +7,18 @@
 	</div>
 
 	<div class="modal-body">
-		<form>
+		<form [formGroup]="form">
 			<div class="mb-3">
 
                 <label for="name">Name</label>
 				<div class="input-group">
 					<input
+                        class="form-control"
 						id="name"
-						class="form-control"
-						placeholder="name"
-						name="nm"
+						placeholder="NAME"
+						name="name"
+                        type="text"
+                        formControlName="name"
 					/>
 				</div>
 
@@ -25,8 +27,9 @@
 					<input
 						id="phone-number"
 						class="form-control"
-						placeholder="(XXX)-XXX-XXXX"
-						name="pn"
+						placeholder="xxx-xxx-xxxx"
+						name="phoneNumber"
+                        formControlName="phoneNumber"
 					/>
 				</div>
 
@@ -36,19 +39,23 @@
 						id="Pig-Info"
 						class="form-control"
 						placeholder="info"
-						name="pi"
+						name="pigInfo"
+                        formControlName="pigInfo"
 					/>
 				</div>
 
-                <label for="location">Location</label>
-				<div class="input-group">
-					<input
-						id="location"
-						class="form-control"
-						placeholder="longitude-latitude"
-						name="loc"
-					/>
-				</div>
+                <label for="location" formControlName="location">Location<br>
+                    <input list="locations" name="location"/>
+                </label>
+
+
+                <datalist id="locations">
+                    <option value="SFU Burnaby">
+                    <option value="SFU Surrey">
+                    <option value="Metrotown Mall">
+                    <option value="Brentwood Mall">
+                </datalist>
+                  <br>
 
                 <label for="extra-note">Extra Notes</label>
 				<div class="input-group">
@@ -56,7 +63,8 @@
 						id="extra-notes"
 						class="form-control"
 						placeholder="notes"
-						name="en"
+						name="extraNote"
+                        formControlName="extraNote"
 					/>
 				</div>
                 
@@ -66,7 +74,8 @@
 						id="date"
 						class="form-control"
 						placeholder="yyyy-mm-dd"
-						name="dp"
+						name="date"
+                        formControlName="date"
 					/>
 				</div>
 			</div>
@@ -74,7 +83,7 @@
 	</div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save</button>
+		<button type="button" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!form.valid">Save</button>
 	</div>
 
 </ng-template>
