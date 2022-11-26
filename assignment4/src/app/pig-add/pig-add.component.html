@@ -9,7 +9,7 @@
 	<div class="modal-body">
 
 		<!-- Form -->
-		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
 			<fieldset class="mb-3">
 
 				<!-- Name -->
@@ -67,10 +67,10 @@
 						<input type="checkbox" checked (click)="locationChoice()"/>
 						<span class="slider round"></span>
 					</label>
+					<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
+						<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+					</span>
 				</div>
-				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
-					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger"> REQUIRED</span>
-				</span>
 				<input list="locations" name="location" class="form-control" formControlName="location"/>
 				<datalist id="locations">
 					<option value="SFU Burnaby">
@@ -80,7 +80,10 @@
 				</datalist>			
 			
 				<!-- Extra notes-->
-                <label for="extraNote">Extra Notes</label>
+                <label for="extraNote" >Extra Notes</label>
+				<span *ngIf="form.get('extraNote')?.invalid && form.get('extraNote')?.touched">
+					<span *ngIf="form.get('extraNote')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+				</span>
 				<div class="input-group">
 					<input
 						id="extraNote"
@@ -91,13 +94,13 @@
 					/>
 				</div>
 				
-			</fieldset>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!form.valid">Save</button>
+				</div>
+			</fieldset>	
 		</form>
 	</div>
 
-	<div class="modal-footer">
-		<button type="button" class="btn btn-primary" (click)="modal.close('Save click')" [disabled]="!form.valid">Save</button>
-	</div>
 
 
 

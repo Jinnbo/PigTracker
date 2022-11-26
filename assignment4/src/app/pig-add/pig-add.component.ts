@@ -30,6 +30,9 @@ export class PigAddComponent implements OnInit{
 			]),
 			location: new FormControl('',[
 				Validators.required,
+			]),
+			extraNote: new FormControl('',[
+				Validators.required,
 			])
 		}
 
@@ -44,8 +47,9 @@ export class PigAddComponent implements OnInit{
 		this.locationChoices =  !this.locationChoices;
 	}
 
-	onSubmit(values: any){
-		console.log(values);
+	onSubmit(values){
+		console.log(values)
+	
 	}
 
 	ngOnInit(): void {
