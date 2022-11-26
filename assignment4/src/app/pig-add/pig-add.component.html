@@ -7,14 +7,16 @@
 	</div>
 
 	<div class="modal-body">
-		<form [formGroup]="form">
-			<div class="mb-3">
 
+		<!-- Form -->
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+			<fieldset class="mb-3">
+
+				<!-- Name -->
                 <label for="name">Name</label>&nbsp;
 				<span *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
-					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger">REQUIRED</span>
+					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger"> REQUIRED</span>
 				</span>
-				
 				<div class="input-group">
 					<input
                         class="form-control"
@@ -25,22 +27,30 @@
                         formControlName="name"
 					/>
 				</div>
-
-                <label for="phone-number">Phone-number</label>
+				
+				<!-- Phone Number -->
+                <label for="phoneNumber">Phone-number</label>
+				<span *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
+					<span *ngIf="form.get('phoneNumber')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+				</span>
 				<div class="input-group">
 					<input
-						id="phone-number"
+						id="phoneNumber"
 						class="form-control"
-						placeholder="xxx-xxx-xxxx"
+						placeholder="123456789"
 						name="phoneNumber"
                         formControlName="phoneNumber"
 					/>
 				</div>
 
-                <label for="Pig-Info">Pig Info</label>
+				<!-- Pig Info -->
+                <label for="pigInfo">Pig Info</label>
+				<span *ngIf="form.get('pigInfo')?.invalid && form.get('pigInfo')?.touched">
+					<span *ngIf="form.get('pigInfo')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+				</span>
 				<div class="input-group">
 					<input
-						id="Pig-Info"
+						id="pigInfo"
 						class="form-control"
 						placeholder="info"
 						name="pigInfo"
@@ -48,40 +58,40 @@
 					/>
 				</div>
 
-                <label for="location" formControlName="location">Location<br>
-                </label>
+				<!-- Location -->
+				<div class="locationContainer">
+					<div class="locationTitle" >
+						Existing Location
+					</div>
+					<label class="switch" formControlName="location">
+						<input type="checkbox" checked (click)="locationChoice()"/>
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
+					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+				</span>
 				<input list="locations" name="location" class="form-control" formControlName="location"/>
-
-                <datalist id="locations">
-                    <option value="SFU Burnaby">
-                    <option value="SFU Surrey">
-                    <option value="Metrotown Mall">
-                    <option value="Brentwood Mall">
-                </datalist>
-    
-
-                <label for="extra-note">Extra Notes</label>
+				<datalist id="locations">
+					<option value="SFU Burnaby">
+					<option value="SFU Surrey">
+					<option value="Metrotown Mall">
+					<option value="Brentwood Mall">
+				</datalist>			
+			
+				<!-- Extra notes-->
+                <label for="extraNote">Extra Notes</label>
 				<div class="input-group">
 					<input
-						id="extra-notes"
+						id="extraNote"
 						class="form-control"
 						placeholder="notes"
 						name="extraNote"
                         formControlName="extraNote"
 					/>
 				</div>
-                
-				<label for="date">Date</label>
-				<div class="input-group">
-					<input
-						id="date"
-						class="form-control"
-						placeholder="yyyy-mm-dd"
-						name="date"
-                        formControlName="date"
-					/>
-				</div>
-			</div>
+				
+			</fieldset>
 		</form>
 	</div>
 
@@ -94,3 +104,4 @@
 </ng-template>
 
 <button class="btn btn-primary" (click)="open(content)">CREATE PIG REPORT</button>
+

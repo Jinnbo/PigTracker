@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
+import { FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-pig-add',
@@ -11,8 +11,11 @@ export class PigAddComponent implements OnInit{
 	closeResult = '';
 
 	form: FormGroup;
+	locationChoices: boolean;
 
 	constructor(private modalService: NgbModal) {
+
+		this.locationChoices = true;
 
 		let formControls = {
 			name: new FormControl('',[
@@ -20,18 +23,12 @@ export class PigAddComponent implements OnInit{
 			]),
 			phoneNumber: new FormControl('',[
 				Validators.required,
-				//Validators.pattern('[- +()0-9]{10,12}')
+				Validators.pattern('[- +()0-9]{10,12}')
 			]),
 			pigInfo: new FormControl('',[
 				Validators.required,
 			]),
 			location: new FormControl('',[
-				Validators.required,
-			]),
-			extraNote: new FormControl('',[
-				Validators.required,
-			]),
-			date: new FormControl('',[
 				Validators.required,
 			])
 		}
@@ -41,6 +38,14 @@ export class PigAddComponent implements OnInit{
   
 	open(content: any) {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result;
+	}
+
+	locationChoice(){
+		this.locationChoices =  !this.locationChoices;
+	}
+
+	onSubmit(values: any){
+		console.log(values);
 	}
 
 	ngOnInit(): void {
