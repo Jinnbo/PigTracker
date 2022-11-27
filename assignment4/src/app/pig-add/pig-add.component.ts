@@ -1,6 +1,7 @@
-import { Component, Directive, Input, OnInit, ViewChild } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { PigService } from '../pig.service';
 
 @Component({
   selector: 'app-pig-add',
@@ -10,8 +11,8 @@ import { FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validato
 export class PigAddComponent implements OnInit{
 	closeResult = '';
 	form: FormGroup;
-	
-	constructor(private modalService: NgbModal) {
+
+	constructor(private modalService: NgbModal, private ps: PigService) {
 
 		let formControls = {
 			name: new FormControl('',[
@@ -39,7 +40,7 @@ export class PigAddComponent implements OnInit{
 	}
 
 	onSubmit(values){
-		console.log(values)
+		this.ps.addPigs(values);
 	}
 
 	formReset(){

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { PigListComponent } from './pig-list/pig-list.component';
 import { PigAddComponent } from './pig-add/pig-add.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PigAddComponent } from './pig-add/pig-add.component';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
