@@ -7,7 +7,7 @@
           <th scope="col">Reported By</th>
           <th scope="col">Time Reported</th>
           <th scope="col">Status</th>
-          <th scope="col"></th>
+          <th scope="col">More Info</th>
           <th scope="col"></th>
         </tr>
     </thead>
@@ -17,6 +17,7 @@
         <td>{{pig.data[0].name}}</td>
         <td>{{pig.data[0].timeReported | date:'yyyy-MM-d (h:mm a)'}}</td>
         <td>{{pig.data[0].status}}</td>
+        <td><a href="#" class="link-secondary">More Info</a></td>
       </tr>
     </tbody>
 </table>

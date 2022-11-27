@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { PigService } from '../pig.service';
+import { PigListComponent } from '../pig-list/pig-list.component';
 
 @Component({
   selector: 'app-pig-add',
