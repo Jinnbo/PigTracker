@@ -9,7 +9,7 @@
 	<div class="modal-body">
 
 		<!-- Form -->
-		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
+		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value);formReset()" >
 			<fieldset class="mb-3">
 
 				<!-- Name -->
@@ -27,14 +27,19 @@
                         formControlName="name"
 					/>
 				</div>
-				
+
 				<!-- Phone Number -->
-                <label for="phoneNumber">Phone-number</label>
+				<label for="phoneNumber">Phone-number</label><br>
 				<span *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
-					<span *ngIf="form.get('phoneNumber')?.errors?.['required']" class="text-danger"> REQUIRED</span>
-				</span>
+					<span [hidden]="form.get('phoneNumber')?.hasError('pattern')" class="text-danger">Should only be numbers</span><br>
+					<span [hidden]="form.get('phoneNumber')?.hasError('maxLength')" class="text-danger">Should have a length of 9</span>
+				</span>	
 				<div class="input-group">
+
 					<input
+						pattern="[0-9]*"
+						minLength="9"
+						maxLength="9"
 						id="phoneNumber"
 						class="form-control"
 						placeholder="123456789"
@@ -59,24 +64,16 @@
 				</div>
 
 				<!-- Location -->
-				<div class="locationContainer">
-					<div class="locationTitle" >
-						Existing Location
-					</div>
-					<label class="switch" formControlName="location">
-						<input type="checkbox" checked (click)="locationChoice()"/>
-						<span class="slider round"></span>
-					</label>
-					<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
-						<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger"> REQUIRED</span>
-					</span>
-				</div>
+				<label for="location">Location: name,latitude,longitude</label>
+				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
+					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger">  REQUIRED</span>
+				</span>
 				<input list="locations" name="location" class="form-control" formControlName="location"/>
 				<datalist id="locations">
-					<option value="SFU Burnaby">
-					<option value="SFU Surrey">
-					<option value="Metrotown Mall">
-					<option value="Brentwood Mall">
+					<option value="SFU Burnaby, 49.27771876941029, -122.9195895362721">
+					<option value="SFU Surrey, 49.18711172841241, -122.84952884218839">
+					<option value="Metrotown Mall, 49.22761436851514, -122.99899235433548">
+					<option value="Brentwood Mall, 49.268312310205836, -123.00101307496053">
 				</datalist>			
 			
 				<!-- Extra notes-->

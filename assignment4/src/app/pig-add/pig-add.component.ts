@@ -1,6 +1,6 @@
 import { Component, Directive, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
+import { FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-pig-add',
@@ -9,21 +9,16 @@ import { FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } fro
 })
 export class PigAddComponent implements OnInit{
 	closeResult = '';
-
 	form: FormGroup;
-	locationChoices: boolean;
-
+	
 	constructor(private modalService: NgbModal) {
-
-		this.locationChoices = true;
 
 		let formControls = {
 			name: new FormControl('',[
 				Validators.required,
 			]),
 			phoneNumber: new FormControl('',[
-				Validators.required,
-				Validators.pattern('[- +()0-9]{10,12}')
+				Validators.required
 			]),
 			pigInfo: new FormControl('',[
 				Validators.required,
@@ -43,13 +38,12 @@ export class PigAddComponent implements OnInit{
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result;
 	}
 
-	locationChoice(){
-		this.locationChoices =  !this.locationChoices;
-	}
-
 	onSubmit(values){
 		console.log(values)
-	
+	}
+
+	formReset(){
+		this.form.reset();
 	}
 
 	ngOnInit(): void {
