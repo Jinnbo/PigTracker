@@ -1,27 +1,25 @@
-# Assignment4
+# TODO-List
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+## Pig table
+- [x] Display all pig reports on main page
+- [ ] Sort the data by each column(location, reported by, time reported)
+<br><br>
 
-## Development server
+## Change status
+- [ ] Delete pig button- asks for confirmation with password
+- [ ] Change status of pig
+<br><br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## More Info Button
+- [x] More info button that displays full informatino about the report
+<br><br>
 
-## Code scaffolding
+## Create Pig report
+- [x] Create pig report btn that shows user a pig creation form
+- [x] Able to select from dropdown menu of existing places or add new location
+<br><br>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Map
+- [ ] Map indicating all pig reports shown using markers
+- [ ] Clicking on an individual markers on the map shall show the number of reports at that location
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
