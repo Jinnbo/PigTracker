@@ -12,6 +12,13 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PigListComponent implements OnInit {
 
   public pigs;
+  public pigInfoName: string;
+  public pigInfoLocation: string;
+  public pigInfoPhoneNumber: string;
+  public pigInfoPigInfo: string;
+  public pigInfoExtraNotes: string;
+  public pigInfoDate: string;
+  public pigInfoStatus: string;
 
   constructor(private ps: PigService,private modalService: NgbModal){
     this.pigs = [];    
@@ -25,6 +32,15 @@ export class PigListComponent implements OnInit {
   
   open(content, values) {
 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result;
+
+    this.pigInfoName = values.name;
+    this.pigInfoPhoneNumber = values.phoneNumber;
+    this.pigInfoPigInfo = values.pigInfo;
+    this.pigInfoLocation = values.location;
+    this.pigInfoExtraNotes = values.extraNote;
+    this.pigInfoDate = values.timeReported;
+    this.pigInfoStatus = values.status;
+
 	}
 
 } 

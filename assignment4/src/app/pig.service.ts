@@ -29,7 +29,8 @@ export class PigService {
             "pigInfo": values.pigInfo,
             "location": values.location,
             "timeReported": (new Date().getTime()),
-            "status": "READY FOR PICKUP"
+            "status": "READY FOR PICKUP",
+            "extraNote": values.extraNote
         }
       ] 
     }
@@ -37,7 +38,7 @@ export class PigService {
       console.log(data)
     })
 
-    
+
   }
 
 }
