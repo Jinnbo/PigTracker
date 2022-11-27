@@ -42,7 +42,6 @@ export class PigAddComponent implements OnInit{
 
 	onSubmit(values){
 		this.ps.addPigs(values);
-		window.location.reload();
 	}
 
 	formReset(){

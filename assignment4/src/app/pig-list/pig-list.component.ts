@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PigService } from '../pig.service';
 import { Pig } from '../Pig';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pig-list',
@@ -19,19 +20,59 @@ export class PigListComponent implements OnInit {
   public pigInfoExtraNotes: string;
   public pigInfoDate: string;
   public pigInfoStatus: string;
+  form: FormGroup;
+
+  password: boolean = false;
+  htmlContent = '';
 
   constructor(private ps: PigService,private modalService: NgbModal){
     this.pigs = [];    
+
+    let formControls = {
+      password: new FormControl('',[
+				Validators.required
+			]),
+		}
+
+		this.form = new FormGroup(formControls);
   }
-  
+
+  checkPassword(content,form){
+
+    let actual: string = form.value;
+    let expected: string = "OINK!!";
+
+    if (actual === expected){
+      this.modalService.dismissAll();   
+      this.password = true;   
+    }
+    else{
+      this.htmlContent = '<div class="text-danger">Incorrect Password</div>';
+      this.password = false;   
+    }
+  }
+
+
   ngOnInit(): void {
     this.ps.getPigs().subscribe((data:any)=>{
       this.pigs = data
     })
   }
   
-  open(content, values) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result;
+  openInfo(content, values) {
+		this.modalService.open(content, { ariaLabelledBy: 'Infomodal' }).result;
+    
+    this.pigInfoName = values.name;
+    this.pigInfoPhoneNumber = values.phoneNumber;
+    this.pigInfoPigInfo = values.pigInfo;
+    this.pigInfoLocation = values.location;
+    this.pigInfoExtraNotes = values.extraNote;
+    this.pigInfoDate = values.timeReported;
+    this.pigInfoStatus = values.status;
+	}
+  
+  openDelete(content, values){
+    this.modalService.open(content, { ariaLabelledBy: 'deleteModal' }).result;
 
     this.pigInfoName = values.name;
     this.pigInfoPhoneNumber = values.phoneNumber;
@@ -40,7 +81,21 @@ export class PigListComponent implements OnInit {
     this.pigInfoExtraNotes = values.extraNote;
     this.pigInfoDate = values.timeReported;
     this.pigInfoStatus = values.status;
+  }
+
+  onSubmit(values){
+
+    if (this.password){
+      this.ps.deletePig(this.pigInfoName);
+
+      console.log(values);
+      console.log(this.pigInfoName);
+    }
+
 
 	}
 
+  formReset(){
+		this.form.reset();
+	}
 } 

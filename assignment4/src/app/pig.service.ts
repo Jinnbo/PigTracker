@@ -37,8 +37,11 @@ export class PigService {
     ).subscribe((data:any)=>{
       console.log(data)
     })
+  }
 
-
+  deletePig(name){
+    this.http.delete('https://272.selfip.net/apps/CExpTwLOJp/collections/pigList/documents/'+name+'/'
+    ).subscribe((data:any)=>{console.log(data)})
   }
 
 }
