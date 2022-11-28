@@ -7,7 +7,8 @@
 
 ## Change status
 - [x] Delete pig button- asks for confirmation with password
-- [ ] Change status of pig
+- [x] Change status of pig
+- [ ] Fix edit status bugs
 <br><br>
 
 ## More Info Button
@@ -17,6 +18,7 @@
 ## Create Pig report
 - [x] Create pig report btn that shows user a pig creation form
 - [x] Able to select from dropdown menu of existing places or add new location
+- [ ] Increase validation for location input
 <br><br>
 
 ## Map
