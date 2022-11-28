@@ -82,6 +82,8 @@ export class PigListComponent implements OnInit {
 	}
   
   openDelete(content, values){
+    this.form.reset();
+
     this.modalService.open(content, { ariaLabelledBy: 'deleteModal' }).result;
 
     this.pigInfoName = values.name;
@@ -102,8 +104,6 @@ export class PigListComponent implements OnInit {
       console.log(this.pigInfoName);
     }
 	}
-
-
 
 
   formReset(){

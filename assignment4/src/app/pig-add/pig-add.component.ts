@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms'
 import { PigService } from '../pig.service';
 import { PigListComponent } from '../pig-list/pig-list.component';
 
@@ -39,12 +39,13 @@ export class PigAddComponent implements OnInit{
 	}
 
 	locationValidator(control: FormControl){
-		
 		// if there are 2 commas then return null
 		let commaCounter = 0;
 		
-		for (let i=0;i<control.value.length;i++){
-			if (control.value[i] == ',') commaCounter++;
+		if (control.value != null){	
+			for (let i=0;i<control.value.length;i++){
+				if (control.value[i] == ',') commaCounter++;
+			}
 		}
 		
 		if (commaCounter == 2) return null;
@@ -52,16 +53,15 @@ export class PigAddComponent implements OnInit{
 	}
   
 	open(content: any) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result;
+		this.modalService.open(content, { ariaLabelledBy: 'addModal' }).result;
 	}
 
 	onSubmit(values){
 		this.ps.addPigs(values);
-	}
-
-	formReset(){
 		this.form.reset();
 	}
+
+
 
 	ngOnInit(): void {
 	}

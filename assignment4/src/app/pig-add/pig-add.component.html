@@ -2,20 +2,20 @@
 <ng-template #content let-modal>
 
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">New Pig Report</h4>
+		<h4 class="modal-title" id="addModal">New Pig Report</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 
 	<div class="modal-body">
 
-		<!-- Form -->
-		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value);formReset()" >
+		<!-- Form  OINK!!-->
+		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
 			<fieldset class="mb-3">
 
 				<!-- Name -->
                 <label for="name">Name</label>&nbsp;
 				<span *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
-					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger"> REQUIRED (No spaces)</span>
 				</span>
 				<div class="input-group">
 					<input
