@@ -55,9 +55,6 @@ export class PigService {
 
   changeStatus(values,date){
 
-    // parse location into name, latitude, longitude
-    let locationDetails = values.location.split(",",3);
-
     this.http.put('https://272.selfip.net/apps/CExpTwLOJp/collections/pigList/documents/'+values.name+'/',
     {
       "key":values.name, 
@@ -66,9 +63,9 @@ export class PigService {
             "name":values.name,
             "phoneNumber": values.phoneNumber,
             "pigInfo": values.pigInfo,
-            "location": locationDetails[0],
-            "latitude": locationDetails[1],
-            "longitude": locationDetails[2],
+            "location": values.location,
+            "latitude": values.latitude,
+            "longitude": values.longitude,
             "timeReported": date,
             "status": "RETRIEVED",
             "extraNote": values.extraNote
