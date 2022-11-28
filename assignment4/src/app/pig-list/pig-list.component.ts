@@ -100,8 +100,6 @@ export class PigListComponent implements OnInit {
     if (this.password){
       this.ps.deletePig(this.pigInfoName);
 
-      console.log(values);
-      console.log(this.pigInfoName);
     }
 	}
 

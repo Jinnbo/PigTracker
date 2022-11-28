@@ -20,6 +20,6 @@
 <br><br>
 
 ## Map
-- [ ] Map indicating all pig reports shown using markers
-- [ ] Clicking on an individual markers on the map shall show the number of reports at that location
+- [x] Map indicating all pig reports shown using markers
+- [x] Clicking on an individual markers on the map shall show the number of reports at that location
 
