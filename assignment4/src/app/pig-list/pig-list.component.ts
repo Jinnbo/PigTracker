@@ -54,6 +54,13 @@ export class PigListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    this.ps.refreshNeeded$.subscribe(()=>{
+      this.ps.getPigs().subscribe((data:any)=>{
+        this.pigs = data
+      })
+    })
+
     this.ps.getPigs().subscribe((data:any)=>{
       this.pigs = data
     })
