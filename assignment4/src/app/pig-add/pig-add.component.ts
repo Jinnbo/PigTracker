@@ -20,13 +20,15 @@ export class PigAddComponent implements OnInit{
 				Validators.required,
 			]),
 			phoneNumber: new FormControl('',[
-				Validators.required
+				Validators.required,
+				Validators.minLength(10)
 			]),
 			pigInfo: new FormControl('',[
 				Validators.required,
 			]),
 			location: new FormControl('',[
 				Validators.required,
+				this.locationValidator
 			]),
 			extraNote: new FormControl('',[
 				Validators.required,
@@ -34,6 +36,19 @@ export class PigAddComponent implements OnInit{
 		}
 
 		this.form = new FormGroup(formControls);
+	}
+
+	locationValidator(control: FormControl){
+		
+		// if there are 2 commas then return null
+		let commaCounter = 0;
+		
+		for (let i=0;i<control.value.length;i++){
+			if (control.value[i] == ',') commaCounter++;
+		}
+		
+		if (commaCounter == 2) return null;
+		else return control.value;
 	}
   
 	open(content: any) {

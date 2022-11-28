@@ -6,7 +6,7 @@
 <br><br>
 
 ## Change status
-- [ ] Delete pig button- asks for confirmation with password
+- [x] Delete pig button- asks for confirmation with password
 - [ ] Change status of pig
 <br><br>
 

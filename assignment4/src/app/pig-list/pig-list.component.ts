@@ -15,6 +15,8 @@ export class PigListComponent implements OnInit {
   public pigs;
   public pigInfoName: string;
   public pigInfoLocation: string;
+  public pigInfoLatitude: string;
+  public pigInfoLongitude: string;
   public pigInfoPhoneNumber: string;
   public pigInfoPigInfo: string;
   public pigInfoExtraNotes: string;
@@ -52,9 +54,8 @@ export class PigListComponent implements OnInit {
     }
   }
 
-
   ngOnInit(): void {
-    
+
     this.ps.refreshNeeded$.subscribe(()=>{
       this.ps.getPigs().subscribe((data:any)=>{
         this.pigs = data
@@ -76,6 +77,8 @@ export class PigListComponent implements OnInit {
     this.pigInfoExtraNotes = values.extraNote;
     this.pigInfoDate = values.timeReported;
     this.pigInfoStatus = values.status;
+    this.pigInfoLatitude = parseFloat(values.latitude).toFixed(10);
+    this.pigInfoLongitude = parseFloat(values.longitude).toFixed(10);
 	}
   
   openDelete(content, values){
@@ -98,9 +101,10 @@ export class PigListComponent implements OnInit {
       console.log(values);
       console.log(this.pigInfoName);
     }
-
-
 	}
+
+
+
 
   formReset(){
 		this.form.reset();

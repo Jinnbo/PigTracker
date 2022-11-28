@@ -50,11 +50,18 @@
     <div class="h5">Location</div>
     {{pigInfoLocation}}<br><br>
     
+    <div class="coordsContainer">
+      <div class="h5">Latitude</div>
+      {{pigInfoLatitude}}
+      <div class="h5">Longitude</div>
+      {{pigInfoLongitude}}<br><br>
+    </div>
+    
     <div class="h5">Extra Notes</div>
     {{pigInfoExtraNotes}}<br><br>
     
     <div class="h5">Date</div>
-    {{pigInfoDate}}<br><br>
+    {{pigInfoDate | date:'yyyy-MM-d (h:mm a)'}}<br><br>
 
     <div class="h5">Status</div>
     {{pigInfoStatus}}<br><br>

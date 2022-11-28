@@ -26,6 +26,9 @@ export class PigService {
 
   addPigs(values){
 
+    // parse location into name, latitude, longitude
+    let locationDetails = values.location.split(",",3);
+
     this.http.post('https://272.selfip.net/apps/CExpTwLOJp/collections/pigList/documents/',
     {
       "key":values.name, 
@@ -34,7 +37,9 @@ export class PigService {
             "name":values.name,
             "phoneNumber": values.phoneNumber,
             "pigInfo": values.pigInfo,
-            "location": values.location,
+            "location": locationDetails[0],
+            "latitude": locationDetails[1],
+            "longitude": locationDetails[2],
             "timeReported": (new Date().getTime()),
             "status": "READY FOR PICKUP",
             "extraNote": values.extraNote

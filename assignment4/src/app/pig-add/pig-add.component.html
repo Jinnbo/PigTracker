@@ -31,15 +31,13 @@
 				<!-- Phone Number -->
 				<label for="phoneNumber">Phone-number</label><br>
 				<span *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
-					<span [hidden]="form.get('phoneNumber')?.hasError('pattern')" class="text-danger">Should only be numbers</span><br>
-					<span [hidden]="form.get('phoneNumber')?.hasError('maxLength')" class="text-danger">Should have a length of 9</span>
+					<span *ngIf="form.get('phoneNumber')?.hasError('pattern')" class="text-danger">Should only be numbers<br></span>
+					<span class="text-danger">Should only be 10 numbers</span>
 				</span>	
 				<div class="input-group">
-
 					<input
 						pattern="[0-9]*"
-						minLength="9"
-						maxLength="9"
+						maxlength= 10
 						id="phoneNumber"
 						class="form-control"
 						placeholder="123456789"
@@ -64,7 +62,7 @@
 				</div>
 
 				<!-- Location -->
-				<label for="location">Location: name,latitude,longitude</label>
+				<label for="location">Location: <span class="text-secondary">FORMAT: name,latitude,longitude</span></label>
 				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
 					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger">  REQUIRED</span>
 				</span>
