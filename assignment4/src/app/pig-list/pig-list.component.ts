@@ -94,15 +94,33 @@ export class PigListComponent implements OnInit {
     this.pigInfoDate = values.timeReported;
     this.pigInfoStatus = values.status;
   }
+  
 
+  testObj;
+
+  openStatus(content,values){
+    this.form.reset();
+    
+    this.pigInfoName = values.name;
+    this.pigInfoDate = values.timeReported;
+    this.testObj = values;
+
+    this.modalService.open(content, {ariaLabelledBy: 'editModal'}).result;
+  }
+
+  // Change status
+  onSubmitStatus(values){
+    if (this.password){ //OINK!!
+      this.ps.changeStatus(this.testObj,this.pigInfoDate);
+    }
+  }
+
+  // Delete Pig 
   onSubmit(values){
-
     if (this.password){
       this.ps.deletePig(this.pigInfoName);
-
     }
 	}
-
 
   formReset(){
 		this.form.reset();

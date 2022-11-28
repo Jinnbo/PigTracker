@@ -53,4 +53,28 @@ export class PigService {
     ).pipe( tap(()=>{this._refreshNeeded$.next()})).subscribe((data:any)=>{console.log(data)})
   }
 
+  changeStatus(values,date){
+
+    // parse location into name, latitude, longitude
+    let locationDetails = values.location.split(",",3);
+
+    this.http.put('https://272.selfip.net/apps/CExpTwLOJp/collections/pigList/documents/'+values.name+'/',
+    {
+      "key":values.name, 
+      "data":[
+        {
+            "name":values.name,
+            "phoneNumber": values.phoneNumber,
+            "pigInfo": values.pigInfo,
+            "location": locationDetails[0],
+            "latitude": locationDetails[1],
+            "longitude": locationDetails[2],
+            "timeReported": date,
+            "status": "RETRIEVED",
+            "extraNote": values.extraNote
+        }
+      ] 
+    }).pipe( tap(()=>{this._refreshNeeded$.next()})).subscribe((data:any)=>{ console.log(data)})
+  }
+
 }
