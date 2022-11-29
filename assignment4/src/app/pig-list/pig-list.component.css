@@ -1,4 +1,7 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .coordsContainer{
     display: flex;
     gap: 1em;
 }
+

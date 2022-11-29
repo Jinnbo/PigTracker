@@ -27,6 +27,12 @@ export class PigListComponent implements OnInit {
   password: boolean = false;
   htmlContent = '';
 
+  locationSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  locationFlag = true;
+
+  nameSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  nameFlag = true;
+
   constructor(private ps: PigService,private modalService: NgbModal){
     this.pigs = [];    
 
@@ -37,21 +43,6 @@ export class PigListComponent implements OnInit {
 		}
 
 		this.form = new FormGroup(formControls);
-  }
-
-  checkPassword(content,form){
-
-    let actual: string = form.value;
-    let expected: string = "OINK!!";
-
-    if (actual === expected){
-      this.modalService.dismissAll();   
-      this.password = true;   
-    }
-    else{
-      this.htmlContent = '<div class="text-danger">Incorrect Password</div>';
-      this.password = false;   
-    }
   }
 
   ngOnInit(): void {
@@ -95,7 +86,6 @@ export class PigListComponent implements OnInit {
     this.pigInfoStatus = values.status;
   }
   
-
   testObj;
 
   openStatus(content,values){
@@ -125,4 +115,92 @@ export class PigListComponent implements OnInit {
   formReset(){
 		this.form.reset();
 	}
+
+  checkPassword(content,form){
+
+    let actual: string = form.value;
+    let expected: string = "OINK!!";
+
+    if (actual === expected){
+      this.modalService.dismissAll();   
+      this.password = true;   
+    }
+    else{
+      this.htmlContent = '<div class="text-danger">Incorrect Password</div>';
+      this.password = false;   
+    }
+  }
+
+
+  sortbyLocation(){
+
+    if (this.locationFlag){
+      this.locationSort = '<i class="bi bi-sort-alpha-down"></i>';
+      this.locationFlag = false;
+
+      // sort pig list by location name from z-a
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].location < pig2.data[0].location){
+          return 1;
+        }
+        if (pig1.data[0].location > pig2.data[0].location){
+          return -1;
+        }
+        return 0;
+      })
+
+    }
+    else{
+      this.locationSort = `<i class="bi bi-sort-alpha-up"></i>`;
+      this.locationFlag = true;
+      
+      // sort pig list by location name from a-z
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].location > pig2.data[0].location){
+          return 1;
+        }
+        if (pig1.data[0].location < pig2.data[0].location){
+          return -1;
+        }
+        return 0;
+      })
+
+    }
+  }
+
+  sortbyName(){
+    if (this.nameFlag){
+      this.nameSort = '<i class="bi bi-sort-alpha-down"></i>';
+      this.nameFlag = false;
+
+      // sort pig list by location name from z-a
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].name < pig2.data[0].name){
+          return 1;
+        }
+        if (pig1.data[0].name > pig2.data[0].name){
+          return -1;
+        }
+        return 0;
+      })
+
+    }
+    else{
+      this.nameSort = `<i class="bi bi-sort-alpha-up"></i>`;
+      this.nameFlag = true;
+      
+      // sort pig list by location name from a-z
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].name > pig2.data[0].name){
+          return 1;
+        }
+        if (pig1.data[0].name < pig2.data[0].name){
+          return -1;
+        }
+        return 0;
+      })
+    }
+  }
+
+
 } 
