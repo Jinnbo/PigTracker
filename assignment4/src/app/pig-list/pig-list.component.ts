@@ -11,8 +11,10 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
   styleUrls: ['./pig-list.component.css']
 })
 export class PigListComponent implements OnInit {
-
+  
   public pigs;
+  form: FormGroup;
+  
   public pigInfoName: string;
   public pigInfoLocation: string;
   public pigInfoLatitude: string;
@@ -22,53 +24,46 @@ export class PigListComponent implements OnInit {
   public pigInfoExtraNotes: string;
   public pigInfoDate: string;
   public pigInfoStatus: string;
-  form: FormGroup;
 
+  // Password Variables
   password: boolean = false;
-  htmlContent = '';
+  incorrectPassword = '';
 
   // Sorting variables
   locationSort = `<i class="bi bi-sort-alpha-down"></i>`;
   locationFlag = true;
-
   nameSort = `<i class="bi bi-sort-alpha-down"></i>`;
   nameFlag = true;
-
   timeSort = `<i class="bi bi-sort-numeric-down"></i>`;
   timeFlag = true;
-
   statusSort = `<i class="bi bi-sort-alpha-down"></i>`;
   statusFlag = true;
 
   constructor(private ps: PigService,private modalService: NgbModal){
     this.pigs = [];    
-
     let formControls = {
       password: new FormControl('',[
 				Validators.required
 			]),
 		}
-
 		this.form = new FormGroup(formControls);
   }
 
   ngOnInit(): void {
-
     this.ps.refreshNeeded$.subscribe(()=>{
       this.ps.getPigs().subscribe((data:any)=>{
         this.pigs = data
       })
     })
-
     this.ps.getPigs().subscribe((data:any)=>{
       this.pigs = data
     })
   }
   
-  
   tempObj;
   openModal(content,values,modalType: string){
     this.form.reset();
+    this.incorrectPassword = '';
     this.setValues(values);
     this.tempObj = values;
     this.modalService.open(content, {ariaLabelledBy: `${modalType}`}).result;
@@ -116,14 +111,12 @@ export class PigListComponent implements OnInit {
       this.password = true;   
     }
     else{
-      this.htmlContent = '<div class="text-danger">Incorrect Password</div>';
+      this.incorrectPassword = '<div class="text-danger">Incorrect Password</div>';
       this.password = false;   
     }
   }
 
-
   sortbyLocation(){
-
     if (this.locationFlag){
       this.locationSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.locationFlag = false;
@@ -206,15 +199,4 @@ export class PigListComponent implements OnInit {
       })
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 } 

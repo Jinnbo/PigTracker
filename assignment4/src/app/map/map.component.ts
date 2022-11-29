@@ -54,14 +54,13 @@ export class MapComponent implements AfterViewInit {
         this.pigs = data
 
         for (let i =0;i<this.pigs.length;i++){
-          let temp = [this.pigs[i].data[0].latitude, this.pigs[i].data[0].longitude,this.pigs[i].data[0].location];
+          let temp = [this.pigs[i].data[0].latitude, this.pigs[i].data[0].longitude,this.pigs[i].data[0].location,this.pigs[i].data[0].status];
           this.pigCoords.push(temp);
         }
 
         this.setMarkers();
       })
     }
-
 
   ngAfterViewInit(): void { 
     this.initMap();
@@ -72,14 +71,13 @@ export class MapComponent implements AfterViewInit {
         this.pigs = data
 
         for (let i =0;i<this.pigs.length;i++){
-          let temp = [this.pigs[i].data[0].latitude, this.pigs[i].data[0].longitude,this.pigs[i].data[0].location];
+          let temp = [this.pigs[i].data[0].latitude, this.pigs[i].data[0].longitude,this.pigs[i].data[0].location,this.pigs[i].data[0].status];
           this.pigCoords.push(temp);
         }
 
         this.setMarkers();
       })
     })
-
   }
   
   setMarkers(){
@@ -89,20 +87,21 @@ export class MapComponent implements AfterViewInit {
 
     // Loop through pigCoords
     for (let i=0;i<this.pigCoords.length;i++){
-      latitude = this.pigCoords[i][0];
-      longitude = this.pigCoords[i][1];
-      occurances = 0;
-      
-      // Count number of times each location pops up
-      for (let j = 0;j<this.pigCoords.length;j++){
-        if (this.pigCoords[i][2] == this.pigCoords[j][2]) occurances++;
-      }
-      
-      // Place marker on each pair of coordinates
-      L.marker([latitude, longitude]).addTo(this.map)
-      .bindPopup(`<b>${this.pigCoords[i][2]}</b><br/>${occurances} pigs reported.`).openPopup();
 
+      if (this.pigCoords[i][3] === "READY FOR PICKUP"){
+        latitude = this.pigCoords[i][0];
+        longitude = this.pigCoords[i][1];
+        occurances = 0;
+      
+        // Count number of times each location pops up
+        for (let j = 0;j<this.pigCoords.length;j++){
+          if (this.pigCoords[i][2] == this.pigCoords[j][2]) occurances++;
+        }
+
+        // Place marker on each pair of coordinates
+        L.marker([latitude, longitude]).addTo(this.map)
+        .bindPopup(`<b>${this.pigCoords[i][2]}</b><br/>${occurances} pigs reported.`).openPopup();
+      }
     }
   }
-
 }
