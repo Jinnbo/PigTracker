@@ -33,6 +33,12 @@ export class PigListComponent implements OnInit {
   nameSort = `<i class="bi bi-sort-alpha-down"></i>`;
   nameFlag = true;
 
+  timeSort = `<i class="bi bi-sort-numeric-down"></i>`;
+  timeFlag = true;
+
+  statusSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  statusFlag = true;
+
   constructor(private ps: PigService,private modalService: NgbModal){
     this.pigs = [];    
 
@@ -173,7 +179,7 @@ export class PigListComponent implements OnInit {
       this.nameSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.nameFlag = false;
 
-      // sort pig list by location name from z-a
+      // sort pig list by name from z-a
       this.pigs.sort((pig1,pig2) =>{
         if (pig1.data[0].name < pig2.data[0].name){
           return 1;
@@ -189,7 +195,7 @@ export class PigListComponent implements OnInit {
       this.nameSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.nameFlag = true;
       
-      // sort pig list by location name from a-z
+      // sort pig list by name from a-z
       this.pigs.sort((pig1,pig2) =>{
         if (pig1.data[0].name > pig2.data[0].name){
           return 1;
@@ -201,6 +207,83 @@ export class PigListComponent implements OnInit {
       })
     }
   }
+  
+  sortbyTime(){
+    if (this.timeFlag){
+      this.timeSort = '<i class="bi bi-sort-numeric-down"></i>';
+      this.timeFlag = false;
+
+      // sort pig list by name from z-a
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].timeReported < pig2.data[0].timeReported){
+          return 1;
+        }
+        if (pig1.data[0].timeReported > pig2.data[0].timeReported){
+          return -1;
+        }
+        return 0;
+      })
+
+    }
+    else{
+      this.timeSort = `<i class="bi bi-sort-numeric-up"></i>`;
+      this.timeFlag = true;
+      
+      // sort pig list by name from a-z
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].timeReported > pig2.data[0].timeReported){
+          return 1;
+        }
+        if (pig1.data[0].timeReported < pig2.data[0].timeReported){
+          return -1;
+        }
+        return 0;
+      })
+    }
+  }
+
+  sortbyStatus(){
+    if (this.statusFlag){
+      this.statusSort = '<i class="bi bi-sort-alpha-down"></i>';
+      this.statusFlag = false;
+
+      // sort pig list by status from z-a
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].status < pig2.data[0].status){
+          return 1;
+        }
+        if (pig1.data[0].status > pig2.data[0].status){
+          return -1;
+        }
+        return 0;
+      })
+
+    }
+    else{
+      this.statusSort = `<i class="bi bi-sort-alpha-up"></i>`;
+      this.statusFlag = true;
+      
+      // sort pig list by name from a-z
+      this.pigs.sort((pig1,pig2) =>{
+        if (pig1.data[0].status > pig2.data[0].status){
+          return 1;
+        }
+        if (pig1.data[0].status < pig2.data[0].status){
+          return -1;
+        }
+        return 0;
+      })
+    }
+  }
+
+
+
+
+
+
+
+
+
 
 
 } 

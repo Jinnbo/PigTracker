@@ -11,11 +11,20 @@
           </th>
           <th scope="col">
             Reported By
+            &nbsp;
             <a href="#" class="link-secondary" [innerHTML]="nameSort" (click)="sortbyName()" ></a>
             &nbsp;
           </th>
-          <th scope="col">Time Reported</th>
-          <th scope="col">Status</th>
+          <th scope="col">
+            Time Reported
+            &nbsp;
+            <a href="#" class="link-secondary" [innerHTML]="timeSort" (click)="sortbyTime()" ></a>
+          </th>
+          <th scope="col">
+            Status
+            &nbsp;
+            <a href="#" class="link-secondary" [innerHTML]="statusSort" (click)="sortbyStatus()" ></a>
+          </th>
           <th scope="col">More Info</th>
           <th scope="col"></th>
         </tr>
