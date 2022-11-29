@@ -27,6 +27,7 @@ export class PigListComponent implements OnInit {
   password: boolean = false;
   htmlContent = '';
 
+  // Sorting variables
   locationSort = `<i class="bi bi-sort-alpha-down"></i>`;
   locationFlag = true;
 
@@ -64,9 +65,16 @@ export class PigListComponent implements OnInit {
     })
   }
   
-  openInfo(content, values) {
-		this.modalService.open(content, { ariaLabelledBy: 'Infomodal' }).result;
-    
+  
+  tempObj;
+  openModal(content,values,modalType: string){
+    this.form.reset();
+    this.setValues(values);
+    this.tempObj = values;
+    this.modalService.open(content, {ariaLabelledBy: `${modalType}`}).result;
+  }
+  
+  setValues(values){
     this.pigInfoName = values.name;
     this.pigInfoPhoneNumber = values.phoneNumber;
     this.pigInfoPigInfo = values.pigInfo;
@@ -76,38 +84,12 @@ export class PigListComponent implements OnInit {
     this.pigInfoStatus = values.status;
     this.pigInfoLatitude = parseFloat(values.latitude).toFixed(10);
     this.pigInfoLongitude = parseFloat(values.longitude).toFixed(10);
-	}
-  
-  openDelete(content, values){
-    this.form.reset();
-
-    this.modalService.open(content, { ariaLabelledBy: 'deleteModal' }).result;
-
-    this.pigInfoName = values.name;
-    this.pigInfoPhoneNumber = values.phoneNumber;
-    this.pigInfoPigInfo = values.pigInfo;
-    this.pigInfoLocation = values.location;
-    this.pigInfoExtraNotes = values.extraNote;
-    this.pigInfoDate = values.timeReported;
-    this.pigInfoStatus = values.status;
   }
   
-  testObj;
-
-  openStatus(content,values){
-    this.form.reset();
-    
-    this.pigInfoName = values.name;
-    this.pigInfoDate = values.timeReported;
-    this.testObj = values;
-
-    this.modalService.open(content, {ariaLabelledBy: 'editModal'}).result;
-  }
-
   // Change status
   onSubmitStatus(values){
-    if (this.password){ //OINK!!
-      this.ps.changeStatus(this.testObj,this.pigInfoDate);
+    if (this.password){
+      this.ps.changeStatus(this.tempObj,this.pigInfoDate);
     }
   }
 
@@ -118,10 +100,12 @@ export class PigListComponent implements OnInit {
     }
 	}
 
+  // Reset Form
   formReset(){
 		this.form.reset();
 	}
 
+  // Check if password is correct
   checkPassword(content,form){
 
     let actual: string = form.value;
@@ -143,34 +127,20 @@ export class PigListComponent implements OnInit {
     if (this.locationFlag){
       this.locationSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.locationFlag = false;
-
-      // sort pig list by location name from z-a
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].location < pig2.data[0].location){
-          return 1;
-        }
-        if (pig1.data[0].location > pig2.data[0].location){
-          return -1;
-        }
+        if (pig1.data[0].location < pig2.data[0].location) return 1;
+        if (pig1.data[0].location > pig2.data[0].location) return -1;
         return 0;
       })
-
     }
     else{
       this.locationSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.locationFlag = true;
-      
-      // sort pig list by location name from a-z
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].location > pig2.data[0].location){
-          return 1;
-        }
-        if (pig1.data[0].location < pig2.data[0].location){
-          return -1;
-        }
+        if (pig1.data[0].location > pig2.data[0].location) return 1;
+        if (pig1.data[0].location < pig2.data[0].location) return -1;
         return 0;
       })
-
     }
   }
 
@@ -178,31 +148,18 @@ export class PigListComponent implements OnInit {
     if (this.nameFlag){
       this.nameSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.nameFlag = false;
-
-      // sort pig list by name from z-a
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].name < pig2.data[0].name){
-          return 1;
-        }
-        if (pig1.data[0].name > pig2.data[0].name){
-          return -1;
-        }
+        if (pig1.data[0].name < pig2.data[0].name) return 1;
+        if (pig1.data[0].name > pig2.data[0].name) return -1;
         return 0;
       })
-
     }
     else{
       this.nameSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.nameFlag = true;
-      
-      // sort pig list by name from a-z
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].name > pig2.data[0].name){
-          return 1;
-        }
-        if (pig1.data[0].name < pig2.data[0].name){
-          return -1;
-        }
+        if (pig1.data[0].name > pig2.data[0].name) return 1;
+        if (pig1.data[0].name < pig2.data[0].name) return -1;
         return 0;
       })
     }
@@ -212,31 +169,18 @@ export class PigListComponent implements OnInit {
     if (this.timeFlag){
       this.timeSort = '<i class="bi bi-sort-numeric-down"></i>';
       this.timeFlag = false;
-
-      // sort pig list by name from z-a
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].timeReported < pig2.data[0].timeReported){
-          return 1;
-        }
-        if (pig1.data[0].timeReported > pig2.data[0].timeReported){
-          return -1;
-        }
+        if (pig1.data[0].timeReported < pig2.data[0].timeReported) return 1;
+        if (pig1.data[0].timeReported > pig2.data[0].timeReported) return -1;
         return 0;
       })
-
     }
     else{
       this.timeSort = `<i class="bi bi-sort-numeric-up"></i>`;
       this.timeFlag = true;
-      
-      // sort pig list by name from a-z
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].timeReported > pig2.data[0].timeReported){
-          return 1;
-        }
-        if (pig1.data[0].timeReported < pig2.data[0].timeReported){
-          return -1;
-        }
+        if (pig1.data[0].timeReported > pig2.data[0].timeReported) return 1;
+        if (pig1.data[0].timeReported < pig2.data[0].timeReported) return -1;
         return 0;
       })
     }
@@ -246,31 +190,18 @@ export class PigListComponent implements OnInit {
     if (this.statusFlag){
       this.statusSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.statusFlag = false;
-
-      // sort pig list by status from z-a
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].status < pig2.data[0].status){
-          return 1;
-        }
-        if (pig1.data[0].status > pig2.data[0].status){
-          return -1;
-        }
+        if (pig1.data[0].status < pig2.data[0].status) return 1;
+        if (pig1.data[0].status > pig2.data[0].status)return -1;
         return 0;
       })
-
     }
     else{
       this.statusSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.statusFlag = true;
-      
-      // sort pig list by name from a-z
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].status > pig2.data[0].status){
-          return 1;
-        }
-        if (pig1.data[0].status < pig2.data[0].status){
-          return -1;
-        }
+        if (pig1.data[0].status > pig2.data[0].status) return 1;
+        if (pig1.data[0].status < pig2.data[0].status) return -1;
         return 0;
       })
     }
