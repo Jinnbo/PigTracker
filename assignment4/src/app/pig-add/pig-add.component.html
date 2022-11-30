@@ -8,14 +8,15 @@
 
 	<div class="modal-body">
 
-		<!-- Form  OINK!!-->
+		<!-- Form -->
 		<form  [formGroup]="form" (ngSubmit)="onSubmit(form.value)" >
 			<fieldset class="mb-3">
 
 				<!-- Name -->
                 <label for="name">Name</label>&nbsp;
 				<span *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
-					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger"> REQUIRED (No spaces)</span>
+					<span *ngIf="form.get('name')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+					<span *ngIf="form.get('name')?.errors?.['invalidFormat']" class="text-danger"> (No spaces)</span>
 				</span>
 				<div class="input-group">
 					<input
@@ -32,7 +33,7 @@
 				<label for="phoneNumber">Phone-number</label><br>
 				<span *ngIf="form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched">
 					<span *ngIf="form.get('phoneNumber')?.hasError('pattern')" class="text-danger">Should only be numbers<br></span>
-					<span class="text-danger">Should only be 10 numbers</span>
+					<span class="text-danger">Should be 10 numbers</span>
 				</span>	
 				<div class="input-group">
 					<input
@@ -65,6 +66,7 @@
 				<label for="location">Location: <span class="text-secondary">FORMAT: name,latitude,longitude</span></label>
 				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
 					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger">  REQUIRED</span>
+					<span *ngIf="form.get('location')?.errors?.['invalidFormat']" class="text-danger">  Invalid Location</span>
 				</span>
 				<input list="locations" name="location" class="form-control" formControlName="location"/>
 				<datalist id="locations">

@@ -121,8 +121,8 @@ export class PigListComponent implements OnInit {
       this.locationSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.locationFlag = false;
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].location < pig2.data[0].location) return 1;
-        if (pig1.data[0].location > pig2.data[0].location) return -1;
+        if (pig1.data[0].location.toLowerCase() < pig2.data[0].location.toLowerCase()) return 1;
+        if (pig1.data[0].location.toLowerCase() > pig2.data[0].location.toLowerCase()) return -1;
         return 0;
       })
     }
@@ -130,8 +130,8 @@ export class PigListComponent implements OnInit {
       this.locationSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.locationFlag = true;
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].location > pig2.data[0].location) return 1;
-        if (pig1.data[0].location < pig2.data[0].location) return -1;
+        if (pig1.data[0].location.toLowerCase() > pig2.data[0].location.toLowerCase()) return 1;
+        if (pig1.data[0].location.toLowerCase() < pig2.data[0].location.toLowerCase()) return -1;
         return 0;
       })
     }
@@ -142,17 +142,18 @@ export class PigListComponent implements OnInit {
       this.nameSort = '<i class="bi bi-sort-alpha-down"></i>';
       this.nameFlag = false;
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].name < pig2.data[0].name) return 1;
-        if (pig1.data[0].name > pig2.data[0].name) return -1;
+        if (pig1.data[0].name.toLowerCase() < pig2.data[0].name.toLowerCase()) return 1;
+        if (pig1.data[0].name.toLowerCase() > pig2.data[0].name.toLowerCase()) return -1;
         return 0;
       })
+
     }
     else{
       this.nameSort = `<i class="bi bi-sort-alpha-up"></i>`;
       this.nameFlag = true;
       this.pigs.sort((pig1,pig2) =>{
-        if (pig1.data[0].name > pig2.data[0].name) return 1;
-        if (pig1.data[0].name < pig2.data[0].name) return -1;
+        if (pig1.data[0].name.toLowerCase() > pig2.data[0].name.toLowerCase()) return 1;
+        if (pig1.data[0].name.toLowerCase() < pig2.data[0].name.toLowerCase()) return -1;
         return 0;
       })
     }

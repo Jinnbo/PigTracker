@@ -12,12 +12,13 @@ import { PigListComponent } from '../pig-list/pig-list.component';
 export class PigAddComponent implements OnInit{
 	closeResult = '';
 	form: FormGroup;
-
+	
 	constructor(private modalService: NgbModal, private ps: PigService) {
-
+		
 		let formControls = {
 			name: new FormControl('',[
 				Validators.required,
+				this.whiteSpaceValidator
 			]),
 			phoneNumber: new FormControl('',[
 				Validators.required,
@@ -38,18 +39,31 @@ export class PigAddComponent implements OnInit{
 		this.form = new FormGroup(formControls);
 	}
 
-	locationValidator(control: FormControl){
-		// if there are 2 commas then return null
-		let commaCounter = 0;
-		
-		if (control.value != null){	
-			for (let i=0;i<control.value.length;i++){
-				if (control.value[i] == ',') commaCounter++;
+	whiteSpaceValidator(control: FormControl){
+
+		if (control.value != null){
+			if (control.value.indexOf(' ') >= 0){
+				return { invalidFormat: {message: "No spaces"}};
 			}
+			else return null;
 		}
+
+		return null;
+	}
+
+
+	locationValidator(control: FormControl){
+
+		if (control.value != null){	
+			let tempLocation = control.value.split(",",3);
+
+			if (isNaN(parseFloat(tempLocation[0])) && (!isNaN(parseFloat(tempLocation[1]))) && (!isNaN(parseFloat(tempLocation[2])))){
+				return null;
+			}	
+		}
+
+		return { invalidFormat: {message: "No spaces"}};
 		
-		if (commaCounter == 2) return null;
-		else return control.value;
 	}
   
 	open(content: any) {
@@ -61,9 +75,6 @@ export class PigAddComponent implements OnInit{
 		this.form.reset();
 	}
 
-
-
 	ngOnInit(): void {
 	}
-
 }
