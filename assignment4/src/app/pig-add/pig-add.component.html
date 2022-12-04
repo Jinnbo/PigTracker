@@ -47,28 +47,44 @@
 					/>
 				</div>
 
-				<!-- Pig Info -->
-                <label for="pigInfo">Pig Info</label>
-				<span *ngIf="form.get('pigInfo')?.invalid && form.get('pigInfo')?.touched">
-					<span *ngIf="form.get('pigInfo')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+				<!-- Breed -->
+                <label for="breed">Breed</label>
+				<span *ngIf="form.get('breed')?.invalid && form.get('breed')?.touched">
+					<span *ngIf="form.get('breed')?.errors?.['required']" class="text-danger"> REQUIRED</span>
 				</span>
 				<div class="input-group">
 					<input
-						id="pigInfo"
+						id="breed"
 						class="form-control"
-						placeholder="info"
-						name="pigInfo"
-                        formControlName="pigInfo"
+						placeholder="breed"
+						name="breed"
+                        formControlName="breed"
+					/>
+				</div>
+				
+				<!-- ID -->
+                <label for="pigID">Pig ID</label>
+				<span *ngIf="form.get('pigID')?.invalid && form.get('pigID')?.touched">
+					<span *ngIf="form.get('pigID')?.errors?.['required']" class="text-danger"> REQUIRED</span>
+					<span *ngIf="form.get('pigID')?.hasError('pattern')" class="text-danger"> Should only be numbers<br></span>
+				</span>
+				<div class="input-group">
+					<input
+						id="pigID"
+						class="form-control"
+						placeholder="pigID"
+						name="pigID"
+                        formControlName="pigID"
 					/>
 				</div>
 
 				<!-- Location -->
-				<label for="location">Location: <span class="text-secondary">FORMAT: name,latitude,longitude</span></label>
+				<label for="location">Location: </label>
 				<span *ngIf="form.get('location')?.invalid && form.get('location')?.touched">
-					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger">  REQUIRED</span>
-					<span *ngIf="form.get('location')?.errors?.['invalidFormat']" class="text-danger">  Invalid Location</span>
+					<span *ngIf="form.get('location')?.errors?.['required']" class="text-danger">  REQUIRED </span>
+					<span *ngIf="form.get('location')?.errors?.['invalidFormat']" class="text-danger">{{form.get('location')?.errors?.['invalidFormat'].message}}</span>
 				</span>
-				<input list="locations" name="location" class="form-control" formControlName="location"/>
+				<input list="locations" name="location" class="form-control" formControlName="location" placeholder="Name,Longitude,Latitude"/>
 				<datalist id="locations">
 					<option value="SFU Burnaby, 49.27771876941029, -122.9195895362721">
 					<option value="SFU Surrey, 49.18711172841241, -122.84952884218839">

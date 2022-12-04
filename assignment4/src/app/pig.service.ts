@@ -36,7 +36,8 @@ export class PigService {
         {
             "name":values.name,
             "phoneNumber": values.phoneNumber,
-            "pigInfo": values.pigInfo,
+            "id": values.pigID,
+            "breed": values.breed,
             "location": locationDetails[0],
             "latitude": locationDetails[1],
             "longitude": locationDetails[2],
@@ -53,7 +54,7 @@ export class PigService {
     ).pipe( tap(()=>{this._refreshNeeded$.next()})).subscribe((data:any)=>{console.log(data)})
   }
 
-  changeStatus(values,date){
+  changeStatus(values,date,pigID){
 
     this.http.put('https://272.selfip.net/apps/CExpTwLOJp/collections/pigList/documents/'+values.name+'/',
     {
@@ -62,7 +63,8 @@ export class PigService {
         {
             "name":values.name,
             "phoneNumber": values.phoneNumber,
-            "pigInfo": values.pigInfo,
+            "breed": values.breed,
+            "id": pigID,
             "location": values.location,
             "latitude": values.latitude,
             "longitude": values.longitude,

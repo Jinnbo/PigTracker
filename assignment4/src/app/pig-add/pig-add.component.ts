@@ -24,8 +24,12 @@ export class PigAddComponent implements OnInit{
 				Validators.required,
 				Validators.minLength(10)
 			]),
-			pigInfo: new FormControl('',[
+			breed: new FormControl('',[
+				Validators.required
+			]),
+			pigID: new FormControl('',[
 				Validators.required,
+				Validators.pattern("^[0-9]*$")
 			]),
 			location: new FormControl('',[
 				Validators.required,
@@ -57,6 +61,14 @@ export class PigAddComponent implements OnInit{
 		if (control.value != null){	
 			let tempLocation = control.value.split(",",3);
 
+			var regExp = /[a-zA-Z]/g;
+
+			if (regExp.test(tempLocation[1])){
+				return { invalidFormat: {message: "No letters in Longitude"}};
+			}
+			if (regExp.test(tempLocation[2])){
+				return { invalidFormat: {message: "No letters in Latitude"}};
+			}
 			if (isNaN(parseFloat(tempLocation[0])) && (!isNaN(parseFloat(tempLocation[1]))) && (!isNaN(parseFloat(tempLocation[2])))){
 				return null;
 			}	

@@ -20,10 +20,11 @@ export class PigListComponent implements OnInit {
   public pigInfoLatitude: string;
   public pigInfoLongitude: string;
   public pigInfoPhoneNumber: string;
-  public pigInfoPigInfo: string;
   public pigInfoExtraNotes: string;
   public pigInfoDate: string;
   public pigInfoStatus: string;
+  public pigInfoID: string;
+  public pigInfoBreed: String;
 
   // Password Variables
   password: boolean = false;
@@ -72,11 +73,12 @@ export class PigListComponent implements OnInit {
   setValues(values){
     this.pigInfoName = values.name;
     this.pigInfoPhoneNumber = values.phoneNumber;
-    this.pigInfoPigInfo = values.pigInfo;
     this.pigInfoLocation = values.location;
     this.pigInfoExtraNotes = values.extraNote;
     this.pigInfoDate = values.timeReported;
     this.pigInfoStatus = values.status;
+    this.pigInfoID = values.id;
+    this.pigInfoBreed = values.breed;
     this.pigInfoLatitude = parseFloat(values.latitude).toFixed(10);
     this.pigInfoLongitude = parseFloat(values.longitude).toFixed(10);
   }
@@ -95,7 +97,7 @@ export class PigListComponent implements OnInit {
 
       if (pass === hashedPassword){
         this.modalService.dismissAll();
-        this.ps.changeStatus(this.tempObj,this.pigInfoDate);
+        this.ps.changeStatus(this.tempObj,this.pigInfoDate,this.pigInfoID);
       }
       else{
         this.incorrectPassword = '<div class="text-danger">Incorrect Password</div>';
