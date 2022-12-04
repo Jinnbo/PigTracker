@@ -2,13 +2,13 @@
 
 ## Pig table
 - [x] Display all pig reports on main page
-- [ ] Sort the data by each column(location, reported by, time reported)
+- [x] Sort the data by each column(location, reported by, time reported)
 <br><br>
 
 ## Change status
 - [x] Delete pig button- asks for confirmation with password
 - [x] Change status of pig
-- [ ] Fix edit status bugs
+- [x] Fix edit status bugs
 <br><br>
 
 ## More Info Button
@@ -18,7 +18,7 @@
 ## Create Pig report
 - [x] Create pig report btn that shows user a pig creation form
 - [x] Able to select from dropdown menu of existing places or add new location
-- [ ] Increase validation for location input
+- [x] Increase validation for location input
 <br><br>
 
 ## Map

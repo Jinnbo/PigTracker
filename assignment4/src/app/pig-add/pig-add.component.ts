@@ -67,6 +67,7 @@ export class PigAddComponent implements OnInit{
 	}
   
 	open(content: any) {
+		this.form.reset();
 		this.modalService.open(content, { ariaLabelledBy: 'addModal' }).result;
 	}
 

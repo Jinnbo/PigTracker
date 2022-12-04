@@ -95,12 +95,22 @@ export class MapComponent implements AfterViewInit {
       
         // Count number of times each location pops up
         for (let j = 0;j<this.pigCoords.length;j++){
-          if (this.pigCoords[i][2] == this.pigCoords[j][2]) occurances++;
+          if (this.pigCoords[i][2] == this.pigCoords[j][2]){
+            occurances++;
+          }
         }
 
         // Place marker on each pair of coordinates
-        L.marker([latitude, longitude]).addTo(this.map)
-        .bindPopup(`<b>${this.pigCoords[i][2]}</b><br/>${occurances} pigs reported.`).openPopup();
+        if (occurances == 1){ 
+          L.marker([latitude, longitude])
+          .addTo(this.map)
+          .bindPopup(`<b>${this.pigCoords[i][2]}</b><br/>${occurances} pig reported.`).openPopup();
+        }        
+        else{
+          L.marker([latitude, longitude])
+          .addTo(this.map)
+          .bindPopup(`<b>${this.pigCoords[i][2]}</b><br/>${occurances} pigs reported.`).openPopup();
+        }
       }
     }
   }

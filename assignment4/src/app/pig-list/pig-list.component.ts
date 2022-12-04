@@ -30,16 +30,16 @@ export class PigListComponent implements OnInit {
   incorrectPassword = '';
 
   // Sorting variables
-  locationSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  locationSort = `<i class="bi bi-sort-alpha-up"></i>`;
   locationFlag = true;
-  nameSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  nameSort = `<i class="bi bi-sort-alpha-up"></i>`;
   nameFlag = true;
-  timeSort = `<i class="bi bi-sort-numeric-down"></i>`;
+  timeSort = `<i class="bi bi-sort-numeric-up"></i>`;
   timeFlag = true;
-  statusSort = `<i class="bi bi-sort-alpha-down"></i>`;
+  statusSort = `<i class="bi bi-sort-alpha-up"></i>`;
   statusFlag = true;
 
-  constructor(private ps: PigService,private modalService: NgbModal){
+  constructor(private ps: PigService,private modalService: NgbModal,private http: HttpClient){
     this.pigs = [];    
     let formControls = {
       password: new FormControl('',[
@@ -82,39 +82,54 @@ export class PigListComponent implements OnInit {
   }
   
   // Change status
-  onSubmitStatus(values){
-    if (this.password){
-      this.ps.changeStatus(this.tempObj,this.pigInfoDate);
-    }
+  onSubmitStatus(form){
+    
+    // Get user Input
+    let userInput = form.value;
+    let pass = "84892b91ef3bf9d216bbc6e88d74a77c";
+
+    this.http.get<Object>('https://api.hashify.net/hash/md5/hex?value='+userInput)
+    .subscribe((data: any)=>{
+
+      let hashedPassword = data.Digest;
+
+      if (pass === hashedPassword){
+        this.modalService.dismissAll();
+        this.ps.changeStatus(this.tempObj,this.pigInfoDate);
+      }
+      else{
+        this.incorrectPassword = '<div class="text-danger">Incorrect Password</div>';
+      }
+    })
   }
 
-  // Delete Pig 
-  onSubmit(values){
-    if (this.password){
-      this.ps.deletePig(this.pigInfoName);
-    }
-	}
+  // Delete pig
+  onSubmitDelete(form){
+
+    // Get user Input
+    let userInput = form.value;
+    let pass = "84892b91ef3bf9d216bbc6e88d74a77c";    
+
+    this.http.get<Object>('https://api.hashify.net/hash/md5/hex?value='+userInput)
+    .subscribe((data: any)=>{
+
+      let hashedPassword = data.Digest;
+
+      if (pass === hashedPassword){
+        this.modalService.dismissAll();
+        this.ps.deletePig(this.tempObj.name);
+      }
+      else{
+        this.incorrectPassword = '<div class="text-danger">Incorrect Password</div>';
+      }
+    })
+  }
+
 
   // Reset Form
   formReset(){
 		this.form.reset();
 	}
-
-  // Check if password is correct
-  checkPassword(content,form){
-
-    let actual: string = form.value;
-    let expected: string = "OINK!!";
-
-    if (actual === expected){
-      this.modalService.dismissAll();   
-      this.password = true;   
-    }
-    else{
-      this.incorrectPassword = '<div class="text-danger">Incorrect Password</div>';
-      this.password = false;   
-    }
-  }
 
   sortbyLocation(){
     if (this.locationFlag){
